@@ -16,9 +16,6 @@ ModelImporter:
       74: -2603478504544128241
     second: Idle3
   - first:
-      74: 5522812681064789136
-    second: Run
-  - first:
       74: 5917537482288442099
     second: Fall
   - first:
@@ -90,6 +87,9 @@ ModelImporter:
   - first:
       74: -2341027594253812581
     second: Roll
+  - first:
+      74: 6281953650394205071
+    second: Run.001
   externalObjects: {}
   materials:
     materialImportMode: 1
