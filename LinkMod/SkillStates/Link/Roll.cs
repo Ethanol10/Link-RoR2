@@ -7,9 +7,9 @@ namespace LinkMod.SkillStates
 {
     public class Roll : BaseSkillState
     {
-        public static float duration = 0.5f;
-        public static float initialSpeedCoefficient = 5f;
-        public static float finalSpeedCoefficient = 2.5f;
+        public static float duration = 0.3f;
+        public static float initialSpeedCoefficient = 4f;
+        public static float finalSpeedCoefficient = 1.5f;
 
         public static string dodgeSoundString = "LinkRoll";
         public static float dodgeFOV = EntityStates.Commando.DodgeState.dodgeFOV;
@@ -19,6 +19,9 @@ namespace LinkMod.SkillStates
         private Animator animator;
         private Vector3 previousPosition;
 
+        private float previousYVelocity;
+
+        //Shameless stolen from henry, except trying to not maintain y velocity.
         public override void OnEnter()
         {
             base.OnEnter();
@@ -39,8 +42,9 @@ namespace LinkMod.SkillStates
 
             if (base.characterMotor && base.characterDirection)
             {
-                base.characterMotor.velocity.y = 0f;
+                previousYVelocity = base.characterMotor.velocity.y;
                 base.characterMotor.velocity = this.forwardDirection * this.rollSpeed;
+                base.characterMotor.velocity.y = previousYVelocity;
             }
 
             Vector3 b = base.characterMotor ? base.characterMotor.velocity : Vector3.zero;
@@ -75,7 +79,6 @@ namespace LinkMod.SkillStates
                 Vector3 vector = normalized * this.rollSpeed;
                 float d = Mathf.Max(Vector3.Dot(vector, this.forwardDirection), 0f);
                 vector = this.forwardDirection * d;
-                vector.y = 0f;
 
                 base.characterMotor.velocity = vector;
             }

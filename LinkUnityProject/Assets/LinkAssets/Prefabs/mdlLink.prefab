@@ -3120,18 +3120,8 @@ MonoBehaviour:
     transform: {fileID: 4131269132052742026}
   - name: SheatheObj
     transform: {fileID: 36237265364559850}
-  - name: 
-    transform: {fileID: 0}
-  - name: 
-    transform: {fileID: 0}
-  - name: 
-    transform: {fileID: 0}
-  - name: 
-    transform: {fileID: 0}
-  - name: 
-    transform: {fileID: 0}
-  - name: 
-    transform: {fileID: 0}
+  - name: BodyObj
+    transform: {fileID: 179614298525841689}
 --- !u!114 &1758303455069337561
 MonoBehaviour:
   m_ObjectHideFlags: 0

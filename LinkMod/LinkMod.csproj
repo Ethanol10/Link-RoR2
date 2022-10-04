@@ -12,13 +12,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="HenryBank.bnk" />
-    <None Remove="Modules\Characters\Henry.cs~RF6221a098.TMP" />
-    <None Remove="myassetbundle" />
-  </ItemGroup>
-
+	
 	<ItemGroup>
 		<PackageReference Include="BepInEx.Analyzers" Version="1.0.*">
 			<PrivateAssets>all</PrivateAssets>
@@ -31,10 +25,13 @@
 	
   <ItemGroup>
     <EmbeddedResource Include="HenryBank.bnk" />
-    <EmbeddedResource Include="myassetbundle" />
+    <EmbeddedResource Include="linkassets" />
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="CustomEmotesAPI">
+      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\testing\BepInEx\plugins\MetrosexualFruitcake-CustomEmotesAPI\CustomEmotesAPI.dll</HintPath>
+    </Reference>
     <Reference Include="R2API">
       <HintPath>..\libs\R2API.dll</HintPath>
     </Reference>

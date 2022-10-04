@@ -8,7 +8,7 @@ namespace LinkMod.Modules
         internal static void AddTokens()
         {
             #region Link
-            string prefix = LinkPlugin.DEVELOPER_PREFIX + "_Link_BODY_";
+            string prefix = LinkPlugin.DEVELOPER_PREFIX + "_LINK_BODY_";
 
             string desc = "Link is a skilled fighter who makes use of a wide arsenal of weaponry to take down his foes.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
             desc = desc + "< ! > Sword is a good all-rounder while Boxing Gloves are better for laying a beatdown on more powerful foes." + Environment.NewLine + Environment.NewLine;
@@ -21,7 +21,7 @@ namespace LinkMod.Modules
 
             LanguageAPI.Add(prefix + "NAME", "Link");
             LanguageAPI.Add(prefix + "DESCRIPTION", desc);
-            LanguageAPI.Add(prefix + "SUBTITLE", "The Chosen One");
+            LanguageAPI.Add(prefix + "SUBTITLE", "The Hero of Hyrule");
             LanguageAPI.Add(prefix + "LORE", "sample lore");
             LanguageAPI.Add(prefix + "OUTRO_FLAVOR", outro);
             LanguageAPI.Add(prefix + "OUTRO_FAILURE", outroFailure);

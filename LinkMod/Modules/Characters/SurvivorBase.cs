@@ -48,6 +48,7 @@ namespace LinkMod.Modules.Survivors
         }
         public virtual void InitializeUnlockables()
         {
+
         }
 
         public static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string tokenPrefix) { RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, tokenPrefix, null, 100f); }

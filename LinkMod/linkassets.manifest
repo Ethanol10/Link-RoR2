@@ -1,0 +1,99 @@
+ManifestFileVersion: 0
+CRC: 341634208
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 319bce972927e810e2ff470ca6a71eb8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f7bc0db755c838d9b6ec59727b7bbb45
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/LinkAssets/Animations/RollEdited.anim
+- Assets/LinkAssets/Animations/Jump.anim
+- Assets/LinkAssets/Prefabs/LinkDisplay.prefab
+- Assets/LinkAssets/Animations/ShieldBlockSuccess.anim
+- Assets/LinkAssets/Animations/GroundedSpinAttackHold.anim
+- Assets/LinkAssets/Shaders/Frensel.shader
+- Assets/LinkAssets/Animations/Fall.anim
+- Assets/LinkAssets/Animations/AerialDownstab.anim
+- Assets/LinkAssets/Textures/StandardSwordandShield.png
+- Assets/LinkAssets/Animations/RunStrafeBackwards.anim
+- Assets/LinkAssets/Animations/ShieldBlockStart.anim
+- Assets/LinkAssets/Animations/SwordSwing1.anim
+- Assets/LinkAssets/Animations/SpinAttackAir.anim
+- Assets/LinkAssets/Animations/GroundedSpinAttackHold.001.anim
+- Assets/LinkAssets/Animations/LinkHumanoid.asset
+- Assets/LinkAssets/Animations/RunR.anim
+- Assets/LinkAssets/Prefabs/mdlLink.prefab
+- Assets/LinkAssets/Textures/Link1BodyNorm.png
+- Assets/LinkAssets/Meshes/sheatheMesh.mesh
+- Assets/LinkAssets/Animations/AerialAttack.anim
+- Assets/LinkAssets/Materials/Skin1Material.mat
+- Assets/LinkAssets/Animations/Roll.anim
+- Assets/LinkAssets/Animations/LinkDisplayController.controller
+- Assets/LinkAssets/Meshes/shieldMesh.mesh
+- Assets/LinkAssets/Animations/Run.anim
+- Assets/LinkAssets/Animations/GroundedDashAttack.anim
+- Assets/LinkAssets/Animations/AerialDownstabLanding.anim
+- Assets/LinkAssets/Materials/SwordShieldMaterial.mat
+- Assets/LinkAssets/Animations/A05LandingLight.nuanmx.anim
+- Assets/LinkAssets/Textures/metal_link_001_nor.png
+- Assets/LinkAssets/Animations/SwordSwing2.anim
+- Assets/LinkAssets/Textures/Link1BodyTex.png
+- Assets/LinkAssets/Animations/SwordSwing3.anim
+- Assets/LinkAssets/Prefabs/LinkHumanoid.prefab
+- Assets/LinkAssets/Animations/AvatarMasks/UpperBodyMask.mask
+- Assets/LinkAssets/Animations/Dash.anim
+- Assets/LinkAssets/Animations/Idle2.anim
+- Assets/LinkAssets/Animations/DoubleJump.anim
+- Assets/LinkAssets/Shaders/FrenselLit.shader
+- Assets/LinkAssets/Animations/Sprint.anim
+- Assets/LinkAssets/Animations/HeavyLanding.anim
+- Assets/LinkAssets/Meshes/swordMesh.mesh
+- Assets/LinkAssets/Meshes/defaultBodyMesh.mesh
+- Assets/LinkAssets/Animations/ShieldBlockHold.anim
+- Assets/LinkAssets/Animations/RunStrafeL.anim
+- Assets/LinkAssets/Animations/animLink.controller
+- Assets/LinkAssets/Animations/GroundedSpinAttack.anim
+- Assets/LinkAssets/Animations/Idle.anim
+- Assets/LinkAssets/Animations/JumpSquat.anim
+- Assets/LinkAssets/Animations/Idle3.anim
+- Assets/LinkAssets/BombShader.mat
+Dependencies: []
