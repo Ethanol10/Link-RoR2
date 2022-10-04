@@ -1,0 +1,313 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UpperBodyMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/Trans
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/LegL
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/LegL/KneeL
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/LegL/KneeL/FootL
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/LegL/KneeL/FootL/ToeL
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/LegR
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/LegR/KneeR
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/LegR/KneeR/FootR
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/LegR/KneeR/FootR/ToeR
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/queiver
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailB1
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailB1/S_ShirttailB2_null
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailBL1
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailBL1/S_ShirttailBL2_null
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailBR1
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailBR1/S_ShirttailBR2_null
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailF1
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailF1/S_ShirttailF2_null
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailFL1
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailFL1/S_ShirttailFL2_null
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailFR1
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailFR1/S_ShirttailFR2_null
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailL1
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailL1/S_ShirttailL2_null
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailR1
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/S_ShirttailR1/S_ShirttailR2_null
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/sheikahstone
+    m_Weight: 0
+  - m_Path: Armature/Trans/Rot/Hip/Waist
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/BowB
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/H_SholderL
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/H_WristL
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL11
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL11/FingerL12
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL11/FingerL12/FingerL13
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20/FingerL21
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20/FingerL21/FingerL22
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20/FingerL21/FingerL22/FingerL23
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20/FingerL30
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20/FingerL30/FingerL31
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20/FingerL30/FingerL31/FingerL32
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20/FingerL30/FingerL31/FingerL32/FingerL33
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20/FingerL30/FingerL40
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20/FingerL30/FingerL40/FingerL41
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20/FingerL30/FingerL40/FingerL41/FingerL42
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL20/FingerL30/FingerL40/FingerL41/FingerL42/FingerL43
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL51
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL51/FingerL52
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/FingerL10/FingerL51/FingerL52/FingerL53
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/HaveL
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/ArmL/HandL/Shield
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/S_SleeveFL1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleL/ShoulderL/S_SleeveFL1/S_SleeveFL2_null
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/H_SholderR
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/H_WristR
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR11
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR11/FingerR12
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR11/FingerR12/FingerR13
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20/FingerR21
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20/FingerR21/FingerR22
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20/FingerR21/FingerR22/FingerR23
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20/FingerR30
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20/FingerR30/FingerR31
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20/FingerR30/FingerR31/FingerR32
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20/FingerR30/FingerR31/FingerR32/FingerR33
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20/FingerR30/FingerR40
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20/FingerR30/FingerR40/FingerR41
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20/FingerR30/FingerR40/FingerR41/FingerR42
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR20/FingerR30/FingerR40/FingerR41/FingerR42/FingerR43
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR51
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR51/FingerR52
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/FingerR10/FingerR51/FingerR52/FingerR53
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/HaveR
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/Sword1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/ArmR/HandR/Sword1/Sword2
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/S_SleeveFR1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/ClavicleR/ShoulderR/S_SleeveFR1/S_SleeveFR2_null
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowL1_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowL1_offset/BrowL1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowL2_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowL2_offset/BrowL2
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowL3_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowL3_offset/BrowL3
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowR1_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowR1_offset/BrowR1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowR2_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowR2_offset/BrowR2
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowR3_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Brow_group/BrowR3_offset/BrowR3
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/Jaw_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/Jaw_offset/Jaw
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/Jaw_offset/Jaw/DownlipC_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/Jaw_offset/Jaw/DownlipC_offset/DownlipC
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/Jaw_offset/Jaw/DownlipL_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/Jaw_offset/Jaw/DownlipL_offset/DownlipL
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/Jaw_offset/Jaw/DownlipR_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/Jaw_offset/Jaw/DownlipR_offset/DownlipR
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/Jaw_offset/Jaw/Tongue_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/Jaw_offset/Jaw/Tongue_offset/Tongue
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/UplipC_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/UplipC_offset/UplipC
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/UplipL1_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/UplipL1_offset/UplipL1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/UplipL2_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/UplipL2_offset/UplipL2
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/UplipR1_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/UplipR1_offset/UplipR1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/UplipR2_offset
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/Face/Mouth_group/UplipR2_offset/UplipR2
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_HairB1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_HairB1/S_HairB2_null
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_HairF1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_HairF1/S_HairF2_null
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_HairL1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_HairL1/S_HairL2
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_HairL1/S_HairL2/S_HairL3_null
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_HairR1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_HairR1/S_HairR2
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_HairR1/S_HairR2/S_HairR3_null
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_Hat1
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_Hat1/S_Hat2
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Neck/Head/S_Hat1/S_Hat2/S_Hat3_null
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Scabbard
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Scabbard/Hilt
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Hip/Waist/Bust/Scabbard/ShieldB
+    m_Weight: 1
+  - m_Path: Armature/Trans/Rot/Throw
+    m_Weight: 0
+  - m_Path: Body
+    m_Weight: 0
+  - m_Path: Sheathe
+    m_Weight: 0
+  - m_Path: ShieldUnsheathe
+    m_Weight: 0
+  - m_Path: SwordUnsheathe
+    m_Weight: 0
