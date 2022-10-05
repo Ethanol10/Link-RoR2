@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2507122493
+CRC: 2858436841
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 33abb9a3f9baf98e9414b88980d4d873
+    Hash: 420e76c98cb27fd55d1b7010f1833e87
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4add59b4eb96990d95dae627ea692027
@@ -70,6 +70,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkHumanoid.asset
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailOpen.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunR.anim
+- Assets/LinkAssets/Animations/LinkBodyAnims/SpawnAnim.anim
 - Assets/LinkAssets/Prefabs/mdlLink.prefab
 - Assets/LinkAssets/Textures/Link1BodyNorm.png
 - Assets/LinkAssets/Meshes/sheatheMesh.mesh
@@ -81,6 +82,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkDisplayController.controller
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailClose.anim
 - Assets/LinkAssets/Meshes/shieldMesh.mesh
+- Assets/LinkAssets/Animations/AvatarMasks/slightTransformAvatar.mask
 - Assets/LinkAssets/Animations/LinkBodyAnims/Run.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim3.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabLanding.anim
@@ -89,6 +91,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/A05LandingLight.nuanmx.anim
 - Assets/LinkAssets/Textures/metal_link_001_nor.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailAnimation.anim
+- Assets/LinkAssets/Animations/LinkBodyAnims/RotateDisplayModel.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing2.anim
 - Assets/LinkAssets/Textures/Link1BodyTex.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing3.anim

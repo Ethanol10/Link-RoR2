@@ -67,6 +67,7 @@ namespace LinkMod
         {
             // run hooks here, disabling one is as simple as commenting out the line
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            On.RoR2.CharacterModel.Start += CharacterModel_Start;
 
             if (Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI"))
             {
@@ -86,6 +87,29 @@ namespace LinkMod
                 }
             }
         }
+
+        private void CharacterModel_Start(On.RoR2.CharacterModel.orig_Start orig, CharacterModel self)
+        {
+            orig(self);
+            if (self.gameObject.name.Contains("LinkDisplay"))
+            {
+                LinkRandomIdleAnimController displayHandler = self.gameObject.GetComponent<LinkRandomIdleAnimController>();
+                if (!displayHandler)
+                {
+                    ChildLocator childLoc = self.gameObject.GetComponent<ChildLocator>();
+
+                    if (childLoc)
+                    {
+                        displayHandler = self.gameObject.AddComponent<LinkRandomIdleAnimController>();
+                    }
+                }
+                else 
+                {
+                    displayHandler.rerollAnim();
+                }
+            }
+        }
+
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
