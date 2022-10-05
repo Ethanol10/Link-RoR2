@@ -19,8 +19,6 @@ namespace LinkMod.SkillStates
         private Animator animator;
         private Vector3 previousPosition;
 
-        private float previousYVelocity;
-
         //Shameless stolen from henry, except trying to not maintain y velocity.
         public override void OnEnter()
         {
@@ -42,9 +40,8 @@ namespace LinkMod.SkillStates
 
             if (base.characterMotor && base.characterDirection)
             {
-                previousYVelocity = base.characterMotor.velocity.y;
                 base.characterMotor.velocity = this.forwardDirection * this.rollSpeed;
-                base.characterMotor.velocity.y = previousYVelocity;
+                base.characterMotor.velocity.y = -1f;
             }
 
             Vector3 b = base.characterMotor ? base.characterMotor.velocity : Vector3.zero;
@@ -55,7 +52,6 @@ namespace LinkMod.SkillStates
 
             if (NetworkServer.active)
             {
-                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 3f * Roll.duration);
                 base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 0.5f * Roll.duration);
             }
         }
@@ -93,10 +89,14 @@ namespace LinkMod.SkillStates
 
         public override void OnExit()
         {
-            if (base.cameraTargetParams) base.cameraTargetParams.fovOverride = -1f;
             base.OnExit();
 
             base.characterMotor.disableAirControlUntilCollision = false;
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Frozen;
         }
 
         public override void OnSerialize(NetworkWriter writer)

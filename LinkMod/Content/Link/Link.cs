@@ -80,6 +80,7 @@ namespace LinkMod.Content.Link
         public override void InitializeCharacter()
         {
             base.InitializeCharacter();
+            bodyPrefab.AddComponent<LinkController>();
         }
 
         public override void InitializeUnlockables()

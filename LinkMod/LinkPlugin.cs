@@ -1,7 +1,7 @@
 ﻿using BepInEx;
 using BepInEx.Bootstrap;
 using EmotesAPI;
-using LinkMod.Modules.Survivors;
+using LinkMod.Content.Link;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
@@ -39,6 +39,7 @@ namespace LinkMod
         public const string DEVELOPER_PREFIX = "POPCORN";
 
         public static LinkPlugin instance;
+        public static bool emotesAvailable = false;
 
         private void Awake()
         {
@@ -69,6 +70,7 @@ namespace LinkMod
 
             if (Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI"))
             {
+                emotesAvailable = true;
                 On.RoR2.SurvivorCatalog.Init += SurvivorCatalog_Init;
             }
         }
