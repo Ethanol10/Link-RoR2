@@ -1,7 +1,9 @@
 ﻿using BepInEx.Configuration;
+using EntityStates;
 using LinkMod.Modules;
 using LinkMod.Modules.Characters;
 using LinkMod.Modules.Survivors;
+using LinkMod.SkillStates.Link;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -28,7 +30,6 @@ namespace LinkMod.Content.Link
             bodyColor = Color.white,
 
             crosshair = Assets.LoadCrosshair("Standard"),
-            podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
             maxHealth = 150f,
             healthRegen = 2f,
@@ -81,6 +82,8 @@ namespace LinkMod.Content.Link
         {
             base.InitializeCharacter();
             bodyPrefab.AddComponent<LinkController>();
+            EntityStateMachine linkEntityStateMachine = bodyPrefab.GetComponent<EntityStateMachine>();
+            linkEntityStateMachine.initialStateType = new SerializableEntityStateType(typeof(LinkSpawnState));
         }
 
         public override void InitializeUnlockables()
@@ -94,9 +97,20 @@ namespace LinkMod.Content.Link
             ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
             GameObject model = childLocator.gameObject;
 
-            //example of how to create a hitbox
-            //Transform hitboxTransform = childLocator.FindChild("SwordHitbox");
-            //Modules.Prefabs.SetupHitbox(model, hitboxTransform, "Sword");
+            Transform aerialSwingHitbox = childLocator.FindChild("AerialSwingHitbox");
+            Modules.Prefabs.SetupHitbox(model, aerialSwingHitbox, "AerialSwingHitbox");
+
+            Transform AerialDownstabHitbox = childLocator.FindChild("AerialDownstabHitbox");
+            Modules.Prefabs.SetupHitbox(model, AerialDownstabHitbox, "AerialDownstabHitbox");
+
+            Transform GroundedSwingHitbox = childLocator.FindChild("GroundedSwingHitbox");
+            Modules.Prefabs.SetupHitbox(model, GroundedSwingHitbox, "GroundedSwingHitbox");
+
+            Transform GroundedFinalSwingHitbox = childLocator.FindChild("GroundedFinalSwingHitbox");
+            Modules.Prefabs.SetupHitbox(model, GroundedFinalSwingHitbox, "GroundedFinalSwingHitbox");
+
+            Transform GroundedDashAttack = childLocator.FindChild("GroundedDashAttack");
+            Modules.Prefabs.SetupHitbox(model, GroundedDashAttack, "GroundedDashAttack");
         }
 
         public override void InitializeSkills()
@@ -155,8 +169,8 @@ namespace LinkMod.Content.Link
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll)),
                 activationStateMachineName = "Body",
-                baseMaxStock = 1,
-                baseRechargeInterval = 4f,
+                baseMaxStock = 2,
+                baseRechargeInterval = 6f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = true,
@@ -166,7 +180,7 @@ namespace LinkMod.Content.Link
                 isCombatSkill = false,
                 mustKeyPress = false,
                 cancelSprintingOnActivation = false,
-                rechargeStock = 1,
+                rechargeStock = 2,
                 requiredStock = 1,
                 stockToConsume = 1
             });
