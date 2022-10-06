@@ -1,7 +1,5 @@
 ﻿using LinkMod.SkillStates;
 using LinkMod.SkillStates.BaseStates;
-using System.Collections.Generic;
-using System;
 using LinkMod.SkillStates.Link;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 
