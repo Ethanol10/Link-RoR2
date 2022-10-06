@@ -6,12 +6,12 @@ using System.Text;
 
 namespace LinkMod.SkillStates.Link.MasterSwordPrimary
 {
-    internal class MasterSwordAerialDoubleSwing : BaseSkillState
+    internal class MasterSwordDashAttack : BaseSkillState
     {
         public override void OnEnter()
         {
             base.OnEnter();
-            Chat.AddMessage("Aerial Double swing");
+            Chat.AddMessage("Dash Attack");
         }
 
         public override void OnExit()

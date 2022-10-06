@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using RoR2;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
         public override void OnEnter()
         {
             base.OnEnter();
+            Chat.AddMessage("Swing");
         }
 
         public override void OnExit()

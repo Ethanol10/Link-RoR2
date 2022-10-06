@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace LinkMod.SkillStates.Link.MasterSwordPrimary
 {
@@ -12,17 +13,41 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
             base.OnEnter();
 
             //Entry point for all swings.
+            
+            //Target is Grounded
+            if (base.isGrounded) 
+            {
+                //Check if dashing
+                if (base.characterBody.isSprinting) 
+                {
+                    this.outer.SetState(new MasterSwordDashAttack { });
+                    return;
+                }
 
-            //Handle Grounded swings 
-                //Provide entry point into grounded swing
-                //let the grounded swing handle the swing progression if the player is holding the button down.
+                //Do Default swing
+                this.outer.SetState(new MasterSwordSwing { });
+                return;
+            }
 
-            //Handle Aerial swing
-                //Check if pointing down
-                    //Do downstab
-                        //If the player hits the ground before they hit the ground, play the recovery state. 
-                        //Otherwise allow them to transition out of the state.
-                //otherwise do double swing.
+            //Continue under the assumption that the character is in the air
+            if (CheckLookingDown()) 
+            {
+                this.outer.SetState(new MasterSwordAerialDownstab { });
+                return;
+            }
+
+            //otherwise just default to aerial attack
+            this.outer.SetState(new MasterSwordAerialDoubleSwing { });
+            return;
+       }
+
+        private bool CheckLookingDown()
+        {
+            if (Vector3.Dot(base.GetAimRay().direction, Vector3.down) > 0.866f)
+            {
+                return true;
+            }
+            return false;
         }
 
         public override void OnExit()

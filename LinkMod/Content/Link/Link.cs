@@ -4,6 +4,7 @@ using LinkMod.Modules;
 using LinkMod.Modules.Characters;
 using LinkMod.Modules.Survivors;
 using LinkMod.SkillStates.Link;
+using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -123,7 +124,7 @@ namespace LinkMod.Content.Link
             SkillDef primarySkillDef = Skills.CreateSkillDef(new SkillDefInfo(prefix + "_LINK_BODY_PRIMARY_SLASH_NAME",
                                                                                       prefix + "_LINK_BODY_PRIMARY_SLASH_DESCRIPTION",
                                                                                       Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
-                                                                                      new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)),
+                                                                                      new EntityStates.SerializableEntityStateType(typeof(MasterSword)),
                                                                                       "Weapon",
                                                                                       true));
 
