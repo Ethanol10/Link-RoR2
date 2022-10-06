@@ -43,7 +43,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
 
         private bool CheckLookingDown()
         {
-            if (Vector3.Dot(base.GetAimRay().direction, Vector3.down) > 0.866f)
+            if (Vector3.Dot(base.GetAimRay().direction, Vector3.down) > 0.8f)
             {
                 return true;
             }
