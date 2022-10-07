@@ -15,5 +15,8 @@ namespace LinkMod.Modules
         internal const float gunDamageCoefficient = 4.2f;
 
         internal const float bombDamageCoefficient = 16f;
+
+        //Master sword 
+        internal const float msGroundedBasicSwing = 0.8f; 
     }
 }
