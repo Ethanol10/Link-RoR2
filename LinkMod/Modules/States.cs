@@ -1,5 +1,4 @@
 ﻿using LinkMod.SkillStates;
-using LinkMod.SkillStates.BaseStates;
 using LinkMod.SkillStates.Link;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 
@@ -9,13 +8,6 @@ namespace LinkMod.Modules
     {
         internal static void RegisterStates()
         {
-
-            Modules.Content.AddEntityState(typeof(BaseMeleeAttack));
-            Modules.Content.AddEntityState(typeof(SlashCombo));
-            Modules.Content.AddEntityState(typeof(Shoot));
-            Modules.Content.AddEntityState(typeof(ThrowBomb));
-
-
             //Spawn State
             Modules.Content.AddEntityState(typeof(LinkSpawnState));
 

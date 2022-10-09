@@ -14,13 +14,22 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
         internal static float baseDuration = 0.7f;
         internal static float hurtBoxFractionStart = 0.2f;
         internal static float hurtboxFractionEnd = 0.4f;
-        internal static float earlyExitTime = 0.65f;
+        internal static float earlyExitTime = 0.45f;
+        internal float hitHopVelocity = 10f;
         internal float duration;
         internal bool hasFired;
         internal OverlapAttack attack;
         internal Animator animator;
-        internal HitStopCachedState hitstopCache;
         internal int index;
+        internal float stopwatch;
+
+        //Hitstop stuff
+        internal HitStopCachedState hitstopCache;
+        internal float hitStopDuration = 0.10f;
+        internal bool inHitStop;
+        internal Vector3 storedVelocity;
+        internal float hitPauseTimer;
+        internal bool hasHopped;
 
         public override void OnEnter()
         {
@@ -28,11 +37,15 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
             hasFired = false;
             this.animator = base.GetModelAnimator();
             duration = baseDuration / this.attackSpeedStat;
+            hitHopVelocity = 10f / this.attackSpeedStat;
             base.StartAimMode(0.5f + this.duration, false);
             SetupOverlapAttack();
 
             animator.SetFloat("Swing.playbackRate", this.attackSpeedStat); 
             PlayAttackAnimation();
+
+            //We need a separate stopwatch to let the hitpause timer tick down.
+            stopwatch = 0f;
         }
 
         public override void OnExit()
@@ -42,7 +55,24 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
 
         public void OnHitEnemyAuthority() 
         {
-            
+            if (!hasHopped)
+            {
+                if (base.characterMotor && !base.characterMotor.isGrounded && hitHopVelocity > 0f)
+                {
+                    base.SmallHop(base.characterMotor, hitHopVelocity);
+                }
+
+                hasHopped = true;
+            }
+
+
+            if (!this.inHitStop && this.hitStopDuration > 0f)
+            {
+                storedVelocity = base.characterMotor.velocity;
+                hitstopCache = base.CreateHitStopCachedState(base.characterMotor, animator, "Swing.playbackRate");
+                hitPauseTimer = hitStopDuration / attackSpeedStat;
+                inHitStop = true;
+            }
         }
 
         public void PlayAttackAnimation() 
@@ -55,9 +85,31 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
             base.FixedUpdate();
             if (base.isAuthority) 
             {
+
+                //Increment stopwatch if we are in hitpause
+                if (!inHitStop)
+                {
+                    this.stopwatch += Time.fixedDeltaTime;
+                }
+                else
+                {
+                    //Increment Timers for hitstun
+                    this.hitPauseTimer -= Time.fixedDeltaTime;
+                    //Set velocity to zero, and punch playback rate to 0 to simulate a strong hit
+                    if (base.characterMotor) base.characterMotor.velocity = Vector3.zero;
+                    if (this.animator) this.animator.SetFloat("Swing.playbackRate", 0f);
+                }
+
+                if (hitPauseTimer <= 0f && inHitStop)
+                {
+                    ConsumeHitStopCachedState(hitstopCache, characterMotor, animator);
+                    inHitStop = false;
+                    characterMotor.velocity = storedVelocity;
+                }
+
                 //fire attack
-                if (base.fixedAge >= duration * hurtBoxFractionStart
-                && base.fixedAge <= duration * hurtboxFractionEnd)
+                if (stopwatch >= duration * hurtBoxFractionStart
+                && stopwatch <= duration * hurtboxFractionEnd)
                 {
                     hasFired = true;
                     if (this.attack.Fire()) 
@@ -68,7 +120,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 }
 
                 //End move
-                if (base.fixedAge >= duration * earlyExitTime)
+                if (stopwatch >= duration * earlyExitTime)
                 {
                     if (!hasFired)
                     {
@@ -95,7 +147,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 }
 
                 //Otherwise exit out completely back to main state.
-                if (base.fixedAge >= duration) 
+                if (stopwatch >= duration) 
                 {
                     this.outer.SetNextStateToMain();
                 }
