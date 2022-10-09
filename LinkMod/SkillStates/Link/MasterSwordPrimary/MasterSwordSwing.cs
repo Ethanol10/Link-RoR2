@@ -134,6 +134,13 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                     //Check if we should continue onwards.
                     if (this.inputBank.skill1.down)
                     {
+                        //EEEeeeh let the MasterSword class handle it
+                        if (!base.isGrounded) 
+                        {
+                            this.outer.SetState(new MasterSword { });
+                            return;
+                        }
+
                         if (index >= 1) 
                         {
                             this.outer.SetState(new MasterSwordSwingFinalGroundedHit { });

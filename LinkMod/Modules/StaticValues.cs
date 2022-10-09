@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LinkMod.Modules
+﻿namespace LinkMod.Modules
 {
     internal static class StaticValues
     {
@@ -13,5 +11,6 @@ namespace LinkMod.Modules
         //Master sword 
         internal const float msGroundedBasicSwing = 0.8f;
         internal const float msGroundedFinalSwing = 3.5f;
+        internal const float msGroundedDashAttack = 4.0f;
     }
 }

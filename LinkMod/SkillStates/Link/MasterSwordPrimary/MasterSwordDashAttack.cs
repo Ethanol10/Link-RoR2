@@ -10,10 +10,10 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
 {
     internal class MasterSwordDashAttack : BaseSkillState
     {
-        internal static float baseDuration = 2.0f;
+        internal static float baseDuration = 1.2f;
         internal static float hurtBoxFractionStart = 0.28f;
-        internal static float hurtboxFractionEnd = 0.34f;
-        internal static float earlyExitTime = 0.8f;
+        internal static float hurtboxFractionEnd = 0.4f;
+        internal static float earlyExitTime = 0.65f;
         internal float hitHopVelocity = 10f;
         internal float duration;
         internal bool hasFired;
@@ -30,6 +30,16 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
         internal float hitPauseTimer;
         internal bool hasHopped;
 
+
+        //"Roll" part
+        public float rollDuration = 0.3f;
+        public static float initialSpeedCoefficient = 4f;
+        public static float finalSpeedCoefficient = 0f;
+
+        private float rollSpeed;
+        private Vector3 forwardDirection;
+        private Vector3 previousPosition;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -38,6 +48,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
             this.animator = base.GetModelAnimator();
             duration = baseDuration / this.attackSpeedStat;
             hitHopVelocity = 10f / this.attackSpeedStat;
+            rollDuration = duration / 0.3f;
             SetupOverlapAttack();
 
             animator.SetFloat("Swing.playbackRate", this.attackSpeedStat);
@@ -45,11 +56,39 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
 
             //We need a separate stopwatch to let the hitpause timer tick down.
             stopwatch = 0f;
+
+            //The roll part, we want it to roll irrespective of the move length.
+            if (base.isAuthority && base.inputBank && base.characterDirection)
+            {
+                this.forwardDirection = ((base.inputBank.moveVector == Vector3.zero) ? base.characterDirection.forward : base.inputBank.moveVector).normalized;
+            }
+
+            Vector3 rhs = base.characterDirection ? base.characterDirection.forward : this.forwardDirection;
+            Vector3 rhs2 = Vector3.Cross(Vector3.up, rhs);
+
+            float num = Vector3.Dot(this.forwardDirection, rhs);
+            float num2 = Vector3.Dot(this.forwardDirection, rhs2);
+
+            this.RecalculateRollSpeed();
+
+            if (base.characterMotor && base.characterDirection)
+            {
+                base.characterMotor.velocity = this.forwardDirection * this.rollSpeed;
+                base.characterMotor.velocity.y = -1f;
+            }
+
+            Vector3 b = base.characterMotor ? base.characterMotor.velocity : Vector3.zero;
+            this.previousPosition = base.transform.position - b;
         }
 
         public override void OnExit()
         {
             base.OnExit();
+        }
+
+        private void RecalculateRollSpeed()
+        {
+            this.rollSpeed = this.moveSpeedStat * Mathf.Lerp(initialSpeedCoefficient, finalSpeedCoefficient, stopwatch / rollDuration);
         }
 
         public void OnHitEnemyAuthority()
@@ -135,7 +174,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                     {
 
                         //Go back to the beginning.
-                        this.outer.SetState(new MasterSwordSwing { index = 0 });
+                        this.outer.SetState(new MasterSword { });
                     }
                 }
 
@@ -144,6 +183,41 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 {
                     this.outer.SetNextStateToMain();
                 }
+            }
+
+            if (stopwatch < rollDuration)
+            {
+                //Roll doesn't need to be in authority.
+                this.RecalculateRollSpeed();
+
+                if (base.characterDirection) base.characterDirection.forward = this.forwardDirection;
+                if (base.cameraTargetParams) base.cameraTargetParams.fovOverride = Mathf.Lerp(Roll.dodgeFOV, 60f, stopwatch / rollDuration);
+
+                Vector3 normalized = (base.transform.position - this.previousPosition).normalized;
+                if (base.characterMotor && base.characterDirection && normalized != Vector3.zero)
+                {
+                    Vector3 vector = normalized * this.rollSpeed;
+                    float d = Mathf.Max(Vector3.Dot(vector, this.forwardDirection), 0f);
+                    vector = this.forwardDirection * d;
+
+                    base.characterMotor.velocity = vector;
+                }
+                this.previousPosition = base.transform.position;
+            }
+            else 
+            {
+                if (base.characterDirection) base.characterDirection.forward = this.forwardDirection;
+
+                Vector3 normalized = (base.transform.position - this.previousPosition).normalized;
+                if (base.characterMotor && base.characterDirection)
+                {
+                    Vector3 vector = normalized * 0f;
+                    float d = Mathf.Max(Vector3.Dot(vector, this.forwardDirection), 0f);
+                    vector = this.forwardDirection * d;
+
+                    base.characterMotor.velocity = vector;
+                }
+                this.previousPosition = base.transform.position;
             }
         }
 
@@ -155,7 +229,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
             if (modelTransform)
             {
                 hitBoxGroup = System.Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(),
-                    (HitBoxGroup element) => element.groupName == "GroundedFinalSwingHitbox");
+                    (HitBoxGroup element) => element.groupName == "GroundedDashAttack");
             }
 
             this.attack = new OverlapAttack
@@ -164,7 +238,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 attacker = base.gameObject,
                 inflictor = base.gameObject,
                 teamIndex = base.GetTeam(),
-                damage = Modules.StaticValues.msGroundedFinalSwing * this.damageStat,
+                damage = Modules.StaticValues.msGroundedDashAttack * this.damageStat,
                 procCoefficient = 0.75f,
                 forceVector = Vector3.zero,
                 pushAwayForce = 0f,
