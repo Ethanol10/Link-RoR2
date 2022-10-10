@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2066170884
+CRC: 718348486
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2e62c5c23815cb4b60153bd640b02d16
+    Hash: 645374eaad917f62fbcb1a7e6850b8ae
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 4add59b4eb96990d95dae627ea692027
+    Hash: ce1ccf7ba6d040510786b45e40a5d6bc
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -33,6 +33,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 95
   Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
 - Class: 114
@@ -47,6 +49,10 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 137
   Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
 - Class: 319
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
@@ -58,10 +64,13 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockSuccess.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttackHold.anim
 - Assets/LinkAssets/Shaders/Frensel.shader
+- Assets/LinkAssets/Textures/MoteTrail.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabBegin.anim
+- Assets/LinkAssets/Textures/Mask1.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/Fall.anim
 - Assets/LinkAssets/Textures/StandardSwordandShield.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailPermanentClose.anim
+- Assets/LinkAssets/Materials/SwordBeam.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunStrafeBackwards.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim2.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockStart.anim
@@ -72,6 +81,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkHumanoid.asset
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailOpen.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunR.anim
+- Assets/LinkAssets/Prefabs/particle/SwordBeamEffect.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/SpawnAnim.anim
 - Assets/LinkAssets/Prefabs/mdlLink.prefab
 - Assets/LinkAssets/Textures/Link1BodyNorm.png
@@ -88,6 +98,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/Run.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim3.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabLanding.anim
+- Assets/LinkAssets/Prefabs/particle/outerParticles.prefab
 - Assets/LinkAssets/Animations/ParasailAnimCon.controller
 - Assets/LinkAssets/Materials/SwordShieldMaterial.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/A05LandingLight.nuanmx.anim
@@ -97,30 +108,36 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing2.anim
 - Assets/LinkAssets/Textures/Link1BodyTex.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing3.anim
+- Assets/LinkAssets/Materials/FullyChargedMat.mat
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailHold.anim
 - Assets/LinkAssets/Textures/def_parasail_001_nor.png
 - Assets/LinkAssets/Prefabs/LinkHumanoid.prefab
 - Assets/LinkAssets/Animations/AvatarMasks/UpperBodyMask.mask
 - Assets/LinkAssets/Animations/LinkBodyAnims/Dash.anim
+- Assets/LinkAssets/Shaders/Panner.shader
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle2.anim
 - Assets/LinkAssets/Textures/def_parasail_001_col.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabHold.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/DoubleJump.anim
 - Assets/LinkAssets/Shaders/FrenselLit.shader
+- Assets/LinkAssets/Textures/Trail.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/Sprint.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/HeavyLanding.anim
 - Assets/LinkAssets/Meshes/swordMesh.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedDashAttack.anim
+- Assets/LinkAssets/Meshes/U.mesh
 - Assets/LinkAssets/Materials/ParasailMaterial.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim.anim
 - Assets/LinkAssets/Meshes/defaultBodyMesh.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockHold.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunStrafeL.anim
+- Assets/LinkAssets/Prefabs/particle/Light.prefab
+- Assets/LinkAssets/Textures/noise3blur.png
 - Assets/LinkAssets/Animations/animLink.controller
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttack.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle.anim
 - Assets/LinkAssets/Meshes/Parasail.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/JumpSquat.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle3.anim
-- Assets/LinkAssets/BombShader.mat
+- Assets/LinkAssets/Materials/BombShader.mat
 Dependencies: []

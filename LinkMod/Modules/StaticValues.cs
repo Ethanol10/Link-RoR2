@@ -14,6 +14,13 @@
         internal const float msGroundedDashAttack = 4.0f;
         internal const float msAerialDoubleSwingFirst = 1.0f;
         internal const float msAerialDoubleSwingSecond = 2.5f;
-        internal const float msAerialDownstab = 2.5f;
+        internal const float msAerialDownstab = 2.0f;
+
+        //Master sword beam
+        internal const float swordBeamProcCoefficient = 1.0f;
+        internal const float swordBeamDamageCoefficientBase = 2.0f;
+        internal const float swordBeamForce = 100f;
+        internal const float swordBeamLifetime = 1.5f;
+        internal const float swordBeamProjectileSpeed = 20f;
     }
 }

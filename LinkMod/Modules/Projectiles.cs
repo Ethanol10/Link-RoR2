@@ -1,4 +1,5 @@
 ﻿using R2API;
+using R2API.Networking;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
@@ -8,13 +9,13 @@ namespace LinkMod.Modules
 {
     internal static class Projectiles
     {
-        internal static GameObject bombPrefab;
+        internal static GameObject swordBeamPrefab;
 
         internal static void RegisterProjectiles()
         {
-            CreateBomb();
+            CreateSwordBeam();
 
-            AddProjectile(bombPrefab);
+            AddProjectile(swordBeamPrefab);
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
@@ -22,47 +23,50 @@ namespace LinkMod.Modules
             Modules.Content.AddProjectilePrefab(projectileToAdd);
         }
 
-        private static void CreateBomb()
+        private static void CreateSwordBeam()
         {
-            bombPrefab = CloneProjectilePrefab("CommandoGrenadeProjectile", "LinkBombProjectile");
+            swordBeamPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("SwordBeamEffect");
+            // Ensure that the child is set in the right position in Unity!!!!
+            Modules.Prefabs.SetupHitbox(swordBeamPrefab, swordBeamPrefab.transform.GetChild(0), "swordbeam");
+            swordBeamPrefab.AddComponent<NetworkIdentity>();
+            ProjectileController swordProjectileController = swordBeamPrefab.AddComponent<ProjectileController>();
 
-            ProjectileImpactExplosion bombImpactExplosion = bombPrefab.GetComponent<ProjectileImpactExplosion>();
-            InitializeImpactExplosion(bombImpactExplosion);
+            ProjectileDamage swordbeamProjectileDamage = swordBeamPrefab.AddComponent<ProjectileDamage>();
+            InitializeSwordBeamDamage(swordbeamProjectileDamage);
 
-            bombImpactExplosion.blastRadius = 16f;
-            bombImpactExplosion.destroyOnEnemy = true;
-            bombImpactExplosion.lifetime = 12f;
-            bombImpactExplosion.impactEffect = Modules.Assets.bombExplosionEffect;
-            //bombImpactExplosion.lifetimeExpiredSound = Modules.Assets.CreateNetworkSoundEventDef("LinkBombExplosion");
-            bombImpactExplosion.timerAfterImpact = true;
-            bombImpactExplosion.lifetimeAfterImpact = 0.1f;
+            ProjectileSimple swordbeamTrajectory = swordBeamPrefab.AddComponent<ProjectileSimple>();
+            InitializeSwordBeamTrajectory(swordbeamTrajectory);
 
-            ProjectileController bombController = bombPrefab.GetComponent<ProjectileController>();
-            if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("LinkBombGhost") != null) bombController.ghostPrefab = CreateGhostPrefab("LinkBombGhost");
-            bombController.startSound = "";
+            ProjectileOverlapAttack swordbeamOverlapAttack = swordBeamPrefab.AddComponent<ProjectileOverlapAttack>();
+            InitializeSwordBeamOverlapAttack(swordbeamOverlapAttack);
+            swordBeamPrefab.AddComponent<SwordbeamOnHit>();
+
+            swordProjectileController.procCoefficient = 1.0f;
+            swordProjectileController.canImpactOnTrigger = true;
+
+            PrefabAPI.RegisterNetworkPrefab(swordBeamPrefab);
         }
 
-        private static void InitializeImpactExplosion(ProjectileImpactExplosion projectileImpactExplosion)
+        internal static void InitializeSwordBeamOverlapAttack(ProjectileOverlapAttack overlap)
         {
-            projectileImpactExplosion.blastDamageCoefficient = 1f;
-            projectileImpactExplosion.blastProcCoefficient = 1f;
-            projectileImpactExplosion.blastRadius = 1f;
-            projectileImpactExplosion.bonusBlastForce = Vector3.zero;
-            projectileImpactExplosion.childrenCount = 0;
-            projectileImpactExplosion.childrenDamageCoefficient = 0f;
-            projectileImpactExplosion.childrenProjectilePrefab = null;
-            projectileImpactExplosion.destroyOnEnemy = false;
-            projectileImpactExplosion.destroyOnWorld = false;
-            projectileImpactExplosion.falloffModel = RoR2.BlastAttack.FalloffModel.None;
-            projectileImpactExplosion.fireChildren = false;
-            projectileImpactExplosion.impactEffect = null;
-            projectileImpactExplosion.lifetime = 0f;
-            projectileImpactExplosion.lifetimeAfterImpact = 0f;
-            projectileImpactExplosion.lifetimeRandomOffset = 0f;
-            projectileImpactExplosion.offsetForLifetimeExpiredSound = 0f;
-            projectileImpactExplosion.timerAfterImpact = false;
+            overlap.overlapProcCoefficient = 1.0f;
+            overlap.damageCoefficient = 1.0f;
+            //overlap.impactEffect = Modules.Assets.waterbladeimpactEffect;
+        }
 
-            projectileImpactExplosion.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+        internal static void InitializeSwordBeamTrajectory(ProjectileSimple simple)
+        {
+            simple.lifetime = Modules.StaticValues.swordBeamLifetime;
+            simple.desiredForwardSpeed = Modules.StaticValues.swordBeamProjectileSpeed;
+
+        }
+
+        internal static void InitializeSwordBeamDamage(ProjectileDamage damageComponent)
+        {
+            damageComponent.damage = Modules.StaticValues.swordBeamDamageCoefficientBase;
+            damageComponent.crit = false;
+            damageComponent.force = Modules.StaticValues.swordBeamForce;
+            damageComponent.damageType = DamageType.Generic;
         }
 
         private static GameObject CreateGhostPrefab(string ghostName)
@@ -80,6 +84,16 @@ namespace LinkMod.Modules
         {
             GameObject newPrefab = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/" + prefabName), newPrefabName);
             return newPrefab;
+        }
+
+        internal class SwordbeamOnHit : MonoBehaviour, IProjectileImpactBehavior
+        {
+            public NetworkInstanceId netID;
+
+            public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
+            {
+                //Maybe something can be done for link
+            }
         }
     }
 }

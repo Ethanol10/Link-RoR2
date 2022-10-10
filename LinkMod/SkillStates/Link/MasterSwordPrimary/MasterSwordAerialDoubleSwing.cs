@@ -7,6 +7,8 @@ using UnityEngine.Networking;
 using UnityEngine;
 using LinkMod.Modules.Networking.Miscellaneous;
 using R2API.Networking.Interfaces;
+using static LinkMod.Modules.Projectiles;
+using RoR2.Projectile;
 
 namespace LinkMod.SkillStates.Link.MasterSwordPrimary
 {
@@ -84,6 +86,25 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
             base.PlayAnimation("FullBody, Override", $"AerialAttack", "Swing.playbackRate", this.duration);
         }
 
+        public void FireBeam()
+        {
+            //I dunno might need the network request in the future.
+            Modules.Projectiles.swordBeamPrefab.GetComponent<SwordbeamOnHit>().netID = base.characterBody.masterObjectId;
+            Ray ray = GetAimRay();
+
+            ProjectileSimple simple = Modules.Projectiles.swordBeamPrefab.GetComponent<ProjectileSimple>();
+            Debug.Log(simple.desiredForwardSpeed);
+            simple.desiredForwardSpeed = Modules.StaticValues.swordBeamProjectileSpeed;
+            ProjectileManager.instance.FireProjectile(Modules.Projectiles.swordBeamPrefab,
+                ray.origin,
+                Util.QuaternionSafeLookRotation(ray.direction),
+                base.gameObject,
+                Modules.StaticValues.swordBeamDamageCoefficientBase * this.damageStat,
+                0f,
+                base.RollCrit(),
+                DamageColorIndex.Default);
+        }
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -121,7 +142,6 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 if (stopwatch >= duration * firstSwingFractionStart
                 && stopwatch <= duration * firstSwingFractionEnd)
                 {
-                    hasFired = true;
                     if (this.firstAttack.Fire())
                     {
                         this.OnHitEnemyAuthority();
@@ -132,6 +152,10 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 if (stopwatch >= duration * secondSwingFractionStart
                 && stopwatch <= duration * secondSwingFractionEnd)
                 {
+                    if (!hasFired) 
+                    {
+                        FireBeam();
+                    }
                     hasFired = true;
                     if (this.secondAttack.Fire())
                     {

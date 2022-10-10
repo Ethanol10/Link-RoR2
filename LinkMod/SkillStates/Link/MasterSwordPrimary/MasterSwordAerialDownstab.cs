@@ -14,7 +14,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
         internal static float hurtBoxFractionStart = 0.25f;
         internal static float hurtboxFractionEnd = 0.75f;
         internal static float earlyExitTime = 0f;
-        internal float hitHopVelocity = 20f;
+        internal float hitHopVelocity = 15f;
         internal float duration;
         internal bool hasFired;
         internal OverlapAttack attack;
@@ -175,8 +175,8 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 teamIndex = base.GetTeam(),
                 damage = Modules.StaticValues.msAerialDownstab * this.damageStat,
                 procCoefficient = 1f,
-                forceVector = Vector3.zero,
-                pushAwayForce = 0f,
+                forceVector = Vector3.down,
+                pushAwayForce = 400f,
                 hitBoxGroup = hitBoxGroup,
                 isCrit = base.RollCrit(),
 

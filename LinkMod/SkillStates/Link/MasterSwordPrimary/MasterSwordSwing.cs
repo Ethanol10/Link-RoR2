@@ -181,7 +181,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 damage = Modules.StaticValues.msGroundedBasicSwing * this.damageStat,
                 procCoefficient = 1f,
                 forceVector = Vector3.zero,
-                pushAwayForce = 0f,
+                pushAwayForce = 10f,
                 hitBoxGroup = hitBoxGroup,
                 isCrit = base.RollCrit(),
                 

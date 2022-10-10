@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine.Networking;
 using UnityEngine;
+using static LinkMod.Modules.Projectiles;
+using RoR2.Projectile;
 
 namespace LinkMod.SkillStates.Link.MasterSwordPrimary
 {
@@ -78,6 +80,21 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
         {
             base.PlayAnimation("UpperBody, Override", $"SwordSwing2", "Swing.playbackRate", this.duration);
         }
+        
+        public void FireBeam() 
+        {
+            //I dunno might need the network request in the future.
+            Modules.Projectiles.swordBeamPrefab.GetComponent<SwordbeamOnHit>().netID = base.characterBody.masterObjectId;
+            Ray ray = GetAimRay();
+            ProjectileManager.instance.FireProjectile(Modules.Projectiles.swordBeamPrefab,
+                ray.origin,
+                Util.QuaternionSafeLookRotation(ray.direction),
+                base.gameObject,
+                Modules.StaticValues.swordBeamDamageCoefficientBase * this.damageStat,
+                0f,
+                base.RollCrit(),
+                DamageColorIndex.Default);
+        }
 
         public override void FixedUpdate()
         {
@@ -110,6 +127,10 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 if (stopwatch >= duration * hurtBoxFractionStart
                 && stopwatch <= duration * hurtboxFractionEnd)
                 {
+                    if (!hasFired) 
+                    {
+                        FireBeam();
+                    }
                     hasFired = true;
                     if (this.attack.Fire())
                     {
@@ -165,9 +186,9 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 inflictor = base.gameObject,
                 teamIndex = base.GetTeam(),
                 damage = Modules.StaticValues.msGroundedFinalSwing * this.damageStat,
-                procCoefficient = 0.75f,
-                forceVector = Vector3.zero,
-                pushAwayForce = 0f,
+                procCoefficient = 1f,
+                forceVector = Vector3.up,
+                pushAwayForce = 300f,
                 hitBoxGroup = hitBoxGroup,
                 isCrit = base.RollCrit(),
 

@@ -229,8 +229,8 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 teamIndex = base.GetTeam(),
                 damage = Modules.StaticValues.msGroundedDashAttack * this.damageStat,
                 procCoefficient = 1.5f,
-                forceVector = Vector3.zero,
-                pushAwayForce = 0f,
+                forceVector = Vector3.forward,
+                pushAwayForce = 500f,
                 hitBoxGroup = hitBoxGroup,
                 isCrit = base.RollCrit(),
 
