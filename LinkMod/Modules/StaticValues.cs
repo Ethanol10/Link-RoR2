@@ -14,5 +14,6 @@
         internal const float msGroundedDashAttack = 4.0f;
         internal const float msAerialDoubleSwingFirst = 1.0f;
         internal const float msAerialDoubleSwingSecond = 2.5f;
+        internal const float msAerialDownstab = 2.5f;
     }
 }

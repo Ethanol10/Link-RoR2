@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3702731620
+CRC: 2066170884
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ddb80394fd493bad4311379d386ec8ba
+    Hash: 2e62c5c23815cb4b60153bd640b02d16
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4add59b4eb96990d95dae627ea692027
@@ -54,17 +54,19 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/RollEdited.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Jump.anim
 - Assets/LinkAssets/Prefabs/LinkDisplay.prefab
+- Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabOrig.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockSuccess.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttackHold.anim
 - Assets/LinkAssets/Shaders/Frensel.shader
+- Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabBegin.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Fall.anim
-- Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstab.anim
 - Assets/LinkAssets/Textures/StandardSwordandShield.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailPermanentClose.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunStrafeBackwards.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim2.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockStart.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing1.anim
+- Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabEndAerial.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/SpinAttackAir.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttackHold.001.anim
 - Assets/LinkAssets/Animations/LinkHumanoid.asset
@@ -102,6 +104,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/Dash.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle2.anim
 - Assets/LinkAssets/Textures/def_parasail_001_col.png
+- Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabHold.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/DoubleJump.anim
 - Assets/LinkAssets/Shaders/FrenselLit.shader
 - Assets/LinkAssets/Animations/LinkBodyAnims/Sprint.anim

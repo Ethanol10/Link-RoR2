@@ -32,7 +32,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
             //Continue under the assumption that the character is in the air
             if (CheckLookingDown()) 
             {
-                this.outer.SetState(new MasterSwordAerialDownstab { });
+                this.outer.SetState(new MasterSwordAerialDownstabBegin { });
                 return;
             }
 

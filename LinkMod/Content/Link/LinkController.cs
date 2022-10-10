@@ -99,6 +99,14 @@ namespace LinkMod.Content.Link
             shieldUnsheathed.gameObject.SetActive(true);
         }
 
+        public void SetSwordOnlyUnsheathed() 
+        {
+            swordSheathed.gameObject.SetActive(false);
+            shieldSheathed.gameObject.SetActive(true);
+            swordUnsheathed.gameObject.SetActive(true);
+            shieldUnsheathed.gameObject.SetActive(false);
+        }
+
         public void HandleCustomEmotesAPIAnimationEnd(string newAnim, BoneMapper mapper) 
         {
             if (newAnim == "none")

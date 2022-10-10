@@ -84,6 +84,9 @@ namespace LinkMod
         {
             //Micellaneous
             NetworkingAPI.RegisterMessageType<ServerForceFallStateNetworkRequest>();
+
+            //MasterSword
+            NetworkingAPI.RegisterMessageType<ServerForceDownstabRecoveryNetworkRequest>();
         }
 
         private void SurvivorCatalog_Init(On.RoR2.SurvivorCatalog.orig_Init orig)

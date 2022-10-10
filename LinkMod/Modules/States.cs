@@ -17,7 +17,9 @@ namespace LinkMod.Modules
             //Master Sword
             Modules.Content.AddEntityState(typeof(MasterSword));
             Modules.Content.AddEntityState(typeof(MasterSwordAerialDoubleSwing));
+            Modules.Content.AddEntityState(typeof(MasterSwordAerialDownstabBegin));
             Modules.Content.AddEntityState(typeof(MasterSwordAerialDownstab));
+            Modules.Content.AddEntityState(typeof(MasterSwordAerialDownstabEndAerial));
             Modules.Content.AddEntityState(typeof(MasterSwordAerialDownstabRecovery));
             Modules.Content.AddEntityState(typeof(MasterSwordSwing));
             Modules.Content.AddEntityState(typeof(MasterSwordSwingFinalGroundedHit));
