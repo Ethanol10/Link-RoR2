@@ -179,7 +179,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 inflictor = base.gameObject,
                 teamIndex = base.GetTeam(),
                 damage = Modules.StaticValues.msGroundedBasicSwing * this.damageStat,
-                procCoefficient = 0.75f,
+                procCoefficient = 1f,
                 forceVector = Vector3.zero,
                 pushAwayForce = 0f,
                 hitBoxGroup = hitBoxGroup,

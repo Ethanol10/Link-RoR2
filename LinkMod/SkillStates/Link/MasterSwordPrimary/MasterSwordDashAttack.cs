@@ -10,10 +10,10 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
 {
     internal class MasterSwordDashAttack : BaseSkillState
     {
-        internal static float baseDuration = 1.2f;
+        internal static float baseDuration = 1.5f;
         internal static float hurtBoxFractionStart = 0.28f;
         internal static float hurtboxFractionEnd = 0.4f;
-        internal static float earlyExitTime = 0.65f;
+        internal static float earlyExitTime = 0.45f;
         internal float hitHopVelocity = 10f;
         internal float duration;
         internal bool hasFired;
@@ -48,7 +48,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
             this.animator = base.GetModelAnimator();
             duration = baseDuration / this.attackSpeedStat;
             hitHopVelocity = 10f / this.attackSpeedStat;
-            rollDuration = duration / 0.3f;
+            rollDuration = duration * rollDuration;
             SetupOverlapAttack();
 
             animator.SetFloat("Swing.playbackRate", this.attackSpeedStat);
@@ -74,7 +74,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
             if (base.characterMotor && base.characterDirection)
             {
                 base.characterMotor.velocity = this.forwardDirection * this.rollSpeed;
-                base.characterMotor.velocity.y = -1f;
+                base.characterMotor.velocity.y = 0f;
             }
 
             Vector3 b = base.characterMotor ? base.characterMotor.velocity : Vector3.zero;
@@ -206,18 +206,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
             }
             else 
             {
-                if (base.characterDirection) base.characterDirection.forward = this.forwardDirection;
-
-                Vector3 normalized = (base.transform.position - this.previousPosition).normalized;
-                if (base.characterMotor && base.characterDirection)
-                {
-                    Vector3 vector = normalized * 0f;
-                    float d = Mathf.Max(Vector3.Dot(vector, this.forwardDirection), 0f);
-                    vector = this.forwardDirection * d;
-
-                    base.characterMotor.velocity = vector;
-                }
-                this.previousPosition = base.transform.position;
+                base.characterMotor.velocity = Vector3.zero;
             }
         }
 
@@ -239,7 +228,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 inflictor = base.gameObject,
                 teamIndex = base.GetTeam(),
                 damage = Modules.StaticValues.msGroundedDashAttack * this.damageStat,
-                procCoefficient = 0.75f,
+                procCoefficient = 1.5f,
                 forceVector = Vector3.zero,
                 pushAwayForce = 0f,
                 hitBoxGroup = hitBoxGroup,

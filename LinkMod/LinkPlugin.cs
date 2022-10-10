@@ -2,6 +2,8 @@
 using BepInEx.Bootstrap;
 using EmotesAPI;
 using LinkMod.Content.Link;
+using LinkMod.Modules.Networking.Miscellaneous;
+using R2API.Networking;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
@@ -23,7 +25,8 @@ namespace LinkMod
         "PrefabAPI",
         "LanguageAPI",
         "SoundAPI",
-        "UnlockableAPI"
+        "UnlockableAPI",
+        "NetworkingAPI"
     })]
 
     public class LinkPlugin : BaseUnityPlugin
@@ -61,6 +64,7 @@ namespace LinkMod
             new Modules.ContentPacks().Initialize();
 
             Hook();
+            SetupNetworkMessages();
         }
 
         private void Hook()
@@ -74,6 +78,12 @@ namespace LinkMod
                 emotesAvailable = true;
                 On.RoR2.SurvivorCatalog.Init += SurvivorCatalog_Init;
             }
+        }
+
+        private void SetupNetworkMessages() 
+        {
+            //Micellaneous
+            NetworkingAPI.RegisterMessageType<ServerForceFallStateNetworkRequest>();
         }
 
         private void SurvivorCatalog_Init(On.RoR2.SurvivorCatalog.orig_Init orig)

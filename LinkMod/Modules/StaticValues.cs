@@ -12,5 +12,7 @@
         internal const float msGroundedBasicSwing = 0.8f;
         internal const float msGroundedFinalSwing = 3.5f;
         internal const float msGroundedDashAttack = 4.0f;
+        internal const float msAerialDoubleSwingFirst = 1.0f;
+        internal const float msAerialDoubleSwingSecond = 2.5f;
     }
 }

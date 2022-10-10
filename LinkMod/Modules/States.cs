@@ -22,7 +22,7 @@ namespace LinkMod.Modules
             Modules.Content.AddEntityState(typeof(MasterSwordSwing));
             Modules.Content.AddEntityState(typeof(MasterSwordSwingFinalGroundedHit));
             Modules.Content.AddEntityState(typeof(MasterSwordDashAttack));
-
+            Modules.Content.AddEntityState(typeof(MasterSwordLandingExit));
 
         }
     }
