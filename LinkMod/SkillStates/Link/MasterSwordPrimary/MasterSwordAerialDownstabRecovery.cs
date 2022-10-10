@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using LinkMod.Content.Link;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace LinkMod.SkillStates.Link.MasterSwordPrimary
@@ -35,7 +32,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (duration > retrieveShieldFraction) 
+            if (base.fixedAge > duration * retrieveShieldFraction) 
             {
                 linkcon.SetUnsheathed();
             }

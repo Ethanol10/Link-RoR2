@@ -1,8 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine.Networking;
 using UnityEngine;
 using LinkMod.Content.Link;
@@ -14,8 +11,8 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
     internal class MasterSwordAerialDownstab : BaseSkillState
     {
         internal static float baseDuration = 0.2f;
-        internal static float hurtBoxFractionStart = 0f;
-        internal static float hurtboxFractionEnd = 1f;
+        internal static float hurtBoxFractionStart = 0.25f;
+        internal static float hurtboxFractionEnd = 0.75f;
         internal static float earlyExitTime = 0f;
         internal float hitHopVelocity = 20f;
         internal float duration;
@@ -97,13 +94,14 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                     if (isGrounded) 
                     {
                         new ServerForceDownstabRecoveryNetworkRequest(base.characterBody.masterObjectId).Send(R2API.Networking.NetworkDestination.Clients);
+                        this.outer.SetNextStateToMain();
+                        return;
                     }
                 }
                 else
                 {
                     //Increment Timers for hitstun
                     this.hitPauseTimer -= Time.fixedDeltaTime;
-                    //Set velocity to zero, and punch playback rate to 0 to simulate a strong hit
                     if (base.characterMotor) base.characterMotor.velocity = Vector3.zero;
                     if (this.animator) this.animator.SetFloat("Swing.playbackRate", 0f);
                 }

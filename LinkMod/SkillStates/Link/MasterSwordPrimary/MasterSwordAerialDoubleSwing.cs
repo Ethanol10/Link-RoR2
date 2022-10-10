@@ -98,6 +98,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                     {
                         new ServerForceFallStateNetworkRequest(base.characterBody.masterObjectId).Send(R2API.Networking.NetworkDestination.Clients);
                         this.outer.SetNextStateToMain();
+                        return;
                     }
                 }
                 else
