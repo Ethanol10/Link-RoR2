@@ -52,6 +52,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
         public override void OnExit()
         {
             base.OnExit();
+            base.PlayAnimation("UpperBody, Override", "BufferEmpty");
         }
 
         public void OnHitEnemyAuthority()
@@ -83,6 +84,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
         
         public void FireBeam() 
         {
+            //I suspect this is not working in a non-networked sense. Will need to get the server request up.
             //I dunno might need the network request in the future.
             Modules.Projectiles.swordBeamPrefab.GetComponent<SwordbeamOnHit>().netID = base.characterBody.masterObjectId;
             Ray ray = GetAimRay();
@@ -93,7 +95,9 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 Modules.StaticValues.swordBeamDamageCoefficientBase * this.damageStat,
                 0f,
                 base.RollCrit(),
-                DamageColorIndex.Default);
+                DamageColorIndex.Default,
+                null,
+                Modules.StaticValues.swordBeamForce);
         }
 
         public override void FixedUpdate()

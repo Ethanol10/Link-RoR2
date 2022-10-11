@@ -19,7 +19,7 @@
         //Master sword beam
         internal const float swordBeamProcCoefficient = 1.0f;
         internal const float swordBeamDamageCoefficientBase = 2.0f;
-        internal const float swordBeamForce = 100f;
+        internal const float swordBeamForce = 150f;
         internal const float swordBeamLifetime = 1.5f;
         internal const float swordBeamProjectileSpeed = 20f;
     }

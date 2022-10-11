@@ -57,6 +57,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
         public override void OnExit()
         {
             base.OnExit();
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
         }
 
         public void OnHitEnemyAuthority()
@@ -102,7 +103,9 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 Modules.StaticValues.swordBeamDamageCoefficientBase * this.damageStat,
                 0f,
                 base.RollCrit(),
-                DamageColorIndex.Default);
+                DamageColorIndex.Default, 
+                null,
+                Modules.StaticValues.swordBeamForce);
         }
 
         public override void FixedUpdate()

@@ -32,6 +32,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
         public override void OnExit()
         {
             base.OnExit();
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
         }
 
         public void PlayAttackAnimation()

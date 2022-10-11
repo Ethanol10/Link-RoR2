@@ -22,6 +22,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
         }
 
         public override void OnExit()

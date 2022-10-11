@@ -25,7 +25,7 @@ namespace LinkMod.Modules
 
         private static void CreateSwordBeam()
         {
-            swordBeamPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("SwordBeamEffect");
+            swordBeamPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("SwordBeam");
             // Ensure that the child is set in the right position in Unity!!!!
             Modules.Prefabs.SetupHitbox(swordBeamPrefab, swordBeamPrefab.transform.GetChild(0), "swordbeam");
             swordBeamPrefab.AddComponent<NetworkIdentity>();

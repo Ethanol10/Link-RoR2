@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 718348486
+CRC: 3946770788
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 645374eaad917f62fbcb1a7e6850b8ae
+    Hash: 4aaa4389949850bbee6be1948fae3289
   TypeTreeHash:
     serializedVersion: 2
-    Hash: ce1ccf7ba6d040510786b45e40a5d6bc
+    Hash: 6718bae36d87e1e05382e213c7e03e28
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -24,6 +24,10 @@ ClassTypes:
 - Class: 43
   Script: {instanceID: 0}
 - Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
   Script: {instanceID: 0}
 - Class: 74
   Script: {instanceID: 0}
@@ -101,6 +105,7 @@ Assets:
 - Assets/LinkAssets/Prefabs/particle/outerParticles.prefab
 - Assets/LinkAssets/Animations/ParasailAnimCon.controller
 - Assets/LinkAssets/Materials/SwordShieldMaterial.mat
+- Assets/LinkAssets/Prefabs/SwordBeam.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/A05LandingLight.nuanmx.anim
 - Assets/LinkAssets/Textures/metal_link_001_nor.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailAnimation.anim
