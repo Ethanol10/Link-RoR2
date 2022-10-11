@@ -1,6 +1,7 @@
 ﻿using LinkMod.SkillStates;
 using LinkMod.SkillStates.Link;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
+using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
 
 namespace LinkMod.Modules
 {
@@ -26,6 +27,12 @@ namespace LinkMod.Modules
             Modules.Content.AddEntityState(typeof(MasterSwordDashAttack));
             Modules.Content.AddEntityState(typeof(MasterSwordLandingExit));
 
+            //Spin Attack
+            Modules.Content.AddEntityState(typeof(SpinAttack));
+            Modules.Content.AddEntityState(typeof(GroundedSpinAttackStart));
+            Modules.Content.AddEntityState(typeof(GroundedSpinAttackCharge));
+            Modules.Content.AddEntityState(typeof(GroundedSpinAttackEnd));
+            Modules.Content.AddEntityState(typeof(AerialSpinAttack));
         }
     }
 }

@@ -1,17 +1,19 @@
 ﻿using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace LinkMod.Modules
 {
     public static class Buffs
     {
         // armor buff gained during roll
-        internal static BuffDef armorBuff;
+        internal static BuffDef SpinAttackSlowDebuff;
 
         internal static void RegisterBuffs()
         {
-            armorBuff = AddNewBuff("LinkArmorBuff", RoR2.LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
+            Sprite slowSprite = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/Common/bdSlow80.asset").WaitForCompletion().iconSprite;
+            SpinAttackSlowDebuff = AddNewBuff("Spin Attack Slow", slowSprite, Color.blue, false, false);
         }
 
         // simple helper method

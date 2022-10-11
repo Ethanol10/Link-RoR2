@@ -138,7 +138,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                         //EEEeeeh let the MasterSword class handle it
                         if (!base.isGrounded) 
                         {
-                            this.outer.SetState(new MasterSword { });
+                            this.outer.SetState(new SpinAttack { });
                             return;
                         }
 

@@ -124,7 +124,7 @@ namespace LinkMod.Content.Link
             SkillDef primarySkillDef = Skills.CreateSkillDef(new SkillDefInfo(prefix + "_LINK_BODY_PRIMARY_SLASH_NAME",
                                                                                       prefix + "_LINK_BODY_PRIMARY_SLASH_DESCRIPTION",
                                                                                       Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
-                                                                                      new EntityStates.SerializableEntityStateType(typeof(MasterSword)),
+                                                                                      new EntityStates.SerializableEntityStateType(typeof(SpinAttack)),
                                                                                       "Weapon",
                                                                                       true));
 
@@ -139,7 +139,7 @@ namespace LinkMod.Content.Link
                 skillNameToken = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SECONDARY_GUN_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(MasterSword)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SpinAttack)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 1f,
@@ -196,7 +196,7 @@ namespace LinkMod.Content.Link
                 skillNameToken = prefix + "_LINK_BODY_SPECIAL_BOMB_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SPECIAL_BOMB_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialIcon"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(MasterSword)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SpinAttack)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 10f,

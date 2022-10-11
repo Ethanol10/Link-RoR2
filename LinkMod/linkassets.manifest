@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3946770788
+CRC: 1474332463
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4aaa4389949850bbee6be1948fae3289
+    Hash: 61e1b1c0c68b65fb1cdae3fabf25f5a9
   TypeTreeHash:
     serializedVersion: 2
     Hash: 6718bae36d87e1e05382e213c7e03e28
@@ -66,7 +66,7 @@ Assets:
 - Assets/LinkAssets/Prefabs/LinkDisplay.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabOrig.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockSuccess.anim
-- Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttackHold.anim
+- Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttackStart.anim
 - Assets/LinkAssets/Shaders/Frensel.shader
 - Assets/LinkAssets/Textures/MoteTrail.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabBegin.anim
@@ -81,7 +81,6 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing1.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabEndAerial.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/SpinAttackAir.anim
-- Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttackHold.001.anim
 - Assets/LinkAssets/Animations/LinkHumanoid.asset
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailOpen.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunR.anim
@@ -132,6 +131,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedDashAttack.anim
 - Assets/LinkAssets/Meshes/U.mesh
 - Assets/LinkAssets/Materials/ParasailMaterial.mat
+- Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttackHold.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim.anim
 - Assets/LinkAssets/Meshes/defaultBodyMesh.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockHold.anim
