@@ -5,6 +5,7 @@ using LinkMod.Modules.Characters;
 using LinkMod.Modules.Survivors;
 using LinkMod.SkillStates.Link;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
+using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -124,7 +125,7 @@ namespace LinkMod.Content.Link
             SkillDef primarySkillDef = Skills.CreateSkillDef(new SkillDefInfo(prefix + "_LINK_BODY_PRIMARY_SLASH_NAME",
                                                                                       prefix + "_LINK_BODY_PRIMARY_SLASH_DESCRIPTION",
                                                                                       Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
-                                                                                      new EntityStates.SerializableEntityStateType(typeof(SpinAttack)),
+                                                                                      new EntityStates.SerializableEntityStateType(typeof(MasterSword)),
                                                                                       "Weapon",
                                                                                       true));
 
@@ -139,7 +140,7 @@ namespace LinkMod.Content.Link
                 skillNameToken = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SECONDARY_GUN_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SpinAttack)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(MasterSword)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 1f,
