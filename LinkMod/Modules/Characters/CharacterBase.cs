@@ -39,7 +39,7 @@ namespace LinkMod.Modules.Characters
             InitializeSkills();
 
             InitializeHitboxes();
-            InitializeHurtboxes();
+            InitializeHurtboxes(bodyPrefab.GetComponent<HealthComponent>());
 
             InitializeSkins();
             InitializeItemDisplays();
@@ -73,7 +73,7 @@ namespace LinkMod.Modules.Characters
 
         public virtual void InitializeHitboxes() { }
 
-        public virtual void InitializeHurtboxes()
+        public virtual void InitializeHurtboxes(HealthComponent healthComponent)
         {
             Modules.Prefabs.SetupHurtBoxes(bodyPrefab);
         }

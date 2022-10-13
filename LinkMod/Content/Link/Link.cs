@@ -4,6 +4,7 @@ using LinkMod.Modules;
 using LinkMod.Modules.Characters;
 using LinkMod.Modules.Survivors;
 using LinkMod.SkillStates.Link;
+using LinkMod.SkillStates.Link.HylianShield;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
 using RoR2;
@@ -78,6 +79,9 @@ namespace LinkMod.Content.Link
 
         private static UnlockableDef masterySkinUnlockableDef;
 
+        public static SkillDef hylianShieldExit;
+        public static SkillDef hylianShieldEntry;
+
         internal static int mainRendererIndex { get; set; } = 3;
 
         public override void InitializeCharacter()
@@ -86,6 +90,28 @@ namespace LinkMod.Content.Link
             bodyPrefab.AddComponent<LinkController>();
             EntityStateMachine linkEntityStateMachine = bodyPrefab.GetComponent<EntityStateMachine>();
             linkEntityStateMachine.initialStateType = new SerializableEntityStateType(typeof(LinkSpawnState));
+        }
+
+        public override void InitializeHurtboxes(HealthComponent healthComponent) 
+        {
+            base.InitializeHurtboxes(healthComponent);
+
+            HurtBoxGroup mainHurtboxGroup = characterBodyModel.gameObject.GetComponent<HurtBoxGroup>();
+
+            ChildLocator childLocator = characterBodyModel.GetComponent<ChildLocator>();
+
+            //make a hurtbox for the shield since this works apparently !
+            HurtBox shieldHurtbox = childLocator.FindChild("ShieldHurtbox").gameObject.AddComponent<HurtBox>();
+            shieldHurtbox.gameObject.layer = LayerIndex.entityPrecise.intVal;
+            shieldHurtbox.healthComponent = healthComponent;
+            shieldHurtbox.isBullseye = false;
+            shieldHurtbox.damageModifier = HurtBox.DamageModifier.Barrier;
+            shieldHurtbox.hurtBoxGroup = mainHurtboxGroup;
+
+            mainHurtboxGroup.hurtBoxes = new HurtBox[] {
+                shieldHurtbox,
+                mainHurtboxGroup.hurtBoxes[0],
+            };
         }
 
         public override void InitializeUnlockables()
@@ -140,8 +166,8 @@ namespace LinkMod.Content.Link
                 skillNameToken = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SECONDARY_GUN_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(MasterSword)),
-                activationStateMachineName = "Slide",
+                activationState = new EntityStates.SerializableEntityStateType(typeof(HylianShieldStart)),
+                activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 1f,
                 beginSkillCooldownOnSkillEnd = false,
@@ -159,7 +185,57 @@ namespace LinkMod.Content.Link
                 keywordTokens = new string[] { "KEYWORD_AGILE" }
             });
 
-            Skills.AddSecondarySkills(bodyPrefab, shootSkillDef);
+            hylianShieldEntry = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
+                skillNameToken = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_SECONDARY_GUN_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(HylianShieldStart)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+            });
+
+            hylianShieldExit = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
+                skillNameToken = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_SECONDARY_GUN_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(HylianShieldExit)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_AGILE" }
+            });
+
+            Skills.AddSecondarySkills(bodyPrefab, hylianShieldEntry);
             #endregion
 
             #region Utility
@@ -198,7 +274,7 @@ namespace LinkMod.Content.Link
                 skillDescriptionToken = prefix + "_LINK_BODY_SPECIAL_BOMB_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SpinAttack)),
-                activationStateMachineName = "Slide",
+                activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 10f,
                 beginSkillCooldownOnSkillEnd = false,
