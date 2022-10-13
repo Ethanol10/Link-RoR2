@@ -133,7 +133,6 @@ namespace LinkMod.SkillStates.Link.MasterSwordSpinAttack
             base.FixedUpdate();
             if (base.isAuthority) 
             {
-                Debug.Log($"stopwatch: {stopwatch} blastTimer: {blastTimer} tickRate: {lengthBetweenTicks} maxNoBlast: {maxNoOfBlasts}");
                 //Increment stopwatch if we are in hitpause
                 if (!inHitStop)
                 {
@@ -200,7 +199,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordSpinAttack
                 teamIndex = base.GetTeam(),
                 baseDamage = Modules.StaticValues.spinAttackMinorBlastDamageCoefficient * base.damageStat * boostedDamage,
                 procCoefficient = 1.0f,
-                baseForce = -500f,
+                baseForce = -1000f,
                 radius = Modules.StaticValues.spinAttackMinorRadius,
                 crit = base.RollCrit()
             };

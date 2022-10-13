@@ -24,10 +24,10 @@
         internal const float swordBeamProjectileSpeed = 20f;
 
         //Spin attack
-        internal const float spinAttackMinorBlastDamageCoefficient = 0.8f;
+        internal const float spinAttackMinorBlastDamageCoefficient = 1f;
         internal const float spinAttackMajorBlastDamageCoefficientBase = 10.0f;
-        internal const float spinAttackMinorRadius = 10f;
-        internal const float spinAttackMajorRadius = 15f;
+        internal const float spinAttackMinorRadius = 15f;
+        internal const float spinAttackMajorRadius = 20f;
         internal const int spinAttackBaseMinorHit = 5;
         internal const float spinAttackMaxMultiplier = 20f;
     }
