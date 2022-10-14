@@ -210,31 +210,6 @@ namespace LinkMod.Content.Link
                 keywordTokens = new string[] { "KEYWORD_AGILE" }
             });
 
-            hylianShieldExit = Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
-                skillNameToken = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
-                skillDescriptionToken = prefix + "_LINK_BODY_SECONDARY_GUN_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(HylianShieldExit)),
-                activationStateMachineName = "Weapon",
-                baseMaxStock = 1,
-                baseRechargeInterval = 1f,
-                beginSkillCooldownOnSkillEnd = false,
-                canceledFromSprinting = false,
-                forceSprintDuringState = false,
-                fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Skill,
-                resetCooldownTimerOnUse = false,
-                isCombatSkill = true,
-                mustKeyPress = false,
-                cancelSprintingOnActivation = false,
-                rechargeStock = 1,
-                requiredStock = 1,
-                stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE" }
-            });
-
             Skills.AddSecondarySkills(bodyPrefab, hylianShieldEntry);
             #endregion
 

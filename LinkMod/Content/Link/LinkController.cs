@@ -14,6 +14,7 @@ namespace LinkMod.Content.Link
         internal Animator anim;
         internal ChildLocator childLocator;
         internal Animator parasailAnimator;
+        internal bool isShielding;
 
         //Sword and shield objects
         internal Transform shieldSheathed;

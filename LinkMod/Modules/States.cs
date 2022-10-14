@@ -1,5 +1,6 @@
 ﻿using LinkMod.SkillStates;
 using LinkMod.SkillStates.Link;
+using LinkMod.SkillStates.Link.HylianShield;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
 
@@ -33,6 +34,12 @@ namespace LinkMod.Modules
             Modules.Content.AddEntityState(typeof(GroundedSpinAttackCharge));
             Modules.Content.AddEntityState(typeof(GroundedSpinAttackEnd));
             Modules.Content.AddEntityState(typeof(AerialSpinAttack));
+
+            //Hylian Shield
+            Modules.Content.AddEntityState(typeof(HylianShieldBlockSuccessful));
+            Modules.Content.AddEntityState(typeof(HylianShield));
+            Modules.Content.AddEntityState(typeof(HylianShieldStart));
+            Modules.Content.AddEntityState(typeof(HylianShieldExit));
         }
     }
 }

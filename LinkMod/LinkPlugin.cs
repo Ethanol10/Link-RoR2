@@ -4,6 +4,7 @@ using EmotesAPI;
 using LinkMod.Content.Link;
 using LinkMod.Modules.Networking.Miscellaneous;
 using R2API.Networking;
+using R2API.Networking.Interfaces;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
@@ -72,6 +73,7 @@ namespace LinkMod
             // run hooks here, disabling one is as simple as commenting out the line
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.CharacterModel.Start += CharacterModel_Start;
+            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
 
             if (Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI"))
             {
@@ -86,7 +88,10 @@ namespace LinkMod
             NetworkingAPI.RegisterMessageType<ServerForceFallStateNetworkRequest>();
 
             //MasterSword
-            NetworkingAPI.RegisterMessageType<ServerForceDownstabRecoveryNetworkRequest>();
+            NetworkingAPI.RegisterMessageType<ServerForceShieldBlockSuccessAnimNetworkRequest>();
+
+            //Hylian Shield
+            NetworkingAPI.RegisterMessageType<ServerForceShieldBlockSuccessAnimNetworkRequest>();
         }
 
         private void SurvivorCatalog_Init(On.RoR2.SurvivorCatalog.orig_Init orig)
@@ -99,6 +104,68 @@ namespace LinkMod
                     CustomEmotesAPI.ImportArmature(item.bodyPrefab, Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("LinkHumanoid"));
                 }
             }
+        }
+
+        private static bool DetermineDirectionOfAttackIsWithinRange(CharacterBody attacker, CharacterBody linkVictim) 
+        {
+            //Dot product the positions of the player look vector and the vector between attacker and link victim
+            //1 = same dir
+            //0 = perpendicular
+            //-1 = opposite dir
+
+            Vector3 lookingDir = linkVictim.inputBank.aimDirection.normalized;
+            Vector3 linkToEnemyDir = attacker.transform.position - linkVictim.transform.position;
+            linkToEnemyDir = linkToEnemyDir.normalized;
+            if (Vector3.Dot(lookingDir, linkToEnemyDir) > 0.5f) 
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        {
+
+            //Check if damage is from the front, by using the dot product to determine the vector between where link is facing
+            //and where the enemy is attacking from.
+            //Fuck the extra hitbox for now.
+            if (self) 
+            {
+                if (self.body) 
+                {
+                    if (damageInfo.attacker) 
+                    {
+                        CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                        CharacterBody linkBody = self.body;
+                        if (attackerBody) 
+                        {
+                            if (linkBody.baseNameToken == DEVELOPER_PREFIX + "_LINK_BODY_NAME")
+                            {
+                                //Check if blocking 
+                                LinkController linkController = linkBody.GetComponent<LinkController>();
+                                if (linkController.isShielding && self.body.HasBuff(Modules.Buffs.HylianShieldBuff))
+                                {
+                                    //now that we know it's link, check if the attack is from the front of link.
+                                    if (DetermineDirectionOfAttackIsWithinRange(attackerBody, linkBody))
+                                    {
+                                        new ServerForceShieldBlockSuccessAnimNetworkRequest(linkBody.masterObjectId).Send(NetworkDestination.Clients);
+                                        damageInfo.rejected = true;
+                                        EffectData effectData = new EffectData
+                                        {
+                                            origin = damageInfo.position,
+                                            rotation = Util.QuaternionSafeLookRotation((damageInfo.force != Vector3.zero) ? damageInfo.force : UnityEngine.Random.onUnitSphere)
+                                        };
+                                        EffectManager.SpawnEffect(HealthComponent.AssetReferences.bearEffectPrefab, effectData, true);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            orig(self, damageInfo);
         }
 
         private void CharacterModel_Start(On.RoR2.CharacterModel.orig_Start orig, CharacterModel self)
@@ -134,6 +201,13 @@ namespace LinkMod
                 if (self.HasBuff(Modules.Buffs.SpinAttackSlowDebuff)) 
                 {
                     self.moveSpeed *= 0.1f;
+                }
+                if (self.HasBuff(Modules.Buffs.HylianShieldBuff)) 
+                {
+                    self.moveSpeed *= 0.8f;
+                    self.armor += 10f;
+                    self.jumpPower *= 0.4f;
+                    self.maxJumpCount = 1;
                 }
             }
         }

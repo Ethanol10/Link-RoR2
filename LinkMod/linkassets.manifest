@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2483598362
+CRC: 3122163491
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6b6c48313ce3f7436285f3e603495d28
+    Hash: c1a1c14c9fd8247d98c0e2e93b4280f5
   TypeTreeHash:
     serializedVersion: 2
     Hash: 6718bae36d87e1e05382e213c7e03e28
@@ -109,6 +109,7 @@ Assets:
 - Assets/LinkAssets/Textures/metal_link_001_nor.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailAnimation.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/RotateDisplayModel.anim
+- Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockEnd.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing2.anim
 - Assets/LinkAssets/Textures/Link1BodyTex.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing3.anim

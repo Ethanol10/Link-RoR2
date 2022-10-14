@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using LinkMod.Content.Link;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,16 +19,19 @@ namespace LinkMod.SkillStates.Link.HylianShield
         {
             base.OnEnter();
             duration = baseDuration / base.attackSpeedStat;
+            base.StartAimMode(baseDuration * 1.5f, false);
             animator = base.GetModelAnimator();
             animator.SetFloat("Swing.playbackRate", base.attackSpeedStat);
             childLocator = base.GetModelChildLocator();
             this.childLocator.FindChild("ShieldHurtboxParent").gameObject.SetActive(true);
+            LinkController linkcon = gameObject.GetComponent<LinkController>();
+            linkcon.isShielding = true;
 
             base.PlayAnimation("UpperBody, Override", "ShieldBlockStart", "Swing.playbackRate", duration);
 
             if (NetworkServer.active) 
             {
-                base.characterBody.SetBuffCount(Modules.Buffs.HylianShieldSlowDebuff.buffIndex, 1);
+                base.characterBody.SetBuffCount(Modules.Buffs.HylianShieldBuff.buffIndex, 1);
             }
         }
 
