@@ -30,13 +30,13 @@ namespace LinkMod.Content.Link
             subtitleNameToken = LinkPlugin.DEVELOPER_PREFIX + "_LINK_BODY_SUBTITLE",
 
             characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texLinkIcon"),
-            bodyColor = Color.white,
+            bodyColor = new Color(176f/255f, 1.0f, 62f/255f),
 
             crosshair = Assets.LoadCrosshair("Standard"),
 
-            maxHealth = 150f,
+            maxHealth = 100f,
             healthRegen = 2f,
-            armor = 0f,
+            armor = 10f,
 
             jumpCount = 2,
         };
@@ -148,23 +148,30 @@ namespace LinkMod.Content.Link
 
             #region Primary
             //Creates a skilldef for a typical primary 
-            SkillDef primarySkillDef = Skills.CreateSkillDef(new SkillDefInfo(prefix + "_LINK_BODY_PRIMARY_SLASH_NAME",
-                                                                                      prefix + "_LINK_BODY_PRIMARY_SLASH_DESCRIPTION",
+            SkillDef masterSwordPrimary = Skills.CreateSkillDef(new SkillDefInfo(prefix + "_LINK_BODY_PRIMARY_MASTER_SWORD_NAME",
+                                                                                      prefix + "_LINK_BODY_PRIMARY_MASTER_SWORD_DESCRIPTION",
                                                                                       Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
                                                                                       new EntityStates.SerializableEntityStateType(typeof(MasterSword)),
                                                                                       "Weapon",
-                                                                                      true));
+                                                                                      false));
+            masterSwordPrimary.keywordTokens = new string[]
+            {
+                "POPCORN_LINK_BODY_PRIMARY_MASTER_SWORD_BEAM_KEYWORD",
+                "POPCORN_LINK_BODY_PRIMARY_MASTER_SWORD_GROUNDED_SWING_KEYWORD",
+                "POPCORN_LINK_BODY_PRIMARY_MASTER_SWORD_GROUNDED_DASH_KEYWORD",
+                "POPCORN_LINK_BODY_PRIMARY_MASTER_SWORD_AERIAL_SWING_KEYWORD",
+                "POPCORN_LINK_BODY_PRIMARY_MASTER_SWORD_AERIAL_DOWNSTAB_KEYWORD"
+            };
 
-
-            Skills.AddPrimarySkills(bodyPrefab, primarySkillDef);
+            Skills.AddPrimarySkills(bodyPrefab, masterSwordPrimary);
             #endregion
 
             #region Secondary
-            SkillDef shootSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            SkillDef hylianShieldEntry = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
-                skillNameToken = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
-                skillDescriptionToken = prefix + "_LINK_BODY_SECONDARY_GUN_DESCRIPTION",
+                skillName = prefix + "_LINK_BODY_SECONDARY_HYLIAN_SHIELD_NAME",
+                skillNameToken = prefix + "_LINK_BODY_SECONDARY_HYLIAN_SHIELD_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_SECONDARY_HYLIAN_SHIELD_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(HylianShieldStart)),
                 activationStateMachineName = "Weapon",
@@ -182,32 +189,7 @@ namespace LinkMod.Content.Link
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE" }
-            });
-
-            hylianShieldEntry = Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
-                skillNameToken = prefix + "_LINK_BODY_SECONDARY_GUN_NAME",
-                skillDescriptionToken = prefix + "_LINK_BODY_SECONDARY_GUN_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(HylianShieldStart)),
-                activationStateMachineName = "Weapon",
-                baseMaxStock = 1,
-                baseRechargeInterval = 1f,
-                beginSkillCooldownOnSkillEnd = false,
-                canceledFromSprinting = false,
-                forceSprintDuringState = false,
-                fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Skill,
-                resetCooldownTimerOnUse = false,
-                isCombatSkill = true,
-                mustKeyPress = false,
-                cancelSprintingOnActivation = false,
-                rechargeStock = 1,
-                requiredStock = 1,
-                stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE" }
+                keywordTokens = new string[] { "POPCORN_LINK_BODY_STEADY_KEYWORD" }
             });
 
             Skills.AddSecondarySkills(bodyPrefab, hylianShieldEntry);
@@ -242,11 +224,11 @@ namespace LinkMod.Content.Link
             #endregion
 
             #region Special
-            SkillDef bombSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            SkillDef spinAttackSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_LINK_BODY_SPECIAL_BOMB_NAME",
-                skillNameToken = prefix + "_LINK_BODY_SPECIAL_BOMB_NAME",
-                skillDescriptionToken = prefix + "_LINK_BODY_SPECIAL_BOMB_DESCRIPTION",
+                skillName = prefix + "_LINK_BODY_SPECIAL_SPIN_ATTACK_NAME",
+                skillNameToken = prefix + "_LINK_BODY_SPECIAL_SPIN_ATTACK_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_SPECIAL_SPIN_ATTACK_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SpinAttack)),
                 activationStateMachineName = "Weapon",
@@ -263,10 +245,11 @@ namespace LinkMod.Content.Link
                 cancelSprintingOnActivation = true,
                 rechargeStock = 1,
                 requiredStock = 1,
-                stockToConsume = 1
+                stockToConsume = 1,
+                keywordTokens = new string[] { "POPCORN_LINK_BODY_FOCUSED_KEYWORD" }
             });
 
-            Skills.AddSpecialSkills(bodyPrefab, bombSkillDef);
+            Skills.AddSpecialSkills(bodyPrefab, spinAttackSkillDef);
             #endregion
         }
 

@@ -22,6 +22,7 @@
         internal const float swordBeamForce = 150f;
         internal const float swordBeamLifetime = 1.5f;
         internal const float swordBeamProjectileSpeed = 20f;
+        internal const float healthRequiredToFirePercentage = 0.85f;
 
         //Spin attack
         internal const float spinAttackMinorBlastDamageCoefficient = 1f;
@@ -30,5 +31,13 @@
         internal const float spinAttackMajorRadius = 20f;
         internal const int spinAttackBaseMinorHit = 5;
         internal const float spinAttackMaxMultiplier = 20f;
+        internal const float spinAttackMoveSpeedReduction = 0.2f;
+        internal const float spinAttackArmourIncrease = 40f;
+
+        //Hylian Shield 
+        internal const float hylianShieldReducedMoveSpeed = 0.6f;
+        internal const float hylianShieldArmor = 30f;
+        internal const float jumpPowerReduced = 0.7f;
+        internal const int maxJumpCount = 1;
     }
 }

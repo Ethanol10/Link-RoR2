@@ -200,14 +200,15 @@ namespace LinkMod
             {
                 if (self.HasBuff(Modules.Buffs.SpinAttackSlowDebuff)) 
                 {
-                    self.moveSpeed *= 0.1f;
+                    self.moveSpeed *= Modules.StaticValues.spinAttackMoveSpeedReduction;
+                    self.armor += Modules.StaticValues.spinAttackArmourIncrease;
                 }
                 if (self.HasBuff(Modules.Buffs.HylianShieldBuff)) 
                 {
-                    self.moveSpeed *= 0.6f;
-                    self.armor += 30f;
-                    self.jumpPower *= 0.7f;
-                    self.maxJumpCount = 1;
+                    self.moveSpeed *= Modules.StaticValues.hylianShieldReducedMoveSpeed;
+                    self.armor += Modules.StaticValues.hylianShieldArmor;
+                    self.jumpPower *= Modules.StaticValues.jumpPowerReduced;
+                    self.maxJumpCount = Modules.StaticValues.maxJumpCount;
                 }
             }
         }

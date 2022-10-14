@@ -12,6 +12,31 @@ namespace LinkMod.Modules
             return "\n<color=#d299ff>SCEPTER: " + desc + "</color>";
         }
 
+        internal static string EquipmentDescription(string desc)
+        {
+            return "\n<color=#ff5500>" + desc + "</color>";
+        }
+
+        internal static string DamageDescription(string desc)
+        {
+            return $"<style=cIsDamage>{desc}</style>";
+        }
+
+        internal static string LinkSpecificDescription(string desc)
+        {
+            return $"<color=#B0FF3E>{desc}</color>";
+        }
+
+        internal static string HealDescription(string desc)
+        {
+            return $"<color=#50ff04>{desc}</color>";
+        }
+
+        internal static string DownsideDescription(string desc) 
+        {
+            return $"<color=#DA0000>{desc}</color>";
+        }
+
         public static T[] Append<T>(ref T[] array, List<T> list)
         {
             var orig = array.Length;

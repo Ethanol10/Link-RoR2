@@ -32,18 +32,18 @@ namespace LinkMod.Modules
             #endregion
 
             #region Passive
-            LanguageAPI.Add(prefix + "PASSIVE_NAME", "Link passive");
-            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "Sample text.");
+            LanguageAPI.Add(prefix + "PASSIVE_NAME", "Triforce of Courage");
+            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "Ammo and Energy have a chance to drop from enemies on death.");
             #endregion
 
             #region Primary
-            LanguageAPI.Add(prefix + "PRIMARY_SLASH_NAME", "Master Sword");
-            LanguageAPI.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Helpers.agilePrefix + $"Swing forward for <style=cIsDamage>{100f * StaticValues.swordDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "PRIMARY_MASTER_SWORD_NAME", "Master Sword");
+            LanguageAPI.Add(prefix + "PRIMARY_MASTER_SWORD_DESCRIPTION", $"{Helpers.LinkSpecificDescription("Wield the Master Sword.")} Different moves will be performed depending on the circumstance.");
             #endregion
 
             #region Secondary
-            LanguageAPI.Add(prefix + "SECONDARY_GUN_NAME", "Handgun");
-            LanguageAPI.Add(prefix + "SECONDARY_GUN_DESCRIPTION", Helpers.agilePrefix + $"Fire a handgun for <style=cIsDamage>{100f * StaticValues.gunDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "SECONDARY_HYLIAN_SHIELD_NAME", "Hylian Shield");
+            LanguageAPI.Add(prefix + "SECONDARY_HYLIAN_SHIELD_DESCRIPTION", $"{Helpers.LinkSpecificDescription("Steady.")} Raise your Hylian Shield to block damage from the front.");
             #endregion
 
             #region Utility
@@ -52,8 +52,11 @@ namespace LinkMod.Modules
             #endregion
 
             #region Special
-            LanguageAPI.Add(prefix + "SPECIAL_BOMB_NAME", "Bomb");
-            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Throw a bomb for <style=cIsDamage>{100f * StaticValues.bombDamageCoefficient}% damage</style>.");
+            LanguageAPI.Add(prefix + "SPECIAL_SPIN_ATTACK_NAME", "Spin Attack");
+            LanguageAPI.Add(prefix + "SPECIAL_SPIN_ATTACK_DESCRIPTION", $"{Helpers.LinkSpecificDescription("Focused.")} " +
+                $"When grounded, charge your sword, multiplying your damage up to {Helpers.DamageDescription($"{StaticValues.spinAttackMaxMultiplier}x")}, and release to do at base {StaticValues.spinAttackBaseMinorHit}x {Helpers.DamageDescription($"{StaticValues.spinAttackMinorBlastDamageCoefficient * 100}%")}, " +
+                $"with a final hit dealing {Helpers.DamageDescription($"{StaticValues.spinAttackMajorBlastDamageCoefficientBase * 100f}%")}. " + Environment.NewLine +
+                $"When airborne, rapidly spin upwards dealing damage.");
             #endregion
 
             #region Achievements
@@ -61,6 +64,34 @@ namespace LinkMod.Modules
             LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Link, beat the game or obliterate on Monsoon.");
             LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Link: Mastery");
             #endregion
+
+            #region Keyword Tokens
+            //Master Sword
+            LanguageAPI.Add(prefix + "PRIMARY_MASTER_SWORD_BEAM_KEYWORD", $"[ Sword Beam ]" + Environment.NewLine +
+                $"When your health is above {Helpers.DamageDescription($"{StaticValues.healthRequiredToFirePercentage * 100f}%")}, {Helpers.LinkSpecificDescription("[ Grounded Swing ]")} and {Helpers.LinkSpecificDescription("[ Aerial Double Swing ]")} will fire a beam.");
+            LanguageAPI.Add(prefix + "PRIMARY_MASTER_SWORD_GROUNDED_SWING_KEYWORD", $"[ Grounded Swing ]" + Environment.NewLine +
+                $"On the ground while not sprinting, Swing your Master Sword twice for {Helpers.DamageDescription($"{StaticValues.msGroundedBasicSwing * 100f}% damage")}, " +
+                $"and once for {Helpers.DamageDescription($"{StaticValues.msGroundedFinalSwing}% damage")}.");
+            LanguageAPI.Add(prefix + "PRIMARY_MASTER_SWORD_GROUNDED_DASH_KEYWORD", $"[ Dash Attack ]" + Environment.NewLine +
+                $"While sprinting, leap forwards and slam your sword down, dealing {Helpers.DamageDescription($"{StaticValues.msGroundedDashAttack * 100f}% damage")}.");
+            LanguageAPI.Add(prefix + "PRIMARY_MASTER_SWORD_AERIAL_SWING_KEYWORD", $"[ Aerial Double Swing ]" + Environment.NewLine +
+                $"While airborne, swing twice dealing {Helpers.DamageDescription($"{StaticValues.msAerialDoubleSwingFirst * 100f}% and {StaticValues.msAerialDoubleSwingSecond * 100f}% damage respectively")}.");
+            LanguageAPI.Add(prefix + "PRIMARY_MASTER_SWORD_AERIAL_DOWNSTAB_KEYWORD", $"[ Downwards Stab ]" + Environment.NewLine +
+                $"While airbone and looking down, stab downwards dealing {Helpers.DamageDescription($"{StaticValues.msAerialDownstab * 100}% damage")}.");
+
+            //Hylian Shield
+            LanguageAPI.Add(prefix + "STEADY_KEYWORD", $"[ Steady ]" + Environment.NewLine +
+                $"Move speed is reduced by {Helpers.DownsideDescription($"{StaticValues.hylianShieldReducedMoveSpeed * 100f}%.")} " + Environment.NewLine +
+                $"Armor is increased by {Helpers.LinkSpecificDescription($"{StaticValues.hylianShieldArmor}.")}" + Environment.NewLine +
+                $"Jump power reduced by {Helpers.DownsideDescription($"{StaticValues.jumpPowerReduced * 100f}%.")}" + Environment.NewLine +
+                $"Max Jump Count reduced to {Helpers.DownsideDescription($"{StaticValues.maxJumpCount}.")}");
+
+            LanguageAPI.Add(prefix + "FOCUSED_KEYWORD", $"[ Focused ]" + Environment.NewLine +
+                $"Move speed is reduced by {Helpers.DownsideDescription($"{StaticValues.spinAttackMoveSpeedReduction * 100f}%.")} " + Environment.NewLine +
+                $"Armor is increased by {Helpers.LinkSpecificDescription($"{StaticValues.spinAttackArmourIncrease}.")}");
+
+            #endregion
+
             #endregion
         }
     }

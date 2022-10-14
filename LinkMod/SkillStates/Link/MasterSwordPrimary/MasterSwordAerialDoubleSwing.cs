@@ -155,7 +155,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
                 if (stopwatch >= duration * secondSwingFractionStart
                 && stopwatch <= duration * secondSwingFractionEnd)
                 {
-                    if (!hasFired) 
+                    if (!hasFired && (healthComponent.health / characterBody.maxHealth >= Modules.StaticValues.healthRequiredToFirePercentage)) 
                     {
                         FireBeam();
                     }
