@@ -204,9 +204,9 @@ namespace LinkMod
                 }
                 if (self.HasBuff(Modules.Buffs.HylianShieldBuff)) 
                 {
-                    self.moveSpeed *= 0.8f;
-                    self.armor += 10f;
-                    self.jumpPower *= 0.4f;
+                    self.moveSpeed *= 0.6f;
+                    self.armor += 30f;
+                    self.jumpPower *= 0.7f;
                     self.maxJumpCount = 1;
                 }
             }

@@ -11,9 +11,9 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
     internal class MasterSwordAerialDownstab : BaseSkillState
     {
         internal static float baseDuration = 0.2f;
-        internal static float hurtBoxFractionStart = 0.25f;
-        internal static float hurtboxFractionEnd = 0.75f;
-        internal static float earlyExitTime = 0f;
+        internal static float hurtBoxFractionStart = 0.2f;
+        internal static float hurtboxFractionEnd = 0.5f;
+        internal static float earlyExitTime = 0.8f;
         internal float hitHopVelocity = 15f;
         internal float duration;
         internal bool hasFired;

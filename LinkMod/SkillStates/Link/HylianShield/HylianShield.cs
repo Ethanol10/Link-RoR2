@@ -35,7 +35,7 @@ namespace LinkMod.SkillStates.Link.HylianShield
             if (base.fixedAge >= baseDuration) 
             {
                 base.fixedAge = 0f;
-                base.PlayCrossfade("UpperBody, Override", "ShieldBlockHold", 0.04f);
+                base.PlayCrossfade("UpperBody, Override", "ShieldBlockHold", 0.06f);
             }
         }
 
