@@ -10,14 +10,14 @@ namespace LinkMod.Modules
             #region Link
             string prefix = LinkPlugin.DEVELOPER_PREFIX + "_LINK_BODY_";
 
-            string desc = "Link is a skilled fighter who makes use of a wide arsenal of weaponry to take down his foes.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Sword is a good all-rounder while Boxing Gloves are better for laying a beatdown on more powerful foes." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Pistol is a powerful anti air, with its low cooldown and high damage." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Roll has a lingering armor buff that helps to use it aggressively." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Bomb can be used to wipe crowds with ease." + Environment.NewLine + Environment.NewLine;
+            string desc = "Link is a multi-purpose survivor that can adapt to situations as they unfold.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Use the Master Sword to quickly dispatch foes at close range. Keep your health high and shoot beams!" + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Use your Hylian Shield to block damage from the front." + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Roll to quickly manouver around enemies, a perfectly timed dodge will render you invulnerable!" + Environment.NewLine + Environment.NewLine;
+            desc = desc + "< ! > Spin attack can be charged on the ground to deal massive damage!" + Environment.NewLine + Environment.NewLine;
 
-            string outro = "..and so he left, searching for a new identity.";
-            string outroFailure = "..and so he vanished, forever a blank slate.";
+            string outro = "..and so he left, with the courage to continue forwards.";
+            string outroFailure = "..and so he vanished, with no courage left to burn.";
 
             LanguageAPI.Add(prefix + "NAME", "Link");
             LanguageAPI.Add(prefix + "DESCRIPTION", desc);

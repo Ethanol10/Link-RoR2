@@ -13,6 +13,9 @@ namespace LinkMod.Modules
             //Spawn State
             Modules.Content.AddEntityState(typeof(LinkSpawnState));
 
+            //Parasasil
+            Modules.Content.AddEntityState(typeof(ParasailOn));
+
             //Roll
             Modules.Content.AddEntityState(typeof(Roll));
 

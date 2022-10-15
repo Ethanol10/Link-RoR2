@@ -70,7 +70,7 @@ namespace LinkMod.Content.Link
 
         public override UnlockableDef characterUnlockableDef => null;
 
-        public override Type characterMainState => typeof(EntityStates.GenericCharacterMain);
+        public override Type characterMainState => typeof(LinkCharacterMain);
 
         public override ItemDisplaysBase itemDisplays => new LinkItemDisplays();
 

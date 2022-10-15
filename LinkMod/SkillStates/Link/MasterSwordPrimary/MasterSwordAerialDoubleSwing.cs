@@ -94,7 +94,6 @@ namespace LinkMod.SkillStates.Link.MasterSwordPrimary
             Ray ray = GetAimRay();
 
             ProjectileSimple simple = Modules.Projectiles.swordBeamPrefab.GetComponent<ProjectileSimple>();
-            Debug.Log(simple.desiredForwardSpeed);
             simple.desiredForwardSpeed = Modules.StaticValues.swordBeamProjectileSpeed;
             ProjectileManager.instance.FireProjectile(Modules.Projectiles.swordBeamPrefab,
                 ray.origin,
