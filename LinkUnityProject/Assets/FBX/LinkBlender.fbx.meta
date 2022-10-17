@@ -120,6 +120,24 @@ ModelImporter:
   - first:
       74: -6282425050826833039
     second: ShieldBlockEnd
+  - first:
+      74: -3462497598630163186
+    second: DeployBomb
+  - first:
+      74: 6543991972481139979
+    second: TriggerRuneBomb
+  - first:
+      74: 6917320738391468570
+    second: AirThrow
+  - first:
+      74: -6781990432906296948
+    second: GroundedItemThrow
+  - first:
+      74: -5673178446217462867
+    second: ItemStart
+  - first:
+      74: -2250280659970665825
+    second: ItemHold
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -140,7 +158,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -201,7 +219,7 @@ ModelImporter:
     globalScale: 5
     rootMotionBoneName: Trans
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1

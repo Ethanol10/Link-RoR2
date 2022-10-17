@@ -3909,6 +3909,8 @@ MonoBehaviour:
     transform: {fileID: 8317766417851021985}
   - name: ShieldHurtbox
     transform: {fileID: 5158592891246835832}
+  - name: HandL
+    transform: {fileID: 4048639616753383243}
 --- !u!114 &1758303455069337561
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,6 +21,8 @@ namespace LinkMod.Modules
 
         internal static GameObject bombExplosionEffect;
 
+        internal static GameObject runeBomb;
+
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
 
@@ -112,6 +114,11 @@ namespace LinkMod.Modules
 
             swordSwingEffect = Assets.LoadEffect("LinkSwordSwingEffect", true);
             swordHitImpactEffect = Assets.LoadEffect("ImpactLinkSlash");
+
+            Material runeBombMaterial = Materials.CreateHopooMaterial("RuneBombMaterial");
+            runeBomb = mainAssetBundle.LoadAsset<GameObject>("LinkRuneBomb");
+            runeBomb.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = runeBombMaterial;
+            runeBomb.transform.GetChild(2).GetComponent<SkinnedMeshRenderer>().material = runeBombMaterial;
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
