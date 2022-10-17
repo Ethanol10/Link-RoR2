@@ -22,6 +22,13 @@ namespace LinkMod.Content.Link
         internal Transform shieldUnsheathed;
         internal Transform swordUnsheathed;
 
+        internal enum RuneBombState 
+        {
+            NOTSPAWNED,
+            INHAND,
+            THROWN
+        }
+
         public void Awake()
         {
             Hook();

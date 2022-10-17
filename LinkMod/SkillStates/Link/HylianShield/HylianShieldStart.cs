@@ -48,10 +48,15 @@ namespace LinkMod.SkillStates.Link.HylianShield
             {
                 if (base.fixedAge > duration)
                 {
-                    base.outer.SetState(new HylianShield { });
+                    base.outer.SetNextState(new HylianShield { });
                     return;
                 } 
             }
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Frozen;
         }
     }
 }

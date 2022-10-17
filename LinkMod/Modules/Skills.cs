@@ -11,6 +11,25 @@ namespace LinkMod.Modules
 
     internal static class Skills
     {
+        public static void CreateExtraSkillFamilies(GameObject targetPrefab, bool destroyExisting = true) 
+        {
+            if (destroyExisting) 
+            {
+                foreach (GenericSkill obj in targetPrefab.GetComponentsInChildren<GenericSkill>()) 
+                {
+                    UnityEngine.Object.DestroyImmediate(obj);
+                }
+            }
+
+            //Add ExtraSkillSlots to the prefab
+            ExtraSkillSlots.ExtraSkillLocator extraSkillLocator = targetPrefab.AddComponent<ExtraSkillSlots.ExtraSkillLocator>();
+
+            extraSkillLocator.extraFirst = CreateGenericSkillWithSkillFamily(targetPrefab, "Sword");
+            extraSkillLocator.extraSecond = CreateGenericSkillWithSkillFamily(targetPrefab, "Arrows");
+            extraSkillLocator.extraThird = CreateGenericSkillWithSkillFamily(targetPrefab, "Bombs");
+            extraSkillLocator.extraFourth = CreateGenericSkillWithSkillFamily(targetPrefab, "Miscellaneous");
+        }
+
         #region genericskills
         public static void CreateSkillFamilies(GameObject targetPrefab, bool destroyExisting = true)
         {
@@ -85,6 +104,23 @@ namespace LinkMod.Modules
         public static void AddSpecialSkills(GameObject targetPrefab, params SkillDef[] skillDefs)
         {
             AddSkillsToFamily(targetPrefab.GetComponent<SkillLocator>().special.skillFamily, skillDefs);
+        }
+
+        public static void AddExtraSkillSlotPrimary(GameObject targetPrefab, params SkillDef[] skillDefs)
+        {
+            AddSkillsToFamily(targetPrefab.GetComponent<ExtraSkillSlots.ExtraSkillLocator>().extraFirst.skillFamily, skillDefs);
+        }
+        public static void AddExtraSkillSlotSecondary(GameObject targetPrefab, params SkillDef[] skillDefs)
+        {
+            AddSkillsToFamily(targetPrefab.GetComponent<ExtraSkillSlots.ExtraSkillLocator>().extraSecond.skillFamily, skillDefs);
+        }
+        public static void AddExtraSkillSlotUtility(GameObject targetPrefab, params SkillDef[] skillDefs)
+        {
+            AddSkillsToFamily(targetPrefab.GetComponent<ExtraSkillSlots.ExtraSkillLocator>().extraThird.skillFamily, skillDefs);
+        }
+        public static void AddExtraSkillSlotSpecial(GameObject targetPrefab, params SkillDef[] skillDefs)
+        {
+            AddSkillsToFamily(targetPrefab.GetComponent<ExtraSkillSlots.ExtraSkillLocator>().extraFourth.skillFamily, skillDefs);
         }
 
         /// <summary>

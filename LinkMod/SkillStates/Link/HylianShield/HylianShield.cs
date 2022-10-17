@@ -1,7 +1,9 @@
 ﻿using EntityStates;
+using LinkMod.Content.Link;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine.Networking;
 
 namespace LinkMod.SkillStates.Link.HylianShield
 {
@@ -18,6 +20,15 @@ namespace LinkMod.SkillStates.Link.HylianShield
         public override void OnExit()
         {
             base.OnExit();
+            LinkController linkcon = gameObject.GetComponent<LinkController>();
+            linkcon.isShielding = false;
+            ChildLocator childLocator = base.GetModelChildLocator();
+            childLocator.FindChild("ShieldHurtboxParent").gameObject.SetActive(false);
+
+            if (NetworkServer.active)
+            {
+                base.characterBody.SetBuffCount(Modules.Buffs.HylianShieldBuff.buffIndex, 0);
+            }
         }
 
         public override void FixedUpdate()
@@ -29,7 +40,7 @@ namespace LinkMod.SkillStates.Link.HylianShield
             {
                 if (!base.inputBank.skill2.down) 
                 {
-                    this.outer.SetState(new HylianShieldExit());
+                    this.outer.SetNextState(new HylianShieldExit());
                 }
             }
             if (base.fixedAge >= baseDuration) 

@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using LinkMod.Content.Link;
 using RoR2;
 using UnityEngine;
 
@@ -22,7 +23,7 @@ namespace LinkMod.SkillStates.Link
             base.ProcessJump();
             if(linkController)
             {
-                if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority && linkController.isShielding)
+                if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority && !linkController.isShielding)
                 {
                     bool CheckJumpingHold = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
                     bool flag = this.weaponStateMachine.state.GetType() == typeof(ParasailOn);

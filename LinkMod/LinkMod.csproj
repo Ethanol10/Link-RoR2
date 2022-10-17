@@ -32,6 +32,9 @@
     <Reference Include="CustomEmotesAPI">
       <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\testing\BepInEx\plugins\MetrosexualFruitcake-CustomEmotesAPI\CustomEmotesAPI.dll</HintPath>
     </Reference>
+    <Reference Include="ExtraSkillSlots">
+      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\testing\BepInEx\plugins\KingEnderBrine-ExtraSkillSlots\ExtraSkillSlots\ExtraSkillSlots.dll</HintPath>
+    </Reference>
     <Reference Include="R2API">
       <HintPath>..\libs\R2API.dll</HintPath>
     </Reference>

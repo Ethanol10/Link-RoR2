@@ -156,6 +156,8 @@ namespace LinkMod.Content.Link
         public override void InitializeSkills()
         {
             Skills.CreateSkillFamilies(bodyPrefab);
+            Skills.CreateExtraSkillFamilies(bodyPrefab, false);
+
             string prefix = LinkPlugin.DEVELOPER_PREFIX;
 
             #region Primary
@@ -250,7 +252,7 @@ namespace LinkMod.Content.Link
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
                 fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Skill,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
                 mustKeyPress = false,
@@ -262,6 +264,13 @@ namespace LinkMod.Content.Link
             });
 
             Skills.AddSpecialSkills(bodyPrefab, spinAttackSkillDef);
+            #endregion
+
+            #region Extra Skills Region
+            Skills.AddExtraSkillSlotPrimary(bodyPrefab, spinAttackSkillDef);
+            Skills.AddExtraSkillSlotSecondary(bodyPrefab, spinAttackSkillDef);
+            Skills.AddExtraSkillSlotUtility(bodyPrefab, spinAttackSkillDef);
+            Skills.AddExtraSkillSlotSpecial(bodyPrefab, spinAttackSkillDef);
             #endregion
         }
 
@@ -310,14 +319,14 @@ namespace LinkMod.Content.Link
                     mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("sheatheMesh"),
                     renderer = defaultRenderers[3].renderer
                 },
-                new SkinDef.MeshReplacement
+                new SkinDef.MeshReplacement // Sheathed objects
                 {
-                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("swordMesh"),
+                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("shieldMesh"),
                     renderer = defaultRenderers[4].renderer
                 },
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("shieldMesh"),
+                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("swordMesh"),
                     renderer = defaultRenderers[5].renderer
                 },
             };

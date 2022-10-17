@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using RoR2;
 using System.IO;
-using System.Collections.Generic;
-using RoR2.UI;
 using System;
 
 namespace LinkMod.Modules
@@ -21,6 +19,7 @@ namespace LinkMod.Modules
 
         internal static GameObject bombExplosionEffect;
 
+        //Rune bomb
         internal static GameObject runeBomb;
 
         // networked hit sounds
@@ -92,33 +91,35 @@ namespace LinkMod.Modules
             // feel free to delete everything in here and load in your own assets instead
             // it should work fine even if left as is- even if the assets aren't in the bundle
 
-            swordHitSoundEvent = CreateNetworkSoundEventDef("LinkSwordHit");
+            //swordHitSoundEvent = CreateNetworkSoundEventDef("LinkSwordHit");
 
-            bombExplosionEffect = LoadEffect("BombExplosionEffect", "LinkBombExplosion");
+            //bombExplosionEffect = LoadEffect("BombExplosionEffect", "LinkBombExplosion");
 
-            if (bombExplosionEffect)
-            {
-                ShakeEmitter shakeEmitter = bombExplosionEffect.AddComponent<ShakeEmitter>();
-                shakeEmitter.amplitudeTimeDecay = true;
-                shakeEmitter.duration = 0.5f;
-                shakeEmitter.radius = 200f;
-                shakeEmitter.scaleShakeRadiusWithLocalScale = false;
+            //if (bombExplosionEffect)
+            //{
+            //    ShakeEmitter shakeEmitter = bombExplosionEffect.AddComponent<ShakeEmitter>();
+            //    shakeEmitter.amplitudeTimeDecay = true;
+            //    shakeEmitter.duration = 0.5f;
+            //    shakeEmitter.radius = 200f;
+            //    shakeEmitter.scaleShakeRadiusWithLocalScale = false;
 
-                shakeEmitter.wave = new Wave
-                {
-                    amplitude = 1f,
-                    frequency = 40f,
-                    cycleOffset = 0f
-                };
-            }
+            //    shakeEmitter.wave = new Wave
+            //    {
+            //        amplitude = 1f,
+            //        frequency = 40f,
+            //        cycleOffset = 0f
+            //    };
+            //}
 
-            swordSwingEffect = Assets.LoadEffect("LinkSwordSwingEffect", true);
-            swordHitImpactEffect = Assets.LoadEffect("ImpactLinkSlash");
+            //swordSwingEffect = Assets.LoadEffect("LinkSwordSwingEffect", true);
+            //swordHitImpactEffect = Assets.LoadEffect("ImpactLinkSlash");
 
+            //Rune Bomb material swap.
             Material runeBombMaterial = Materials.CreateHopooMaterial("RuneBombMaterial");
             runeBomb = mainAssetBundle.LoadAsset<GameObject>("LinkRuneBomb");
             runeBomb.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = runeBombMaterial;
             runeBomb.transform.GetChild(2).GetComponent<SkinnedMeshRenderer>().material = runeBombMaterial;
+
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)

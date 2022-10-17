@@ -52,5 +52,9 @@ namespace LinkMod.SkillStates.Link.HylianShield
                 }
             }
         }
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Frozen;
+        }
     }
 }
