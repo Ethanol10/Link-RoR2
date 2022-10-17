@@ -65,6 +65,18 @@ namespace LinkMod.Content.Link
                     childName = "SheatheObj",
                     material = Materials.CreateHopooMaterial("SwordShieldMaterial"),
                     ignoreOverlays = true
+                },
+                new CustomRendererInfo
+                {
+                    childName = "SheathedShieldObj",
+                    material = Materials.CreateHopooMaterial("SwordShieldMaterial"),
+                    ignoreOverlays = true
+                },
+                new CustomRendererInfo
+                {
+                    childName = "SheathedSwordObj",
+                    material = Materials.CreateHopooMaterial("SwordShieldMaterial"),
+                    ignoreOverlays = true
                 }
         };
 
@@ -82,7 +94,7 @@ namespace LinkMod.Content.Link
         public static SkillDef hylianShieldExit;
         public static SkillDef hylianShieldEntry;
 
-        internal static int mainRendererIndex { get; set; } = 3;
+        internal static int mainRendererIndex { get; set; } = 5;
 
         public override void InitializeCharacter()
         {
@@ -297,7 +309,17 @@ namespace LinkMod.Content.Link
                 {
                     mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("sheatheMesh"),
                     renderer = defaultRenderers[3].renderer
-                }
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("swordMesh"),
+                    renderer = defaultRenderers[4].renderer
+                },
+                new SkinDef.MeshReplacement
+                {
+                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("shieldMesh"),
+                    renderer = defaultRenderers[5].renderer
+                },
             };
 
             skins.Add(defaultSkin);
