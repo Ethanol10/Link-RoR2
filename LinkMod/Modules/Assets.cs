@@ -116,7 +116,7 @@ namespace LinkMod.Modules
 
             //Rune Bomb material swap.
             Material runeBombMaterial = Materials.CreateHopooMaterial("RuneBombMaterial");
-            runeBomb = mainAssetBundle.LoadAsset<GameObject>("LinkRuneBomb");
+            runeBomb = mainAssetBundle.LoadAsset<GameObject>("runeBombHand");
             runeBomb.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = runeBombMaterial;
             runeBomb.transform.GetChild(2).GetComponent<SkinnedMeshRenderer>().material = runeBombMaterial;
 

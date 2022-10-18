@@ -31,7 +31,7 @@ namespace LinkMod.Modules.Survivors
             InitializeSurvivor();
         }
 
-        protected override void InitializeCharacterBodyAndModel()
+        internal override void InitializeCharacterBodyAndModel()
         {
             base.InitializeCharacterBodyAndModel();
             InitializeDisplayPrefab();

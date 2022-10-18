@@ -42,8 +42,9 @@ GameObject:
   - component: {fileID: 1614844552832320961}
   - component: {fileID: 3437709238442621000}
   - component: {fileID: 6748667444189688284}
+  - component: {fileID: 3732188077064059073}
   m_Layer: 0
-  m_Name: LinkRuneBomb
+  m_Name: mdlRuneBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,6 +96,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3732188077064059073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099456139253768059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformPairs:
+  - name: MainHurtbox
+    transform: {fileID: 1614844552832320961}
+  - name: GrenadeMesh
+    transform: {fileID: 5948211113817940272}
+  - name: PinMesh
+    transform: {fileID: 6479882829299735887}
 --- !u!1 &2907619601887766551
 GameObject:
   m_ObjectHideFlags: 0

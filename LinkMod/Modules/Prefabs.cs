@@ -133,7 +133,7 @@ namespace LinkMod.Modules {
 
         #region ModelSetup
 
-        private static Transform AddCharacterModelToSurvivorBody(GameObject bodyPrefab, Transform modelTransform, BodyInfo bodyInfo) 
+        internal static Transform AddCharacterModelToSurvivorBody(GameObject bodyPrefab, Transform modelTransform, BodyInfo bodyInfo) 
         {
             for (int i = bodyPrefab.transform.childCount - 1; i >= 0; i--) {
 
@@ -257,7 +257,7 @@ namespace LinkMod.Modules {
             //cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
         }
 
-        private static void SetupModelLocator(GameObject prefab, Transform modelBaseTransform, Transform modelTransform)
+        internal static void SetupModelLocator(GameObject prefab, Transform modelBaseTransform, Transform modelTransform)
         {
             ModelLocator modelLocator = prefab.GetComponent<ModelLocator>();
             modelLocator.modelTransform = modelTransform;

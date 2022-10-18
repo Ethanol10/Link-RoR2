@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Reflection;
+using EntityStates;
 using LinkMod.Modules;
 using LinkMod.Modules.Characters;
 using R2API;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using static Rewired.UI.ControlMapper.ControlMapper;
 
 namespace LinkMod.Content.Link
 {
@@ -20,7 +20,7 @@ namespace LinkMod.Content.Link
             bodyNameToken = LinkPlugin.DEVELOPER_PREFIX + "_RUNE_BOMB_BODY_NAME",
             subtitleNameToken = LinkPlugin.DEVELOPER_PREFIX + "_RUNE_BOMB_BODY_SUBTITLE",
 
-            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>(""),
+            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("bruh"),
             bodyColor = new Color(176f / 255f, 1.0f, 62f / 255f),
 
             crosshair = Assets.LoadCrosshair("Standard"),
@@ -33,23 +33,40 @@ namespace LinkMod.Content.Link
         };
 
 
-        public override CustomRendererInfo[] customRendererInfos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[]
+        {
+                new CustomRendererInfo
+                {
+                    childName = "GrenadeMesh",
+                    material = Materials.CreateHopooMaterial("RuneBombMaterial"),
+                    ignoreOverlays = true
+                },
+                new CustomRendererInfo
+                {
+                    childName = "PinMesh",
+                    material = Materials.CreateHopooMaterial("RuneBombMaterial"),
+                    ignoreOverlays = true
+                },
+        };
 
-        public override Type characterMainState => throw new NotImplementedException();
+        public override Type characterMainState => typeof(GenericCharacterMain);
 
         public override void InitializeSkills()
         {
-            throw new NotImplementedException();
+            
         }
 
         internal override void InitializeCharacterBodyAndModel()
         {
             //Get explosivepot and replace the model. addressable: RoR2/Base/ExplosivePotDestructible/ExplosivePotDestructibleBody.prefab
-            GameObject potObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ExplosivePotDestructible/ExplosivePotDestructibleBody.prefab").WaitForCompletion();
-
+            GameObject potObject = Addressables.LoadAssetAsync<GameObject>(key:"RoR2/Base/ExplosivePotDestructible/ExplosivePotDestructibleBody.prefab").WaitForCompletion();
             GameObject runeBomb = PrefabAPI.InstantiateClone(potObject, bodyName + "Body");
-
             GameObject model = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>($"mdl{bodyName}");
+            Transform modelBase = new GameObject("ModelBase").transform;
+            modelBase.parent = runeBomb.transform;
+            modelBase.localPosition = bodyInfo.modelBasePosition;
+            modelBase.localRotation = Quaternion.identity;
+            Transform modelBaseTransform = modelBase.transform;
             #region CharacterBody
             CharacterBody bodyComponent = runeBomb.GetComponent<CharacterBody>();
             //identity
@@ -105,22 +122,21 @@ namespace LinkMod.Content.Link
 
             bodyComponent.isChampion = false;
             #endregion
-
+            Modules.Prefabs.SetupModelLocator(runeBomb, modelBaseTransform, model.transform);
             Modules.Prefabs.SetupRigidbody(runeBomb);
 
-            #region SphereCollider
-            //Setup the sphere collider
-            SphereCollider capsuleCollider = runeBomb.GetComponent<SphereCollider>();
-            capsuleCollider.center = new Vector3(0f, 0f, 0f);
-            #endregion
 
             #region MainHurtbox
             Modules.Prefabs.SetupMainHurtbox(runeBomb, model);
             #endregion
-
             Modules.Content.AddCharacterBodyPrefab(runeBomb);
+            bodyPrefab = runeBomb;
+            InitializeCharacterModel();
+        }
 
-            this.bodyPrefab = runeBomb;
+        public override void InitializeItemDisplays() 
+        {
+            //nothing.
         }
     }
 }

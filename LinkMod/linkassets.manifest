@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3121440778
+CRC: 2025672829
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 19789f34f36e777dfb57676c8bf3dda1
+    Hash: e1d4043f0dcac875909bfc12d6a6a381
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4e60236d7becc3716fba986450593eac
@@ -89,7 +89,8 @@ Assets:
 - Assets/LinkAssets/Animations/LinkHumanoid.asset
 - Assets/LinkAssets/Animations/LinkBodyAnims/ItemStart.anim
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailOpen.anim
-- Assets/LinkAssets/Prefabs/LinkRuneBomb.prefab
+- Assets/LinkAssets/Prefabs/mdlRuneBomb.prefab
+- Assets/LinkAssets/Prefabs/runeBombHand.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunR.anim
 - Assets/LinkAssets/Prefabs/particle/SwordBeamEffect.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/SpawnAnim.anim
