@@ -47,18 +47,18 @@ namespace LinkMod.Modules.Characters
             InitializeDoppelganger("Merc");
         }
 
-        protected virtual void InitializeCharacterBodyAndModel()
+        internal virtual void InitializeCharacterBodyAndModel()
         {
             bodyPrefab = Modules.Prefabs.CreateBodyPrefab(bodyName + "Body", "mdl" + bodyName, bodyInfo);
             InitializeCharacterModel();
         }
-        protected virtual void InitializeCharacterModel()
+        internal virtual void InitializeCharacterModel()
         {
             characterBodyModel = Modules.Prefabs.SetupCharacterModel(bodyPrefab, customRendererInfos);
         }
 
-        protected virtual void InitializeCharacterMaster() { }
-        protected virtual void InitializeEntityStateMachine()
+        internal virtual void InitializeCharacterMaster() { }
+        internal virtual void InitializeEntityStateMachine()
         {
             bodyPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(characterMainState);
             Modules.Content.AddEntityState(characterMainState);

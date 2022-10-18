@@ -264,11 +264,11 @@ namespace LinkMod.Modules {
             modelLocator.modelBaseTransform = modelBaseTransform;
         }
 
-        //private static void SetupRigidbody(GameObject prefab)
-        //{
-        //    Rigidbody rigidbody = prefab.GetComponent<Rigidbody>();
-        //    rigidbody.mass = 100f;
-        //}
+        internal static void SetupRigidbody(GameObject prefab)
+        {
+            Rigidbody rigidbody = prefab.GetComponent<Rigidbody>();
+            rigidbody.mass = 100f;
+        }
 
         private static void SetupCapsuleCollider(GameObject prefab) {
             CapsuleCollider capsuleCollider = prefab.GetComponent<CapsuleCollider>();
@@ -278,7 +278,7 @@ namespace LinkMod.Modules {
             capsuleCollider.direction = 1;
         }
 
-        private static void SetupMainHurtbox(GameObject prefab, GameObject model)
+        internal static void SetupMainHurtbox(GameObject prefab, GameObject model)
         {
             ChildLocator childLocator = model.GetComponent<ChildLocator>();
 
