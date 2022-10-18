@@ -62,6 +62,7 @@ namespace LinkMod
 
             // survivor initialization
             new Link().Initialize();
+            new RuneBomb().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();
