@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1322933616
+CRC: 158513174
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 39fdb0f64f55bb5d96b536a5075ae4f7
+    Hash: a3cb70cd0813fddbfb0fa64db617fbcc
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 4e60236d7becc3716fba986450593eac
+    Hash: e514e30f89d7568d0e90599f945efbdd
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -48,6 +48,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 134
   Script: {instanceID: 0}
 - Class: 135
   Script: {instanceID: 0}
@@ -111,6 +113,7 @@ Assets:
 - Assets/LinkAssets/Materials/RuneBombMaterial.mat
 - Assets/LinkAssets/Animations/AvatarMasks/slightTransformAvatar.mask
 - Assets/LinkAssets/Animations/LinkBodyAnims/Run.anim
+- Assets/LinkAssets/Prefabs/bombPhysics.physicMaterial
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim3.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/AirThrow.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabLanding.anim

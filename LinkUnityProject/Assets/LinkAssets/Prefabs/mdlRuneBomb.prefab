@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7463861069353757549}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,9 +40,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1614844552832320961}
-  - component: {fileID: 3437709238442621000}
   - component: {fileID: 3732188077064059073}
-  m_Layer: 0
+  - component: {fileID: 1953650532683657979}
+  - component: {fileID: 2421361422006817484}
+  m_Layer: 17
   m_Name: mdlRuneBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,22 +64,10 @@ Transform:
   - {fileID: 532297449872159377}
   - {fileID: 5948211113817940272}
   - {fileID: 6479882829299735887}
+  - {fileID: 6278430035098172541}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &3437709238442621000
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099456139253768059}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2842731
-  m_Center: {x: 0, y: 0.27349502, z: -0.021581292}
 --- !u!114 &3732188077064059073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,11 +82,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformPairs:
   - name: MainHurtbox
-    transform: {fileID: 1614844552832320961}
+    transform: {fileID: 6278430035098172541}
   - name: GrenadeMesh
     transform: {fileID: 5948211113817940272}
   - name: PinMesh
     transform: {fileID: 6479882829299735887}
+--- !u!135 &1953650532683657979
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099456139253768059}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2842731
+  m_Center: {x: 0, y: 0.27349502, z: -0.021581292}
+--- !u!54 &2421361422006817484
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099456139253768059}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2907619601887766551
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7795205374337609741}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8371166465143727760}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Have
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8189098155868552287}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: All
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7589284389875861859}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: String
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3551826321616948893}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: FireA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5948211113817940272}
   - component: {fileID: 5502095344524941125}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: GranadeShape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,6 +358,50 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00079768896, y: -0.27263165, z: 0.02288676}
     m_Extent: {x: 0.2594677, y: 0.25918722, z: 0.25855488}
   m_DirtyAABB: 0
+--- !u!1 &9057460553341821878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6278430035098172541}
+  - component: {fileID: 8596086673975780215}
+  m_Layer: 17
+  m_Name: MainHurtbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6278430035098172541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9057460553341821878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1614844552832320961}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &8596086673975780215
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9057460553341821878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2842731
+  m_Center: {x: 0, y: 0.27349502, z: -0.021581292}
 --- !u!1 &9123616974569998660
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6479882829299735887}
   - component: {fileID: 8681626847817000610}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: PinShape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 532297449872159377}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: bomb-armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}

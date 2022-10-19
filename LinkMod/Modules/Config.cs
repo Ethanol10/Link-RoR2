@@ -10,6 +10,7 @@ namespace LinkMod.Modules
     {
         public static ConfigEntry<float> glideSpeed;
         public static ConfigEntry<float> glideAcceleration;
+        public static ConfigEntry<float> bombRecieveForce;
 
         public static void ReadConfig()
         {
@@ -28,6 +29,15 @@ namespace LinkMod.Modules
                 29.6f, 
                 new ConfigDescription("Determines the acceleration when falling when the parasail is deployed", 
                     null, 
+                    Array.Empty<object>()
+                )
+            );
+            bombRecieveForce = LinkPlugin.instance.Config.Bind<float>
+            (
+                new ConfigDefinition("02 - Bomb", "Force recieved and applied to bomb"),
+                20f,
+                new ConfigDescription("Determines how much force should be multiplied on the bomb when hit.",
+                    null,
                     Array.Empty<object>()
                 )
             );
@@ -54,6 +64,16 @@ namespace LinkMod.Modules
                         max = 100f,
                         increment = 0.05f
                     }    
+                ));
+            ModSettingsManager.AddOption(
+                new StepSliderOption(
+                    bombRecieveForce,
+                    new StepSliderConfig
+                    {
+                        min = 0f,
+                        max = 100f,
+                        increment = 0.05f
+                    }
                 ));
         }
 

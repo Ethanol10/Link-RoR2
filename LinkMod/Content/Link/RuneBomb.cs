@@ -64,9 +64,7 @@ namespace LinkMod.Content.Link
             GameObject potObject = Addressables.LoadAssetAsync<GameObject>(key:"RoR2/Base/ExplosivePotDestructible/ExplosivePotDestructibleBody.prefab").WaitForCompletion();
             GameObject runeBomb = PrefabAPI.InstantiateClone(potObject, bodyName + "Body");
             GameObject modelUnity = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>($"mdl{bodyName}");
-            Debug.Log($"ModelUnity: {modelUnity.name}");
             GameObject model = PrefabAPI.InstantiateClone(modelUnity, modelUnity.name, false);
-            Debug.Log($"model: {model}");
             Transform modelBase = new GameObject("ModelBase").transform;
             modelBase.parent = runeBomb.transform;
             modelBase.localPosition = bodyInfo.modelBasePosition;
@@ -74,7 +72,7 @@ namespace LinkMod.Content.Link
 
             model.transform.parent = modelBase.transform;
             model.transform.localPosition = Vector3.zero;
-            model.transform.localScale = Vector3.one * 5f;
+            model.transform.localScale = Vector3.one;
             model.transform.localRotation = Quaternion.identity;
             Transform modelBaseTransform = modelBase.transform;
             #region CharacterBody
@@ -133,11 +131,22 @@ namespace LinkMod.Content.Link
             bodyComponent.isChampion = false;
             #endregion
             Modules.Prefabs.SetupModelLocator(runeBomb, modelBaseTransform, model.transform);
-            Modules.Prefabs.SetupRigidbody(runeBomb);
+            Object.Destroy(runeBomb.GetComponent<Rigidbody>());
+            Object.Destroy(runeBomb.GetComponentInChildren<Rigidbody>());
+            Object.Destroy(runeBomb.GetComponent<MeshCollider>());
 
-            Object.Destroy(runeBomb.transform.GetChild(0).GetComponent<MeshFilter>());
-            Object.Destroy(runeBomb.transform.GetChild(0).GetComponent<MeshRenderer>());
-            Object.Destroy(runeBomb.transform.GetChild(0).GetComponent<CharacterModel>());
+
+            Object.Destroy(runeBomb.transform.GetChild(0).gameObject);
+            CapsuleCollider collider = runeBomb.AddComponent<CapsuleCollider>();
+            collider.center = new Vector3(0, 0.273495f, -0.02158129f);
+            collider.radius = 0.2842731f;
+            bodyComponent.rigidbody = model.GetComponent<Rigidbody>();
+            bodyComponent.rigidbody.mass = 8;
+
+            model.transform.parent = runeBomb.transform;
+            model.transform.SetSiblingIndex(0);
+            //Add rigidbody to object
+            //Add Collider
 
             #region MainHurtbox
             Modules.Prefabs.SetupMainHurtbox(runeBomb, model);
@@ -157,6 +166,15 @@ namespace LinkMod.Content.Link
             Modules.Prefabs.SetupCustomRendererInfos(this.characterBodyModel, customRendererInfos);
 
             Modules.Content.AddCharacterBodyPrefab(runeBomb);
+        }
+
+        internal override void InitializeCharacterMaster() 
+        {
+            CharacterBody body = this.bodyPrefab.GetComponent<CharacterBody>();
+            if (body) 
+            {
+                CharacterMaster master = body.master;
+            }
         }
 
         public override void InitializeItemDisplays() 

@@ -40,7 +40,7 @@ namespace LinkMod
         public const string MODNAME = "LoZ-LinkMod";
         public const string MODVERSION = "0.0.1";
 
-        // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
+        // a prefix for name tokens to prevent conflicts- please                     capitalize all name tokens for convention
         public const string DEVELOPER_PREFIX = "POPCORN";
 
         public static LinkPlugin instance;
@@ -53,7 +53,10 @@ namespace LinkMod
             Log.Init(Logger);
             Modules.Assets.Initialize(); // load assets and read config
             Modules.Config.ReadConfig();
-            Modules.Config.SetupRiskOfOptions();
+            if (Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
+            {
+                Modules.Config.SetupRiskOfOptions();
+            }
             Modules.States.RegisterStates(); // register states for networking
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
@@ -163,6 +166,13 @@ namespace LinkMod
                                     }
                                 }
                             }
+                        }
+
+                        if (self.body.baseNameToken == DEVELOPER_PREFIX + "_RUNE_BOMB_BODY_NAME") 
+                        {
+                            damageInfo.rejected = false;
+                            damageInfo.force = (damageInfo.attacker.transform.position - self.transform.position).normalized * 10f;
+                            
                         }
                     }
                 }
