@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using EntityStates;
 using LinkMod.Modules;
@@ -7,6 +8,7 @@ using R2API;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Object = UnityEngine.Object;
 
 namespace LinkMod.Content.Link
 {
@@ -61,11 +63,19 @@ namespace LinkMod.Content.Link
             //Get explosivepot and replace the model. addressable: RoR2/Base/ExplosivePotDestructible/ExplosivePotDestructibleBody.prefab
             GameObject potObject = Addressables.LoadAssetAsync<GameObject>(key:"RoR2/Base/ExplosivePotDestructible/ExplosivePotDestructibleBody.prefab").WaitForCompletion();
             GameObject runeBomb = PrefabAPI.InstantiateClone(potObject, bodyName + "Body");
-            GameObject model = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>($"mdl{bodyName}");
+            GameObject modelUnity = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>($"mdl{bodyName}");
+            Debug.Log($"ModelUnity: {modelUnity.name}");
+            GameObject model = PrefabAPI.InstantiateClone(modelUnity, modelUnity.name, false);
+            Debug.Log($"model: {model}");
             Transform modelBase = new GameObject("ModelBase").transform;
             modelBase.parent = runeBomb.transform;
             modelBase.localPosition = bodyInfo.modelBasePosition;
             modelBase.localRotation = Quaternion.identity;
+
+            model.transform.parent = modelBase.transform;
+            model.transform.localPosition = Vector3.zero;
+            model.transform.localScale = Vector3.one * 5f;
+            model.transform.localRotation = Quaternion.identity;
             Transform modelBaseTransform = modelBase.transform;
             #region CharacterBody
             CharacterBody bodyComponent = runeBomb.GetComponent<CharacterBody>();
@@ -125,18 +135,38 @@ namespace LinkMod.Content.Link
             Modules.Prefabs.SetupModelLocator(runeBomb, modelBaseTransform, model.transform);
             Modules.Prefabs.SetupRigidbody(runeBomb);
 
+            Object.Destroy(runeBomb.transform.GetChild(0).GetComponent<MeshFilter>());
+            Object.Destroy(runeBomb.transform.GetChild(0).GetComponent<MeshRenderer>());
+            Object.Destroy(runeBomb.transform.GetChild(0).GetComponent<CharacterModel>());
 
             #region MainHurtbox
             Modules.Prefabs.SetupMainHurtbox(runeBomb, model);
             #endregion
+
+            this.bodyPrefab = runeBomb;
+            //Object.Destroy(bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<CharacterModel>());
+            //Object.Destroy(bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<MeshFilter>());
+            this.characterBodyModel = bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<CharacterModel>();
+
+            this.characterBodyModel.body = bodyPrefab.GetComponent<CharacterBody>();
+
+            this.characterBodyModel.autoPopulateLightInfos = true;
+            this.characterBodyModel.invisibilityCount = 0;
+            this.characterBodyModel.temporaryOverlays = new List<TemporaryOverlay>();
+
+            Modules.Prefabs.SetupCustomRendererInfos(this.characterBodyModel, customRendererInfos);
+
             Modules.Content.AddCharacterBodyPrefab(runeBomb);
-            bodyPrefab = runeBomb;
-            InitializeCharacterModel();
         }
 
         public override void InitializeItemDisplays() 
         {
             //nothing.
+        }
+
+        public override void InitializeSkins()
+        {
+
         }
     }
 }

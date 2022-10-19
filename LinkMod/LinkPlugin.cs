@@ -94,7 +94,7 @@ namespace LinkMod
             NetworkingAPI.RegisterMessageType<ServerForceShieldBlockSuccessAnimNetworkRequest>();
 
             //Hylian Shield
-            NetworkingAPI.RegisterMessageType<ServerForceShieldBlockSuccessAnimNetworkRequest>();
+            NetworkingAPI.RegisterMessageType<ServerForceDownstabRecoveryNetworkRequest>();
         }
 
         private void SurvivorCatalog_Init(On.RoR2.SurvivorCatalog.orig_Init orig)

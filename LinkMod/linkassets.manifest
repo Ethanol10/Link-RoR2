@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2025672829
+CRC: 1322933616
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e1d4043f0dcac875909bfc12d6a6a381
+    Hash: 39fdb0f64f55bb5d96b536a5075ae4f7
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4e60236d7becc3716fba986450593eac
@@ -69,7 +69,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabOrig.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockSuccess.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttackStart.anim
-- Assets/LinkAssets/Meshes/Bomb.mesh
+- Assets/LinkAssets/Meshes/runebombMesh.mesh
 - Assets/LinkAssets/Shaders/Frensel.shader
 - Assets/LinkAssets/Textures/MoteTrail.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabBegin.anim
@@ -103,7 +103,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/Roll.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Gliding.anim
 - Assets/LinkAssets/Animations/LinkDisplayController.controller
-- Assets/LinkAssets/Meshes/BombPin.mesh
+- Assets/LinkAssets/Meshes/runeBombMeshPin.mesh
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailClose.anim
 - Assets/LinkAssets/Meshes/shieldMesh.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/DeployBomb.anim

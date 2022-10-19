@@ -204,6 +204,8 @@ namespace LinkMod.Modules {
             List<CharacterModel.RendererInfo> rendererInfos = new List<CharacterModel.RendererInfo>();
 
             for (int i = 0; i < customInfos.Length; i++) {
+
+                Debug.Log($"BRUH PLEASE: {customInfos[i].childName}");
                 if (!childLocator.FindChild(customInfos[i].childName)) {
                     Log.Error("Trying to add a RendererInfo for a renderer that does not exist: " + customInfos[i].childName);
                 } else {
@@ -229,7 +231,6 @@ namespace LinkMod.Modules {
                     }
                 }
             }
-
             characterModel.baseRendererInfos = rendererInfos.ToArray();
         }
         #endregion
@@ -267,7 +268,7 @@ namespace LinkMod.Modules {
         internal static void SetupRigidbody(GameObject prefab)
         {
             Rigidbody rigidbody = prefab.GetComponent<Rigidbody>();
-            rigidbody.mass = 100f;
+            rigidbody.mass = 8f;
         }
 
         private static void SetupCapsuleCollider(GameObject prefab) {
