@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LinkMod.SkillStates.Link.StandardBomb
 {
-    internal class RuneBombExplode : BaseSkillState
+    internal class StandardBombSpawn : BaseSkillState
     {
         public override void OnEnter() 
         {
