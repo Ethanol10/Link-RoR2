@@ -70,9 +70,9 @@ namespace LinkMod.Modules
                     bombRecieveForce,
                     new StepSliderConfig
                     {
-                        min = 0f,
-                        max = 100f,
-                        increment = 0.05f
+                        min = 1f,
+                        max = 1000f,
+                        increment = 1f
                     }
                 ));
         }

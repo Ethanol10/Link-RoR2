@@ -171,7 +171,7 @@ namespace LinkMod
                         if (self.body.baseNameToken == DEVELOPER_PREFIX + "_RUNE_BOMB_BODY_NAME") 
                         {
                             damageInfo.rejected = false;
-                            damageInfo.force = (damageInfo.attacker.transform.position - self.transform.position).normalized * 10f;
+                            damageInfo.force = (self.transform.position - damageInfo.attacker.transform.position).normalized * Modules.Config.bombRecieveForce.Value;
                             
                         }
                     }

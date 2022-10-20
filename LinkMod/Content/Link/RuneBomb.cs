@@ -131,19 +131,25 @@ namespace LinkMod.Content.Link
             bodyComponent.isChampion = false;
             #endregion
             Modules.Prefabs.SetupModelLocator(runeBomb, modelBaseTransform, model.transform);
-            Object.Destroy(runeBomb.GetComponent<Rigidbody>());
-            Object.Destroy(runeBomb.GetComponentInChildren<Rigidbody>());
+            Rigidbody rigidbody = runeBomb.GetComponent<Rigidbody>();
+            rigidbody.mass = 10f;
+
+            PhysicMaterial physMat = Modules.Assets.mainAssetBundle.LoadAsset<PhysicMaterial>("bombPhysics");
             Object.Destroy(runeBomb.GetComponent<MeshCollider>());
-
-
-            Object.Destroy(runeBomb.transform.GetChild(0).gameObject);
             CapsuleCollider collider = runeBomb.AddComponent<CapsuleCollider>();
             collider.center = new Vector3(0, 0.273495f, -0.02158129f);
             collider.radius = 0.2842731f;
-            bodyComponent.rigidbody = model.GetComponent<Rigidbody>();
-            bodyComponent.rigidbody.mass = 8;
+            collider.material = physMat;
+            //Object.Destroy(runeBomb.GetComponent<Rigidbody>());
+            //Object.Destroy(runeBomb.GetComponentInChildren<Rigidbody>());
+
+
+            Object.Destroy(runeBomb.transform.GetChild(0).gameObject);
+            //bodyComponent.rigidbody = model.GetComponent<Rigidbody>();
+            //bodyComponent.rigidbody.mass = 8;
 
             model.transform.parent = runeBomb.transform;
+            model.transform.localPosition = Vector3.zero;
             model.transform.SetSiblingIndex(0);
             //Add rigidbody to object
             //Add Collider
