@@ -149,7 +149,7 @@ namespace LinkMod.Content.Link
             //bodyComponent.rigidbody.mass = 8;
 
             model.transform.parent = runeBomb.transform;
-            model.transform.localPosition = Vector3.zero;
+            model.transform.localPosition = Vector3.zero; 
             model.transform.SetSiblingIndex(0);
             //Add rigidbody to object
             //Add Collider

@@ -3,6 +3,8 @@ using LinkMod.SkillStates.Link;
 using LinkMod.SkillStates.Link.HylianShield;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
+using LinkMod.SkillStates.Link.RuneBomb;
+using LinkMod.SkillStates.Link.SwapLoadout;
 
 namespace LinkMod.Modules
 {
@@ -12,6 +14,12 @@ namespace LinkMod.Modules
         {
             //Spawn State
             Modules.Content.AddEntityState(typeof(LinkSpawnState));
+
+            //Loadout Swap States
+            Modules.Content.AddEntityState(typeof(SwapSwordLoadout));
+            Modules.Content.AddEntityState(typeof(SwapArrowLoadout));
+            Modules.Content.AddEntityState(typeof(SwapBombLoadout));
+            Modules.Content.AddEntityState(typeof(SwapMiscellaneousLoadout));
 
             //Parasail
             Modules.Content.AddEntityState(typeof(ParasailOn));
@@ -43,6 +51,11 @@ namespace LinkMod.Modules
             Modules.Content.AddEntityState(typeof(HylianShield));
             Modules.Content.AddEntityState(typeof(HylianShieldStart));
             Modules.Content.AddEntityState(typeof(HylianShieldExit));
+
+            //Rune Bomb
+            Modules.Content.AddEntityState(typeof(RuneBombExplode));
+            Modules.Content.AddEntityState(typeof(RuneBombSpawn));
+            Modules.Content.AddEntityState(typeof(RuneBombThrow));
         }
     }
 }

@@ -7,6 +7,7 @@ using LinkMod.SkillStates.Link;
 using LinkMod.SkillStates.Link.HylianShield;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
+using LinkMod.SkillStates.Link.SwapLoadout;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -91,8 +92,27 @@ namespace LinkMod.Content.Link
 
         private static UnlockableDef masterySkinUnlockableDef;
 
-        public static SkillDef hylianShieldExit;
-        public static SkillDef hylianShieldEntry;
+
+
+        /********************* SKILL DEF *******************************/
+        //MasterSword SkillDef
+        public static SkillDef masterSwordSkillDef;
+        //HylianShield SkillDef
+        public static SkillDef hylianShieldSkillDef;
+        //Roll SkillDef
+        public static SkillDef rollSkillDef;
+        //SpinAttack SkillDef
+        public static SkillDef spinAttackSkillDef;
+
+        //Extra skill swaps
+        public static SkillDef swordLoadoutSkillDef;
+        public static SkillDef bombLoadoutSkillDef;
+        public static SkillDef arrowLoadoutSkillDef;
+        public static SkillDef miscellaneousLoadoutSkillDef;
+        /********************* SKILL DEF *******************************/
+
+
+
 
         internal static int mainRendererIndex { get; set; } = 5;
 
@@ -162,13 +182,13 @@ namespace LinkMod.Content.Link
 
             #region Primary
             //Creates a skilldef for a typical primary 
-            SkillDef masterSwordPrimary = Skills.CreateSkillDef(new SkillDefInfo(prefix + "_LINK_BODY_PRIMARY_MASTER_SWORD_NAME",
+            masterSwordSkillDef = Skills.CreateSkillDef(new SkillDefInfo(prefix + "_LINK_BODY_PRIMARY_MASTER_SWORD_NAME",
                                                                                       prefix + "_LINK_BODY_PRIMARY_MASTER_SWORD_DESCRIPTION",
-                                                                                      Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
+                                                                                      Assets.mainAssetBundle.LoadAsset<Sprite>("masterSwordIcon"),
                                                                                       new EntityStates.SerializableEntityStateType(typeof(MasterSword)),
                                                                                       "Weapon",
                                                                                       false));
-            masterSwordPrimary.keywordTokens = new string[]
+            masterSwordSkillDef.keywordTokens = new string[]
             {
                 "POPCORN_LINK_BODY_PRIMARY_MASTER_SWORD_BEAM_KEYWORD",
                 "POPCORN_LINK_BODY_PRIMARY_MASTER_SWORD_GROUNDED_SWING_KEYWORD",
@@ -177,16 +197,16 @@ namespace LinkMod.Content.Link
                 "POPCORN_LINK_BODY_PRIMARY_MASTER_SWORD_AERIAL_DOWNSTAB_KEYWORD"
             };
 
-            Skills.AddPrimarySkills(bodyPrefab, masterSwordPrimary);
+            Skills.AddPrimarySkills(bodyPrefab, masterSwordSkillDef);
             #endregion
 
             #region Secondary
-            SkillDef hylianShieldEntry = Skills.CreateSkillDef(new SkillDefInfo
+            hylianShieldSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_LINK_BODY_SECONDARY_HYLIAN_SHIELD_NAME",
                 skillNameToken = prefix + "_LINK_BODY_SECONDARY_HYLIAN_SHIELD_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SECONDARY_HYLIAN_SHIELD_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("hylianShieldIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(HylianShieldStart)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
@@ -206,16 +226,16 @@ namespace LinkMod.Content.Link
                 keywordTokens = new string[] { "POPCORN_LINK_BODY_STEADY_KEYWORD" }
             });
 
-            Skills.AddSecondarySkills(bodyPrefab, hylianShieldEntry);
+            Skills.AddSecondarySkills(bodyPrefab, hylianShieldSkillDef);
             #endregion
 
             #region Utility
-            SkillDef rollSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            rollSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_LINK_BODY_UTILITY_ROLL_NAME",
                 skillNameToken = prefix + "_LINK_BODY_UTILITY_ROLL_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_UTILITY_ROLL_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("rollIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 2,
@@ -238,12 +258,12 @@ namespace LinkMod.Content.Link
             #endregion
 
             #region Special
-            SkillDef spinAttackSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            spinAttackSkillDef = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_LINK_BODY_SPECIAL_SPIN_ATTACK_NAME",
                 skillNameToken = prefix + "_LINK_BODY_SPECIAL_SPIN_ATTACK_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SPECIAL_SPIN_ATTACK_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialIcon"),
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("spinAttackIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SpinAttack)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
@@ -267,10 +287,110 @@ namespace LinkMod.Content.Link
             #endregion
 
             #region Extra Skills Region
-            Skills.AddExtraSkillSlotPrimary(bodyPrefab, spinAttackSkillDef);
-            Skills.AddExtraSkillSlotSecondary(bodyPrefab, spinAttackSkillDef);
-            Skills.AddExtraSkillSlotUtility(bodyPrefab, spinAttackSkillDef);
-            Skills.AddExtraSkillSlotSpecial(bodyPrefab, spinAttackSkillDef);
+
+            swordLoadoutSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_SWORD_LOADOUT_NAME",
+                skillNameToken = prefix + "_LINK_BODY_SWORD_LOADOUT_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_SWORD_LOADOUT_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("swordLoadoutIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SwapSwordLoadout)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 10f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "" }
+            });
+            Skills.AddExtraSkillSlotPrimary(bodyPrefab, swordLoadoutSkillDef);
+
+            arrowLoadoutSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_ARROW_LOADOUT_NAME",
+                skillNameToken = prefix + "_LINK_BODY_ARROW_LOADOUT_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_ARROW_LOADOUT_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("arrowLoadoutIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SwapArrowLoadout)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 10f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "" }
+            });
+            Skills.AddExtraSkillSlotSecondary(bodyPrefab, arrowLoadoutSkillDef);
+
+            bombLoadoutSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_BOMB_LOADOUT_NAME",
+                skillNameToken = prefix + "_LINK_BODY_BOMB_LOADOUT_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_BOMB_LOADOUT_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("bombLoadoutIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SwapBombLoadout)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 10f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "" }
+            });
+            Skills.AddExtraSkillSlotUtility(bodyPrefab, bombLoadoutSkillDef);
+
+            miscellaneousLoadoutSkillDef = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_MISCELLANEOUS_LOADOUT_NAME",
+                skillNameToken = prefix + "_LINK_BODY_MISCELLANEOUS_LOADOUT_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_MISCELLANEOUS_LOADOUT_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("miscellaneousLoadoutIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SwapMiscellaneousLoadout)),
+                activationStateMachineName = "Slide",
+                baseMaxStock = 1,
+                baseRechargeInterval = 10f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "" }
+            });
+            Skills.AddExtraSkillSlotSpecial(bodyPrefab, miscellaneousLoadoutSkillDef);
             #endregion
         }
 
@@ -369,9 +489,9 @@ namespace LinkMod.Content.Link
 
             skins.Add(masterySkin);
             */
-            #endregion
+#endregion
 
-            skinController.skins = skins.ToArray();
+        skinController.skins = skins.ToArray();
         }
 
         private static CharacterModel.RendererInfo[] SkinRendererInfos(CharacterModel.RendererInfo[] defaultRenderers, Material[] materials)

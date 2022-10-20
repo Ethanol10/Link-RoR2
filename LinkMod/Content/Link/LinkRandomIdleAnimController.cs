@@ -14,7 +14,7 @@ namespace LinkMod.Content.Link
 
             //Generate number check between thirds
             int randomNum = Random.Range(1, 11);
-            Debug.Log(randomNum);
+
             if (randomNum <= 3) 
             {
                 anim.SetBool("trigger1", true);
@@ -39,7 +39,7 @@ namespace LinkMod.Content.Link
         {
             //Generate number check between thirds
             int randomNum = Random.Range(1, 11);
-            Debug.Log(randomNum);
+            
             if (randomNum <= 3)
             {
                 anim.SetBool("trigger1", true);

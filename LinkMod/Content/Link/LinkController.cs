@@ -22,11 +22,31 @@ namespace LinkMod.Content.Link
         internal Transform shieldUnsheathed;
         internal Transform swordUnsheathed;
 
+        //Bomb Types
         internal enum RuneBombState 
         {
             NOTSPAWNED,
             INHAND,
             THROWN
+        }
+        internal RuneBombState runeBombState;
+
+        //Arrow Types
+        internal enum ArrowTypeEquipped 
+        {
+            NORMAL,
+            FIRE,
+            ICE,
+            ANCIENT,
+            LIGHT,
+            BOMB
+        };
+
+        internal enum ArrowFireType 
+        {
+            SINGLE,
+            TRIPLE,
+            QUINT
         }
 
         public void Awake()
@@ -45,6 +65,7 @@ namespace LinkMod.Content.Link
             {
                 HookEmoteEvent();
             }
+            runeBombState = RuneBombState.NOTSPAWNED;
         }
 
         public void Hook() 

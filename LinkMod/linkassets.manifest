@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2770620930
+CRC: 1646354752
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6ea285a725dfe96b9eb886e153d1d858
+    Hash: 6c2f9a4371be613481ed4c458e1b4e0b
   TypeTreeHash:
     serializedVersion: 2
     Hash: e514e30f89d7568d0e90599f945efbdd
@@ -79,7 +79,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/Fall.anim
 - Assets/LinkAssets/Textures/StandardSwordandShield.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailPermanentClose.anim
-- Assets/LinkAssets/Materials/SwordBeam.mat
+- Assets/LinkAssets/Materials/indicatorThrow.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunStrafeBackwards.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim2.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedItemThrow.anim
@@ -139,6 +139,7 @@ Assets:
 - Assets/LinkAssets/Animations/AvatarMasks/UpperBodyMask.mask
 - Assets/LinkAssets/Animations/LinkBodyAnims/Dash.anim
 - Assets/LinkAssets/Shaders/Panner.shader
+- Assets/LinkAssets/Materials/SwordBeam.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle2.anim
 - Assets/LinkAssets/Textures/def_parasail_001_col.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabHold.anim

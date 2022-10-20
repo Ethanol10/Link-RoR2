@@ -59,6 +59,23 @@ namespace LinkMod.Modules
                 $"When airborne, rapidly spin upwards dealing damage.");
             #endregion
 
+            #region Sword Loadout
+            LanguageAPI.Add(prefix + "SWORD_LOADOUT_NAME", "Sword and Shield Loadout");
+            LanguageAPI.Add(prefix + "SWORD_LOADOUT_DESCRIPTION", "Swap to your Master Sword and Shield Loadout.");
+            #endregion
+            #region Arrow Loadout
+            LanguageAPI.Add(prefix + "ARROW_LOADOUT_NAME", "Bow and Arrow Loadout");
+            LanguageAPI.Add(prefix + "ARROW_LOADOUT_DESCRIPTION", "Swap to your Bow and Arrow Loadout.");
+            #endregion
+            #region Bomb Loadout
+            LanguageAPI.Add(prefix + "BOMB_LOADOUT_NAME", "Bomb Loadout");
+            LanguageAPI.Add(prefix + "BOMB_LOADOUT_DESCRIPTION", "Swap to your Bomb Loadout.");
+            #endregion
+            #region Miscellaneous Loadout
+            LanguageAPI.Add(prefix + "MISCELLANEOUS_LOADOUT_NAME", "Special Loadout");
+            LanguageAPI.Add(prefix + "MISCELLANEOUS_LOADOUT_DESCRIPTION", "Swap to the Extra Items Loadout.");
+            #endregion
+
             #region Achievements
             LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Link: Mastery");
             LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Link, beat the game or obliterate on Monsoon.");
