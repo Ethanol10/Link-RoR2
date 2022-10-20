@@ -23,31 +23,46 @@ namespace LinkMod.Content.Link
         internal Transform swordUnsheathed;
 
         //Bomb Types
-        internal enum RuneBombState 
+        internal enum BombState 
         {
             NOTSPAWNED,
             INHAND,
             THROWN
         }
-        internal RuneBombState runeBombState;
+        internal BombState bombState;
+        internal enum BombTypeInHand : uint 
+        {
+            RUNE, 
+            NORMAL
+        }
+        internal BombTypeInHand bombTypeInHand;
 
         //Arrow Types
-        internal enum ArrowTypeEquipped 
+        internal enum ArrowTypeEquipped : uint
         {
-            NORMAL,
-            FIRE,
-            ICE,
-            ANCIENT,
-            LIGHT,
-            BOMB
+            NORMAL = 1,
+            FIRE = 2,
+            ICE = 3,
+            LIGHT = 4,
+            ANCIENT = 5,
+            BOMB = 6
         };
-
-        internal enum ArrowFireType 
+        internal enum ArrowFireType : uint 
         {
-            SINGLE,
-            TRIPLE,
-            QUINT
+            SINGLE = 1,
+            TRIPLE = 2,
+            QUINT = 3
         }
+        internal ArrowFireType arrowFireType;
+        internal ArrowTypeEquipped arrowTypeEquipped;
+
+        internal enum GoddessSpellSelected : uint 
+        {
+            DIN = 1,
+            NAYRU = 2,
+            FARORE = 3
+        }
+        internal GoddessSpellSelected goddessSpellSelected;
 
         public void Awake()
         {
@@ -65,7 +80,12 @@ namespace LinkMod.Content.Link
             {
                 HookEmoteEvent();
             }
-            runeBombState = RuneBombState.NOTSPAWNED;
+
+            //Setup initial state for skills when they use it.
+            bombState = BombState.NOTSPAWNED;
+            arrowFireType = ArrowFireType.SINGLE;
+            arrowTypeEquipped = ArrowTypeEquipped.NORMAL;
+            goddessSpellSelected = GoddessSpellSelected.DIN;
         }
 
         public void Hook() 

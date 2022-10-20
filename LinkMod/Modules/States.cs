@@ -1,9 +1,12 @@
 ﻿using LinkMod.SkillStates;
 using LinkMod.SkillStates.Link;
+using LinkMod.SkillStates.Link.BowAndArrow;
+using LinkMod.SkillStates.Link.GoddessSpells;
 using LinkMod.SkillStates.Link.HylianShield;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
 using LinkMod.SkillStates.Link.RuneBomb;
+using LinkMod.SkillStates.Link.StandardBomb;
 using LinkMod.SkillStates.Link.SwapLoadout;
 
 namespace LinkMod.Modules
@@ -56,6 +59,25 @@ namespace LinkMod.Modules
             Modules.Content.AddEntityState(typeof(RuneBombExplode));
             Modules.Content.AddEntityState(typeof(RuneBombSpawn));
             Modules.Content.AddEntityState(typeof(RuneBombThrow));
+
+            //Standard Bomb
+            Modules.Content.AddEntityState(typeof(StandardBombSpawn));
+            Modules.Content.AddEntityState(typeof(StandardBombThrow));
+
+            //Bow And Arrow
+            Modules.Content.AddEntityState(typeof(DrawBow));
+            Modules.Content.AddEntityState(typeof(FireBow));
+            Modules.Content.AddEntityState(typeof(HoldBow));
+            Modules.Content.AddEntityState(typeof(SwapArrowFireType));
+            Modules.Content.AddEntityState(typeof(SwapArrowType));
+            Modules.Content.AddEntityState(typeof(ComboShotFire));
+            Modules.Content.AddEntityState(typeof(ComboShotStart));
+
+            //Goddess Spells
+            Modules.Content.AddEntityState(typeof(DinsFire));
+            Modules.Content.AddEntityState(typeof(FaroresWind));
+            Modules.Content.AddEntityState(typeof(NayrusLove));
+            Modules.Content.AddEntityState(typeof(GoddessSpellEntry));
         }
     }
 }
