@@ -1,7 +1,10 @@
 ﻿using LinkMod.SkillStates;
 using LinkMod.SkillStates.Link;
+using LinkMod.SkillStates.Link.Boomerang;
 using LinkMod.SkillStates.Link.BowAndArrow;
+using LinkMod.SkillStates.Link.DekuNut;
 using LinkMod.SkillStates.Link.GoddessSpells;
+using LinkMod.SkillStates.Link.Hookshot;
 using LinkMod.SkillStates.Link.HylianShield;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
@@ -78,6 +81,17 @@ namespace LinkMod.Modules
             Modules.Content.AddEntityState(typeof(FaroresWind));
             Modules.Content.AddEntityState(typeof(NayrusLove));
             Modules.Content.AddEntityState(typeof(GoddessSpellEntry));
+
+            //Deku Nut
+            Modules.Content.AddEntityState(typeof(DekuNut));
+
+            //Hookshot
+            Modules.Content.AddEntityState(typeof(Hookshot));
+
+            //Boomerang
+            Modules.Content.AddEntityState(typeof(BoomerangStart));
+            Modules.Content.AddEntityState(typeof(BoomerangHold));
+            Modules.Content.AddEntityState(typeof(BoomerangThrow));
         }
     }
 }
