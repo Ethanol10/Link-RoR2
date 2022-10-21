@@ -59,13 +59,17 @@ namespace LinkMod.Modules
             Modules.Content.AddEntityState(typeof(HylianShieldExit));
 
             //Rune Bomb
-            Modules.Content.AddEntityState(typeof(RuneBombExplode));
+            Modules.Content.AddEntityState(typeof(RuneBombDetonate));
             Modules.Content.AddEntityState(typeof(RuneBombSpawn));
+            Modules.Content.AddEntityState(typeof(RuneBombStartHold));
+            Modules.Content.AddEntityState(typeof(RuneBombHold));
             Modules.Content.AddEntityState(typeof(RuneBombThrow));
 
             //Standard Bomb
             Modules.Content.AddEntityState(typeof(StandardBombSpawn));
             Modules.Content.AddEntityState(typeof(StandardBombThrow));
+            Modules.Content.AddEntityState(typeof(StandardBombStartHold));
+            Modules.Content.AddEntityState(typeof(StandardBombHold));
 
             //Bow And Arrow
             Modules.Content.AddEntityState(typeof(DrawBow));

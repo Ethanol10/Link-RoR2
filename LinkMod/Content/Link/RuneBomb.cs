@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using EntityStates;
+using RoR2.CharacterAI;
 using LinkMod.Modules;
 using LinkMod.Modules.Characters;
 using R2API;
@@ -170,17 +171,13 @@ namespace LinkMod.Content.Link
             this.characterBodyModel.temporaryOverlays = new List<TemporaryOverlay>();
 
             Modules.Prefabs.SetupCustomRendererInfos(this.characterBodyModel, customRendererInfos);
+            runeBomb.AddComponent<RuneBombController>();
 
             Modules.Content.AddCharacterBodyPrefab(runeBomb);
         }
 
         internal override void InitializeCharacterMaster() 
         {
-            CharacterBody body = this.bodyPrefab.GetComponent<CharacterBody>();
-            if (body) 
-            {
-                CharacterMaster master = body.master;
-            }
         }
 
         public override void InitializeItemDisplays() 

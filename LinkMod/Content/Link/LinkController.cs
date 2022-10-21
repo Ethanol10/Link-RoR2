@@ -21,6 +21,8 @@ namespace LinkMod.Content.Link
         internal Transform swordSheathed;
         internal Transform shieldUnsheathed;
         internal Transform swordUnsheathed;
+        internal Transform runeBombLocation;
+        internal Transform runeBombFakeLocation;
 
         //Bomb Types
         internal enum BombState 
@@ -33,7 +35,9 @@ namespace LinkMod.Content.Link
         internal enum BombTypeInHand : uint 
         {
             RUNE, 
-            NORMAL
+            NORMAL, 
+            SUPER,
+            BOMBCHU
         }
         internal BombTypeInHand bombTypeInHand;
 
@@ -75,6 +79,8 @@ namespace LinkMod.Content.Link
             swordSheathed = childLocator.FindChild("SheathedSwordObj");
             shieldUnsheathed = childLocator.FindChild("ShieldObj");
             swordUnsheathed = childLocator.FindChild("SwordObj");
+            runeBombLocation = childLocator.FindChild("runeBombHand");
+            runeBombFakeLocation = childLocator.FindChild("runeBombTempHand");
 
             if (LinkPlugin.emotesAvailable) 
             {
@@ -154,6 +160,26 @@ namespace LinkMod.Content.Link
             shieldSheathed.gameObject.SetActive(true);
             swordUnsheathed.gameObject.SetActive(true);
             shieldUnsheathed.gameObject.SetActive(false);
+        }
+
+        public void EnableRuneBombInHand() 
+        {
+            runeBombLocation.gameObject.SetActive(true);
+        }
+
+        public void DisableRuneBombInHand()
+        {
+            runeBombLocation.gameObject.SetActive(false);
+        }
+
+        public void EnableFakeRuneBombInHand()
+        {
+            runeBombFakeLocation.gameObject.SetActive(true);
+        }
+
+        public void DisableFakeRuneBombInHand()
+        {
+            runeBombFakeLocation.gameObject.SetActive(false);
         }
 
         public void HandleCustomEmotesAPIAnimationEnd(string newAnim, BoneMapper mapper) 

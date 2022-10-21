@@ -12,8 +12,10 @@ namespace LinkMod.SkillStates.Link.RuneBomb
         internal static float baseDuration = 1.5f;
         internal static float sheatheFraction = 0.1f;
         internal static float unsheatheSwordFraction = 0.68f;
+        internal static float bombSpawnFraction = 0.21f;
         internal bool sheathe;
         internal bool unsheatheSword;
+        internal bool bombEnabled;
 
         internal float duration;
         internal Animator animator;
@@ -28,32 +30,51 @@ namespace LinkMod.SkillStates.Link.RuneBomb
             linkController = base.gameObject.GetComponent<LinkController>();
 
             base.PlayAnimation("UpperBody, Override", "DeployBomb", "Swing.playbackRate", duration);
-            linkController.runeBombState = LinkController.RuneBombState.INHAND;
+            linkController.bombState = LinkController.BombState.INHAND;
+            linkController.bombTypeInHand = LinkController.BombTypeInHand.RUNE;
             sheathe = false;
             unsheatheSword = false;
+            bombEnabled = false;
 
+            linkController.DisableRuneBombInHand();
+            linkController.DisableFakeRuneBombInHand();
             // Set all skills regarding hylian shield to throw.
             // Set all skills regarding spawning a bomb to throw.
         }
 
         public override void OnExit()
         {
+            base.PlayAnimation("UpperBody, Override", "BufferEmpty");
             base.OnExit();
+            linkController.bombState = LinkController.BombState.INHAND;
+            linkController.bombTypeInHand = LinkController.BombTypeInHand.RUNE;
+            linkController.DisableFakeRuneBombInHand();
+            linkController.EnableRuneBombInHand();
+            linkController.SetSwordOnlyUnsheathed();
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (base.fixedAge >= duration * sheatheFraction && !sheathe) 
+            if (base.fixedAge >= duration * sheatheFraction && !sheathe)
             {
                 linkController.SetSheathed();
+                sheathe = true;
+            }
+            if (base.fixedAge >= duration * bombSpawnFraction && bombEnabled) 
+            {
+                bombEnabled = true;
+                linkController.EnableFakeRuneBombInHand();
             }
             if (base.fixedAge >= duration * unsheatheSwordFraction && !unsheatheSword) 
             {
                 linkController.SetSwordOnlyUnsheathed();
+                unsheatheSword = true;
             }
             if (base.fixedAge >= duration) 
             {
+                linkController.DisableFakeRuneBombInHand();
+                linkController.EnableRuneBombInHand();
                 this.outer.SetNextStateToMain();
             }
         }

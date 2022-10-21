@@ -582,7 +582,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 09cd58a8f7a46ec488e80995d5d00507, type: 2}
   m_Tag: 
-  m_SpeedParameter: forwardSpeed
+  m_SpeedParameter: Swing.playbackRate
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -5072,13 +5072,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5f4e7bc8b42ac51459bb29486d712538, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: Swing.playbackRate
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -5380,7 +5380,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5410e8d30f529f84dbe9bf9584b7288b, type: 2}
   m_Tag: 
-  m_SpeedParameter: forwardSpeed
+  m_SpeedParameter: Swing.playbackRate
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -5862,7 +5862,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 5f4e7bc8b42ac51459bb29486d712538, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: forwardSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -6015,13 +6015,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 047172f2ba3cdd1418dfe63b3cdd8a2e, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: Swing.playbackRate
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 

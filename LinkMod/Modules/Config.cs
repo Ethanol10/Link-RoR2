@@ -11,6 +11,7 @@ namespace LinkMod.Modules
         public static ConfigEntry<float> glideSpeed;
         public static ConfigEntry<float> glideAcceleration;
         public static ConfigEntry<float> bombRecieveForce;
+        public static ConfigEntry<float> runeBombSelfDestructTimer;
 
         public static void ReadConfig()
         {
@@ -37,6 +38,15 @@ namespace LinkMod.Modules
                 new ConfigDefinition("02 - Bomb", "Force recieved and applied to bomb"),
                 20f,
                 new ConfigDescription("Determines how much force should be multiplied on the bomb when hit.",
+                    null,
+                    Array.Empty<object>()
+                )
+            );
+            runeBombSelfDestructTimer = LinkPlugin.instance.Config.Bind<float>
+            (
+                new ConfigDefinition("02 - Bomb", "Time before bomb self destructs"),
+                60f,
+                new ConfigDescription("Determines when the rune bomb should explode when not detonated manually",
                     null,
                     Array.Empty<object>()
                 )
@@ -75,6 +85,17 @@ namespace LinkMod.Modules
                         increment = 1f
                     }
                 ));
+            ModSettingsManager.AddOption(
+                new StepSliderOption(
+                        runeBombSelfDestructTimer,
+                        new StepSliderConfig 
+                        {
+                            min = 10f,
+                            max = 1000000f,
+                            increment = 10f
+                        }
+                    )
+                );
         }
 
         // this helper automatically makes config entries for disabling survivors

@@ -40,11 +40,13 @@ namespace LinkMod
         public const string MODNAME = "LoZ-LinkMod";
         public const string MODVERSION = "0.0.1";
 
-        // a prefix for name tokens to prevent conflicts- please                     capitalize all name tokens for convention
+        // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string DEVELOPER_PREFIX = "POPCORN";
 
         public static LinkPlugin instance;
         public static bool emotesAvailable = false;
+
+        public static Dictionary<string, CharacterMaster> summonCharacterMaster = new Dictionary<string, CharacterMaster>();
 
         private void Awake()
         {
@@ -171,7 +173,7 @@ namespace LinkMod
                         if (self.body.baseNameToken == DEVELOPER_PREFIX + "_RUNE_BOMB_BODY_NAME") 
                         {
                             damageInfo.rejected = false;
-                            damageInfo.force = (self.transform.position - damageInfo.attacker.transform.position).normalized * Modules.Config.bombRecieveForce.Value;
+                            damageInfo.force = ((self.transform.position - damageInfo.attacker.transform.position) + Vector3.up).normalized * Modules.Config.bombRecieveForce.Value;
                             
                         }
                     }

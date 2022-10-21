@@ -7,6 +7,7 @@ using LinkMod.SkillStates.Link;
 using LinkMod.SkillStates.Link.HylianShield;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
+using LinkMod.SkillStates.Link.RuneBomb;
 using LinkMod.SkillStates.Link.SwapLoadout;
 using RoR2;
 using RoR2.Skills;
@@ -103,6 +104,11 @@ namespace LinkMod.Content.Link
         public static SkillDef rollSkillDef;
         //SpinAttack SkillDef
         public static SkillDef spinAttackSkillDef;
+
+        //Rune Bomb
+        public static SkillDef runeBombSpawn;
+        public static SkillDef runeBombHold;
+        public static SkillDef runeBombDetonate;
 
         //Extra skill swaps
         public static SkillDef swordLoadoutSkillDef;
@@ -297,7 +303,7 @@ namespace LinkMod.Content.Link
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SwapSwordLoadout)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = 0.5f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -305,7 +311,7 @@ namespace LinkMod.Content.Link
                 interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
-                mustKeyPress = false,
+                mustKeyPress = true,
                 cancelSprintingOnActivation = true,
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -323,7 +329,7 @@ namespace LinkMod.Content.Link
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SwapArrowLoadout)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = 0.5f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -349,7 +355,7 @@ namespace LinkMod.Content.Link
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SwapBombLoadout)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = 0.5f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -375,7 +381,7 @@ namespace LinkMod.Content.Link
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SwapMiscellaneousLoadout)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = 0.5f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -391,6 +397,81 @@ namespace LinkMod.Content.Link
                 keywordTokens = new string[] { "" }
             });
             Skills.AddExtraSkillSlotSpecial(bodyPrefab, miscellaneousLoadoutSkillDef);
+            #endregion
+
+            #region Rune Bomb
+            runeBombSpawn = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_RUNE_BOMB_SPAWN_NAME",
+                skillNameToken = prefix + "_LINK_BODY_RUNE_BOMB_SPAWN_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_RUNE_BOMB_SPAWN_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("runeBombSpawn"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(RuneBombSpawn)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "" }
+            });
+            runeBombHold = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_RUNE_BOMB_HOLD_NAME",
+                skillNameToken = prefix + "_LINK_BODY_RUNE_BOMB_HOLD_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_RUNE_BOMB_HOLD_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("runeBombThrow"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(RuneBombStartHold)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "" }
+            });
+            runeBombDetonate = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_RUNE_BOMB_DETONATE_NAME",
+                skillNameToken = prefix + "_LINK_BODY_RUNE_BOMB_DETONATE_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_RUNE_BOMB_DETONATE_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("runeBombThrow"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(RuneBombDetonate)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = true,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "" }
+            });
             #endregion
         }
 
