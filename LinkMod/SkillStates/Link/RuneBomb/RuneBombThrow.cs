@@ -53,7 +53,10 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                 wasGrounded = false;
             }
 
-            force = Mathf.Max(0.2f, totalDuration / Modules.Config.bombTimerToMaxCharge.Value);
+            force = Mathf.Max(0.5f, Mathf.Clamp(totalDuration / Modules.Config.bombTimerToMaxCharge.Value, 0f, 1.0f));
+
+            characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
+            characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombDetonate, RoR2.GenericSkill.SkillOverridePriority.Contextual);
         }
 
         public override void OnExit()
@@ -79,7 +82,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                 //Fire using network request
                 if (base.isAuthority) 
                 {
-                    new RuneBombSpawnNetworkRequest(characterBody.masterObjectId, throwPosition.position, GetAimRay().direction, force * Modules.Config.bombMaxThrowPower.Value).Send(R2API.Networking.NetworkDestination.Clients);
+                    new RuneBombSpawnNetworkRequest(characterBody.masterObjectId, GetAimRay().origin, GetAimRay().direction, force * Modules.Config.bombMaxThrowPower.Value).Send(R2API.Networking.NetworkDestination.Clients);
                 }
             }
             if(base.fixedAge >= duration * shieldTakeOutFraction && !shieldTaken) 

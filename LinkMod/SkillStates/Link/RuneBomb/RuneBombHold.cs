@@ -25,7 +25,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
 
             //Don't scale by attackSpeed
             duration = baseDuration;
-            animator.SetFloat("Swing.playbackRate", 1.0f);
+            animator.SetFloat("Swing.playbackRate", 1f);
 
             base.PlayAnimation("UpperBody, Override", "ItemThrowHold", "Swing.playbackRate", duration);
         }
@@ -33,7 +33,6 @@ namespace LinkMod.SkillStates.Link.RuneBomb
         public override void OnExit()
         {
             base.OnExit();
-            base.PlayAnimation("UpperBody, Override", "BufferEmpty");
             linkController.isCharged = false;
             linkController.isCharging = false;
         }
@@ -54,7 +53,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
             }
             if (base.isAuthority) 
             {
-                if (!base.IsKeyDownAuthority())
+                if (!inputBank.skill1.down)
                 {
                     totalDuration += duration;
                     base.outer.SetState(
@@ -68,7 +67,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                 if (base.fixedAge >= duration) 
                 {
                     //check if still holding skill down.
-                    if (base.IsKeyDownAuthority()) 
+                    if (inputBank.skill1.down) 
                     {
                         totalDuration += duration;
                         base.outer.SetNextState(

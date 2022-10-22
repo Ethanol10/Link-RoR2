@@ -39,16 +39,14 @@ namespace LinkMod.Modules.Networking.Miscellaneous
             playerObj = Util.FindNetworkObject(netID);
             playerMaster = playerObj.GetComponent<CharacterMaster>();
             body = playerMaster.GetBody();
-
+            
             //Master Summon.
             if (NetworkServer.active) 
             {
+                Explode();
                 DestroyOldBomb(netID);
             }
-            if (body.hasEffectiveAuthority) 
-            {
-                Explode();
-            }
+
         }
 
         public void Explode()

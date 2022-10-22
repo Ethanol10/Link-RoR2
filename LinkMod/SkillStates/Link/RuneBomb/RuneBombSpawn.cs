@@ -38,8 +38,13 @@ namespace LinkMod.SkillStates.Link.RuneBomb
 
             linkController.DisableRuneBombInHand();
             linkController.DisableFakeRuneBombInHand();
+
+            //assume we're in bomb loadout.
             // Set all skills regarding hylian shield to throw.
             // Set all skills regarding spawning a bomb to throw.
+
+            characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombSpawn, RoR2.GenericSkill.SkillOverridePriority.Contextual);
+            characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
         }
 
         public override void OnExit()
@@ -61,7 +66,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                 linkController.SetSheathed();
                 sheathe = true;
             }
-            if (base.fixedAge >= duration * bombSpawnFraction && bombEnabled) 
+            if (base.fixedAge >= duration * bombSpawnFraction && !bombEnabled) 
             {
                 bombEnabled = true;
                 linkController.EnableFakeRuneBombInHand();

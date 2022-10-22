@@ -64,6 +64,7 @@ namespace LinkMod.Modules
             Modules.Content.AddEntityState(typeof(RuneBombStartHold));
             Modules.Content.AddEntityState(typeof(RuneBombHold));
             Modules.Content.AddEntityState(typeof(RuneBombThrow));
+            Modules.Content.AddEntityState(typeof(RuneBombDeathState));
 
             //Standard Bomb
             Modules.Content.AddEntityState(typeof(StandardBombSpawn));

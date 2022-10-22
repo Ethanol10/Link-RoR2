@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using EmotesAPI;
 using RoR2;
+using static LinkMod.Content.Link.LinkController;
 
 namespace LinkMod.Content.Link
 {
@@ -26,6 +27,19 @@ namespace LinkMod.Content.Link
         internal Transform runeBombLocation;
         internal Transform runeBombFakeLocation;
         internal Transform bombThrowPosition;
+
+        //Loadout stuff
+        internal enum SelectedLoadout : uint
+        {
+            SWORD = 1,
+            ARROW = 2,
+            BOMB = 3,
+            MISC = 4
+        }
+        internal SelectedLoadout selectedLoadout;
+
+        internal List<List<float>> cooldown;
+        internal List<List<int>> stock;
 
         //Bomb Types
         internal enum BombState 
@@ -96,10 +110,38 @@ namespace LinkMod.Content.Link
             arrowFireType = ArrowFireType.SINGLE;
             arrowTypeEquipped = ArrowTypeEquipped.NORMAL;
             goddessSpellSelected = GoddessSpellSelected.DIN;
+            selectedLoadout = SelectedLoadout.SWORD;
 
             //Charging Variables
             isCharging = false;
             isCharged = false;
+
+            //List of Lists
+            cooldown = new List<List<float>>();
+            for (int i = 0; i < 4; i++) 
+            {
+                cooldown.Add(new List<float>());
+            }
+            foreach (List<float> list in cooldown) 
+            {
+                for (int i = 0; i < 4; i++) 
+                {
+                    list.Add(0.0f);
+                }
+            }
+
+            stock = new List<List<int>>();
+            for (int i = 0; i < 4; i++)
+            {
+                stock.Add(new List<int>());
+            }
+            foreach (List<int> list in stock)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    list.Add(1);
+                }
+            }
         }
 
         public void Hook() 

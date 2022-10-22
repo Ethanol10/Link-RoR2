@@ -89,7 +89,7 @@ namespace LinkMod.Modules
             bombMaxThrowPower = LinkPlugin.instance.Config.Bind<float>
             (
                 new ConfigDefinition("02 - Bomb", "Max force applied to bomb when throw is fully charged"),
-                30f,
+                400f,
                 new ConfigDescription("Determines how powerful your throw is when the throw is fully charged",
                     null,
                     Array.Empty<object>()

@@ -101,6 +101,10 @@ namespace LinkMod
 
             //Hylian Shield
             NetworkingAPI.RegisterMessageType<ServerForceDownstabRecoveryNetworkRequest>();
+
+            //Rune Bomb
+            NetworkingAPI.RegisterMessageType<RuneBombSpawnNetworkRequest>();
+            NetworkingAPI.RegisterMessageType<RuneBombDestroyNetworkRequest>();
         }
 
         private void SurvivorCatalog_Init(On.RoR2.SurvivorCatalog.orig_Init orig)
@@ -173,9 +177,9 @@ namespace LinkMod
 
                         if (self.body.baseNameToken == DEVELOPER_PREFIX + "_RUNE_BOMB_BODY_NAME") 
                         {
-                            damageInfo.rejected = false;
+                            damageInfo.rejected = true;
                             damageInfo.force = ((self.transform.position - damageInfo.attacker.transform.position) + Vector3.up).normalized * Modules.Config.bombRecieveForce.Value;
-                            
+                            damageInfo.canRejectForce = false;
                         }
                     }
                 }
@@ -238,12 +242,15 @@ namespace LinkMod
                 if (self.body)
                 {
                     LinkController linkController = self.body.GetComponent<LinkController>();
-                    this.LiterallyGarbageOverlayFunction(Modules.Assets.chargingOverlay,
+                    if (linkController) 
+                    {
+                        this.LiterallyGarbageOverlayFunction(Modules.Assets.chargingOverlay,
                                                             linkController.isCharging,
                                                             self);
-                    this.LiterallyGarbageOverlayFunction(Modules.Assets.chargedOverlay,
-                                                            linkController.isCharged,
-                                                            self);
+                        this.LiterallyGarbageOverlayFunction(Modules.Assets.chargedOverlay,
+                                                                linkController.isCharged,
+                                                                self);
+                    }
                 }
             }
         }

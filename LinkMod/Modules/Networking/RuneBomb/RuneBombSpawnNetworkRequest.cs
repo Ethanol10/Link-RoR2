@@ -61,7 +61,7 @@ namespace LinkMod.Modules.Networking.Miscellaneous
             CharacterMaster playerMaster = playerObj.GetComponent<CharacterMaster>();
             CharacterBody body = playerMaster.GetBody();
 
-            GameObject masterObj = MasterCatalog.FindMasterPrefab("RuneBombBody");
+            GameObject masterObj = MasterCatalog.FindMasterPrefab("RuneBombMonsterMaster");
             CharacterMaster master;
 
             MasterSummon minionSummon = new MasterSummon();

@@ -10,6 +10,9 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Object = UnityEngine.Object;
+using LinkMod.SkillStates.Link;
+using EntityStates.Scrapper;
+using LinkMod.SkillStates.Link.RuneBomb;
 
 namespace LinkMod.Content.Link
 {
@@ -173,6 +176,8 @@ namespace LinkMod.Content.Link
             Modules.Prefabs.SetupCustomRendererInfos(this.characterBodyModel, customRendererInfos);
             runeBomb.AddComponent<RuneBombController>();
 
+            CharacterDeathBehavior deathBehavior = runeBomb.GetComponent<CharacterDeathBehavior>();
+            deathBehavior.deathState = new SerializableEntityStateType(typeof(RuneBombDeathState));
             Modules.Content.AddCharacterBodyPrefab(runeBomb);
         }
 

@@ -24,7 +24,6 @@ namespace LinkMod.SkillStates.Link.RuneBomb
 
             animator.SetFloat("Swing.playbackRate", base.attackSpeedStat);
             base.PlayAnimation("UpperBody, Override", "ItemStartThrow", "Swing.playbackRate", duration);
-
         }
 
         public override void OnExit()
