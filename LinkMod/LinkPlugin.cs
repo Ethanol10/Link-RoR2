@@ -164,6 +164,8 @@ namespace LinkMod
                                     {
                                         new ServerForceShieldBlockSuccessAnimNetworkRequest(linkBody.masterObjectId).Send(NetworkDestination.Clients);
                                         damageInfo.rejected = true;
+                                        damageInfo.canRejectForce = false;
+                                        damageInfo.force = damageInfo.force * 2f;
                                         EffectData effectData = new EffectData
                                         {
                                             origin = damageInfo.position,
