@@ -2,6 +2,7 @@
 using RoR2.CharacterAI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using UnityEngine;
 
@@ -25,7 +26,11 @@ namespace LinkMod.Content.Link
             body = gameObject.GetComponent<CharacterBody>();
             master = body.master;
             master.teamIndex = TeamIndex.Neutral;
-            Destroy(master.GetComponent<BaseAI>());
+
+            foreach (BaseAI obj in master.aiComponents)
+            {
+                UnityEngine.Object.Destroy(obj);
+            }
 
         }
 

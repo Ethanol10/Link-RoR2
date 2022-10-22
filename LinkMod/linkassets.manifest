@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3524647441
+CRC: 3316690633
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 47be6c06fcc2e23795d32be6b1414599
+    Hash: 9ac2f4c2e8605efbc5e0200844f7ba9b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 64d91baccf1afa11f48fa4efe31ed13c
@@ -156,6 +156,8 @@ Assets:
 - Assets/LinkAssets/Meshes/U.mesh
 - Assets/LinkAssets/Materials/ParasailMaterial.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttackHold.anim
+- Assets/LinkAssets/Materials/FullyChargedOverlay.mat
+- Assets/LinkAssets/Materials/ChargingOverlay.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim.anim
 - Assets/LinkAssets/Meshes/defaultBodyMesh.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockHold.anim

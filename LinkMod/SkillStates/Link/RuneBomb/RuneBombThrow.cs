@@ -1,9 +1,12 @@
 ﻿using EntityStates;
 using LinkMod.Content.Link;
+using LinkMod.Modules.Networking.Miscellaneous;
+using R2API.Networking.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace LinkMod.SkillStates.Link.RuneBomb
 {
@@ -21,7 +24,10 @@ namespace LinkMod.SkillStates.Link.RuneBomb
         internal float duration;
         internal float totalDuration;
         internal bool wasGrounded;
-        
+
+        internal Transform throwPosition;
+
+        internal float force;
 
         public override void OnEnter() 
         {
@@ -31,6 +37,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
             animator.SetFloat("Swing.playbackRate", base.attackSpeedStat);
             linkController = base.gameObject.GetComponent<LinkController>();
             linkController.bombState = LinkController.BombState.THROWN;
+            throwPosition = linkController.bombThrowPosition;
 
             bombThrown = false;
             shieldTaken = false;
@@ -45,7 +52,8 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                 base.PlayAnimation("FullBody, Override", "AirItemThrow", "Swing.playbackRate", duration);
                 wasGrounded = false;
             }
-            
+
+            force = Mathf.Max(0.2f, totalDuration / Modules.Config.bombTimerToMaxCharge.Value);
         }
 
         public override void OnExit()
@@ -69,6 +77,10 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                 linkController.DisableRuneBombInHand();
                 bombThrown = true;
                 //Fire using network request
+                if (base.isAuthority) 
+                {
+                    new RuneBombSpawnNetworkRequest(characterBody.masterObjectId, throwPosition.position, GetAimRay().direction, force * Modules.Config.bombMaxThrowPower.Value).Send(R2API.Networking.NetworkDestination.Clients);
+                }
             }
             if(base.fixedAge >= duration * shieldTakeOutFraction && !shieldTaken) 
             {
@@ -84,6 +96,18 @@ namespace LinkMod.SkillStates.Link.RuneBomb
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Frozen;
+        }
+
+        public override void OnSerialize(NetworkWriter writer)
+        {
+            base.OnSerialize(writer);
+            writer.Write(this.totalDuration);
+        }
+
+        public override void OnDeserialize(NetworkReader reader)
+        {
+            base.OnDeserialize(reader);
+            this.totalDuration = reader.ReadSingle();
         }
     }
 }

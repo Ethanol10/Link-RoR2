@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using LinkMod.Content.Link;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,6 +13,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordSpinAttack
         internal static float baseDuration = 1.5f;
         internal float duration;
         internal float totalDuration;
+        internal LinkController linkController;
 
         public override void OnEnter()
         {
@@ -19,6 +21,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordSpinAttack
             base.GetModelAnimator().SetFloat("Swing.playbackRate", 1.0f);
             base.PlayAnimation("FullBody, Override", "GroundedSpinAttackHold", "Swing.playbackRate", baseDuration);
 
+            linkController = gameObject.GetComponent<LinkController>();
             if (NetworkServer.active)
             {
                 base.characterBody.SetBuffCount(Modules.Buffs.SpinAttackSlowDebuff.buffIndex, 1);
@@ -34,6 +37,16 @@ namespace LinkMod.SkillStates.Link.MasterSwordSpinAttack
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (totalDuration <= Modules.Config.multiplierSpinAttack.Value) 
+            {
+                linkController.isCharged = false;
+                linkController.isCharging = true;
+            }
+            if (totalDuration >= Modules.Config.multiplierSpinAttack.Value)
+            {
+                linkController.isCharged = true;
+                linkController.isCharging = false;
+            }
             if (base.isAuthority) 
             {
                 

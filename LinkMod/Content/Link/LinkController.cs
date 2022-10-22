@@ -15,6 +15,8 @@ namespace LinkMod.Content.Link
         internal ChildLocator childLocator;
         internal Animator parasailAnimator;
         internal bool isShielding;
+        internal bool isCharging;
+        internal bool isCharged;
 
         //Sword and shield objects
         internal Transform shieldSheathed;
@@ -23,6 +25,7 @@ namespace LinkMod.Content.Link
         internal Transform swordUnsheathed;
         internal Transform runeBombLocation;
         internal Transform runeBombFakeLocation;
+        internal Transform bombThrowPosition;
 
         //Bomb Types
         internal enum BombState 
@@ -81,6 +84,7 @@ namespace LinkMod.Content.Link
             swordUnsheathed = childLocator.FindChild("SwordObj");
             runeBombLocation = childLocator.FindChild("runeBombHand");
             runeBombFakeLocation = childLocator.FindChild("runeBombTempHand");
+            bombThrowPosition = childLocator.FindChild("ThrowPosition");
 
             if (LinkPlugin.emotesAvailable) 
             {
@@ -92,6 +96,10 @@ namespace LinkMod.Content.Link
             arrowFireType = ArrowFireType.SINGLE;
             arrowTypeEquipped = ArrowTypeEquipped.NORMAL;
             goddessSpellSelected = GoddessSpellSelected.DIN;
+
+            //Charging Variables
+            isCharging = false;
+            isCharged = false;
         }
 
         public void Hook() 

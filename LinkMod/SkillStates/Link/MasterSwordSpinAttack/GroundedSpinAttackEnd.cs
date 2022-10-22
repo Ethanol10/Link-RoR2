@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using LinkMod.Content.Link;
 using RoR2;
 using System;
 using System.Collections;
@@ -28,6 +29,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordSpinAttack
         internal float endBlasting = 0.4f;
         internal float MajorBlast = 0.50f;
         internal bool hasFired;
+        internal LinkController linkController;
 
         //Hitstop stuff
         internal HitStopCachedState hitstopCache;
@@ -51,6 +53,10 @@ namespace LinkMod.SkillStates.Link.MasterSwordSpinAttack
             maxNoOfBlasts = (int)Modules.StaticValues.spinAttackBaseMinorHit * (base.attackSpeedStat >= 1 ? (int)base.attackSpeedStat : 1);
             lengthBetweenTicks = (float)((duration * endBlasting) / maxNoOfBlasts);
             animator = base.GetModelAnimator();
+
+            linkController = base.gameObject.GetComponent<LinkController>();
+            linkController.isCharging = false;
+            linkController.isCharged = false;
 
             animator.SetFloat("Swing.playbackRate", 1.0f);
             inHitStop = false;
@@ -198,6 +204,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordSpinAttack
                 inflictor = base.gameObject,
                 teamIndex = base.GetTeam(),
                 baseDamage = Modules.StaticValues.spinAttackMinorBlastDamageCoefficient * base.damageStat * boostedDamage,
+                falloffModel = BlastAttack.FalloffModel.None,
                 procCoefficient = 1.0f,
                 baseForce = -1000f,
                 radius = Modules.StaticValues.spinAttackMinorRadius,
@@ -212,6 +219,7 @@ namespace LinkMod.SkillStates.Link.MasterSwordSpinAttack
                 teamIndex = base.GetTeam(),
                 baseDamage = Modules.StaticValues.spinAttackMajorBlastDamageCoefficientBase * base.damageStat * boostedDamage,
                 procCoefficient = 1.0f,
+                falloffModel = BlastAttack.FalloffModel.None,
                 baseForce = 1000f,
                 radius = Modules.StaticValues.spinAttackMajorRadius,
                 crit = base.RollCrit()

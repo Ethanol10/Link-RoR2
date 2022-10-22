@@ -39,5 +39,10 @@
         internal const float hylianShieldArmor = 30f;
         internal const float jumpPowerReduced = 0.7f;
         internal const int maxJumpCount = 1;
+
+        //Rune Bomb
+        internal const float runeBombBlastDamageCoefficient = 3f;
+        internal const float runeBombBlastForce = 3000f;
+        internal const float runeBombRadius = 30f;
     }
 }

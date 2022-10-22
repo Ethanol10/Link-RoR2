@@ -82,6 +82,7 @@ namespace LinkMod
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.CharacterModel.Start += CharacterModel_Start;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            On.RoR2.CharacterModel.UpdateOverlays += CharacterModel_UpdateOverlays;
 
             if (Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI"))
             {
@@ -215,8 +216,8 @@ namespace LinkMod
             {
                 if (self.HasBuff(Modules.Buffs.SpinAttackSlowDebuff)) 
                 {
-                    self.moveSpeed *= Modules.StaticValues.spinAttackMoveSpeedReduction;
-                    self.armor += Modules.StaticValues.spinAttackArmourIncrease;
+                    self.moveSpeed *= Modules.Config.moveSpeedPenaltySpinAttack.Value;
+                    self.armor += Modules.Config.armorSpinAttack.Value;
                 }
                 if (self.HasBuff(Modules.Buffs.HylianShieldBuff)) 
                 {
@@ -225,6 +226,40 @@ namespace LinkMod
                     self.jumpPower *= Modules.StaticValues.jumpPowerReduced;
                     self.maxJumpCount = Modules.StaticValues.maxJumpCount;
                 }
+            }
+        }
+
+        private void CharacterModel_UpdateOverlays(On.RoR2.CharacterModel.orig_UpdateOverlays orig, CharacterModel self)
+        {
+            orig(self);
+
+            if (self)
+            {
+                if (self.body)
+                {
+                    LinkController linkController = self.body.GetComponent<LinkController>();
+                    this.LiterallyGarbageOverlayFunction(Modules.Assets.chargingOverlay,
+                                                            linkController.isCharging,
+                                                            self);
+                    this.LiterallyGarbageOverlayFunction(Modules.Assets.chargedOverlay,
+                                                            linkController.isCharged,
+                                                            self);
+                }
+            }
+        }
+
+        private void LiterallyGarbageOverlayFunction(Material overlayMaterial, bool condition, CharacterModel model)
+        {
+            if (model.activeOverlayCount >= CharacterModel.maxOverlays)
+            {
+                return;
+            }
+            if (condition)
+            {
+                Material[] array = model.currentOverlays;
+                int num = model.activeOverlayCount;
+                model.activeOverlayCount = num + 1;
+                array[num] = overlayMaterial;
             }
         }
     }

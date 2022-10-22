@@ -33,11 +33,25 @@ namespace LinkMod.SkillStates.Link.RuneBomb
         public override void OnExit()
         {
             base.OnExit();
+            base.PlayAnimation("UpperBody, Override", "BufferEmpty");
+            linkController.isCharged = false;
+            linkController.isCharging = false;
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            if (totalDuration <= Modules.Config.bombTimerToMaxCharge.Value) 
+            {
+                linkController.isCharged = false;
+                linkController.isCharging = true;
+            }
+            if (totalDuration >= Modules.Config.bombTimerToMaxCharge.Value) 
+            {
+                linkController.isCharging = false;
+                linkController.isCharged = true;
+            }
             if (base.isAuthority) 
             {
                 if (!base.IsKeyDownAuthority())

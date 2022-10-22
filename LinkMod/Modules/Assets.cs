@@ -25,6 +25,10 @@ namespace LinkMod.Modules
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
 
+        //Overlays
+        internal static Material chargingOverlay;
+        internal static Material chargedOverlay;
+
         // cache these and use to create our own materials
         internal static Shader hotpoo = RoR2.LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/HGStandard");
         internal static Material commandoMat;
@@ -120,6 +124,9 @@ namespace LinkMod.Modules
             runeBomb.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = runeBombMaterial;
             runeBomb.transform.GetChild(2).GetComponent<SkinnedMeshRenderer>().material = runeBombMaterial;
 
+            //Material for overlay
+            chargingOverlay = mainAssetBundle.LoadAsset<Material>("ChargingOverlay");
+            chargedOverlay = mainAssetBundle.LoadAsset<Material>("FullyChargedOverlay");
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
