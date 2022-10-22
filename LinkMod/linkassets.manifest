@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4012451855
+CRC: 4286827877
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: de66b03e67095ca5f76c79159c9f2f9b
+    Hash: 455939314aef066b72e58c1749c5f41c
   TypeTreeHash:
     serializedVersion: 2
     Hash: 64d91baccf1afa11f48fa4efe31ed13c
@@ -82,6 +82,7 @@ Assets:
 - Assets/LinkAssets/Textures/StandardSwordandShield.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailPermanentClose.anim
 - Assets/LinkAssets/Materials/indicatorThrow.mat
+- Assets/LinkAssets/Lights/PointLight.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunStrafeBackwards.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim2.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedItemThrow.anim
@@ -90,6 +91,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabEndAerial.anim
 - Assets/LinkAssets/Textures/metal_linkbomb_001_emi.png
 - Assets/LinkAssets/Prefabs/ThrowTrajectory.prefab
+- Assets/LinkAssets/Animations/BombStuff/bombHide.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/SpinAttackAir.anim
 - Assets/LinkAssets/Animations/LinkHumanoid.asset
 - Assets/LinkAssets/Animations/LinkBodyAnims/ItemStart.anim
@@ -113,6 +115,7 @@ Assets:
 - Assets/LinkAssets/Meshes/shieldMesh.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/DeployBomb.anim
 - Assets/LinkAssets/Textures/metal_linkbomb_001_col.png
+- Assets/LinkAssets/Prefabs/RuneBombExplosion.prefab
 - Assets/LinkAssets/Materials/RuneBombMaterial.mat
 - Assets/LinkAssets/Animations/AvatarMasks/slightTransformAvatar.mask
 - Assets/LinkAssets/Animations/LinkBodyAnims/Run.anim
@@ -133,6 +136,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/TriggerRuneBomb.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockEnd.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing2.anim
+- Assets/LinkAssets/Animations/BombStuff/bombExpansion.anim
 - Assets/LinkAssets/Textures/Link1BodyTex.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing3.anim
 - Assets/LinkAssets/Materials/FullyChargedMat.mat
@@ -143,6 +147,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/Dash.anim
 - Assets/LinkAssets/Shaders/Panner.shader
 - Assets/LinkAssets/Materials/SwordBeam.mat
+- Assets/LinkAssets/Prefabs/particle/RuneBombExplosion.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle2.anim
 - Assets/LinkAssets/Textures/def_parasail_001_col.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabHold.anim
@@ -152,6 +157,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/Sprint.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/HeavyLanding.anim
 - Assets/LinkAssets/Meshes/swordMesh.mesh
+- Assets/LinkAssets/Animations/BombStuff/RuneBombAnimator.controller
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedDashAttack.anim
 - Assets/LinkAssets/Meshes/U.mesh
 - Assets/LinkAssets/Materials/ParasailMaterial.mat

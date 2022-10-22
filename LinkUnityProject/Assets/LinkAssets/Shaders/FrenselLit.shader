@@ -1,10 +1,11 @@
-﻿Shader "Custom/Frensel2"
+﻿Shader "Custom/FresnelLit"
 {
     Properties
     {
+        _MainTex ("Texture", 2D) = "white" {}
         _Color("Color", Color) = (1,1,1,1)
         _FresnelColor ("Fresnel Color", Color) = (1,1,1,1)
-        _FresnelExponent ("Fresnel Exponent", Range(0, 4)) = 1
+        _FresnelExponent ("Fresnel Exponent", Range(0, 10)) = 1
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
