@@ -45,6 +45,8 @@ namespace LinkMod.SkillStates.Link.RuneBomb
 
             characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombSpawn, RoR2.GenericSkill.SkillOverridePriority.Contextual);
             characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.ItemHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
+
+            characterBody.skillLocator.secondary.SetSkillOverride(characterBody.skillLocator.secondary, LinkMod.Content.Link.Link.ItemHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
         }
 
         public override void OnExit()

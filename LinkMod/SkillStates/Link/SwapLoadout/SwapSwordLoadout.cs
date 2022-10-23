@@ -34,8 +34,13 @@ namespace LinkMod.SkillStates.Link.SwapLoadout
 
             characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, primarySkillDef, GenericSkill.SkillOverridePriority.Contextual);
             characterBody.skillLocator.secondary.UnsetSkillOverride(characterBody.skillLocator.secondary, secondarySkillDef, GenericSkill.SkillOverridePriority.Contextual);
-            characterBody.skillLocator.utility.UnsetSkillOverride(characterBody.skillLocator.primary, utilitySkillDef, GenericSkill.SkillOverridePriority.Contextual);
-            characterBody.skillLocator.special.UnsetSkillOverride(characterBody.skillLocator.primary, specialSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+            characterBody.skillLocator.utility.UnsetSkillOverride(characterBody.skillLocator.utility, utilitySkillDef, GenericSkill.SkillOverridePriority.Contextual);
+            characterBody.skillLocator.special.UnsetSkillOverride(characterBody.skillLocator.special, specialSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+
+            if (linkController.handState == LinkController.HandState.INHAND) 
+            {
+                characterBody.skillLocator.secondary.SetSkillOverride(characterBody.skillLocator.secondary, LinkMod.Content.Link.Link.ItemHold, GenericSkill.SkillOverridePriority.Contextual);
+            }
             linkController.selectedLoadout = LinkController.SelectedLoadout.SWORD;
             this.outer.SetNextStateToMain();
         }

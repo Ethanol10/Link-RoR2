@@ -55,7 +55,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
             }
             if (base.isAuthority) 
             {
-                if (!inputBank.skill1.down)
+                if (!inputBank.skill1.down && !inputBank.skill2.down)
                 {
                     totalDuration += duration;
 
@@ -71,7 +71,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                 if (base.fixedAge >= duration) 
                 {
                     //check if still holding skill down.
-                    if (inputBank.skill1.down) 
+                    if (inputBank.skill1.down || inputBank.skill2.down) 
                     {
                         totalDuration += duration;
                         base.outer.SetState(

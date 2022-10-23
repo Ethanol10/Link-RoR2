@@ -56,7 +56,7 @@ namespace LinkMod.Content.Link
         {
             if (!isDead) 
             {
-                
+                new RuneBombDestroyNetworkRequest(ownerNetID).Send(R2API.Networking.NetworkDestination.Clients);
             }
         }
     }

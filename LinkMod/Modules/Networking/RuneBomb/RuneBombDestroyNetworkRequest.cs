@@ -71,25 +71,31 @@ namespace LinkMod.Modules.Networking.Miscellaneous
 
         public void Explode()
         {
-            CharacterMaster master = LinkPlugin.summonCharacterMaster[netID.ToString()];
-            CharacterBody bombBody = master.GetBody();
-
-            BlastAttack blastAttack = new BlastAttack
+            if (LinkPlugin.summonCharacterMaster.ContainsKey(netID.ToString())) 
             {
-                attacker = playerObj,
-                baseDamage = Modules.StaticValues.runeBombBlastDamageCoefficient * body.damage,
-                radius = Modules.StaticValues.runeBombRadius,
-                position = bombBody.transform.position,
-                falloffModel = BlastAttack.FalloffModel.None,
-                crit = body.RollCrit(),
-                teamIndex = TeamIndex.Player,
-                damageType = DamageType.Generic,
-                baseForce = Modules.StaticValues.runeBombBlastForce,
-                bonusForce = Vector3.up
-            };
+                CharacterMaster master = LinkPlugin.summonCharacterMaster[netID.ToString()];
+                if (master)
+                {
+                    CharacterBody bombBody = master.GetBody();
 
-            blastAttack.Fire();
-            //Play the effect
+                    BlastAttack blastAttack = new BlastAttack
+                    {
+                        attacker = playerObj,
+                        baseDamage = Modules.StaticValues.runeBombBlastDamageCoefficient * body.damage,
+                        radius = Modules.StaticValues.runeBombRadius,
+                        position = bombBody.transform.position,
+                        falloffModel = BlastAttack.FalloffModel.None,
+                        crit = body.RollCrit(),
+                        teamIndex = TeamIndex.Player,
+                        damageType = DamageType.Generic,
+                        baseForce = Modules.StaticValues.runeBombBlastForce,
+                        bonusForce = Vector3.up
+                    };
+
+                    blastAttack.Fire();
+                }
+                //Play the effect
+            }
         }
 
         //Destroy the clone, using the username as the key.

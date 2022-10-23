@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using RoR2.Skills;
 using LinkMod.Content.Link;
 using LinkMod.Modules.Networking.Miscellaneous;
 using R2API.Networking.Interfaces;
@@ -61,8 +62,13 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
 
                     characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, Content.Link.Link.ItemHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
                     characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, Content.Link.Link.runeBombDetonate, RoR2.GenericSkill.SkillOverridePriority.Contextual);
+
                     break;
             }
+
+            //Unset whatever back to shield.
+            SkillDef secondary = characterBody.skillLocator.secondary.skillDef;
+            characterBody.skillLocator.secondary.UnsetSkillOverride(characterBody.skillLocator.secondary, secondary, RoR2.GenericSkill.SkillOverridePriority.Contextual);
         }
 
         public override void OnExit()
