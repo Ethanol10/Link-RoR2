@@ -43,6 +43,6 @@
         //Rune Bomb
         internal const float runeBombBlastDamageCoefficient = 7f;
         internal const float runeBombBlastForce = 3000f;
-        internal const float runeBombRadius = 8f;
+        internal const float runeBombRadius = 12f;
     }
 }

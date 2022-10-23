@@ -42,21 +42,21 @@ namespace LinkMod.Content.Link
         internal List<List<int>> stock;
 
         //Bomb Types
-        internal enum BombState 
+        internal bool runeBombThrown;
+        internal enum HandState
         {
             NOTSPAWNED,
-            INHAND,
-            THROWN
+            INHAND
         }
-        internal BombState bombState;
-        internal enum BombTypeInHand : uint 
+        internal HandState handState;
+        internal enum ItemInHand : uint 
         {
             RUNE, 
             NORMAL, 
             SUPER,
             BOMBCHU
         }
-        internal BombTypeInHand bombTypeInHand;
+        internal ItemInHand itemInHand;
 
         //Arrow Types
         internal enum ArrowTypeEquipped : uint
@@ -94,7 +94,7 @@ namespace LinkMod.Content.Link
 
             shieldSheathed = childLocator.FindChild("SheathedShieldObj");
             swordSheathed = childLocator.FindChild("SheathedSwordObj");
-            shieldUnsheathed = childLocator.FindChild("ShieldObj");
+            shieldUnsheathed = childLocator.FindChild("ShieldObj"); 
             swordUnsheathed = childLocator.FindChild("SwordObj");
             runeBombLocation = childLocator.FindChild("runeBombHand");
             runeBombFakeLocation = childLocator.FindChild("runeBombTempHand");
@@ -106,11 +106,13 @@ namespace LinkMod.Content.Link
             }
 
             //Setup initial state for skills when they use it.
-            bombState = BombState.NOTSPAWNED;
+            handState = HandState.NOTSPAWNED;
             arrowFireType = ArrowFireType.SINGLE;
             arrowTypeEquipped = ArrowTypeEquipped.NORMAL;
             goddessSpellSelected = GoddessSpellSelected.DIN;
             selectedLoadout = SelectedLoadout.SWORD;
+            itemInHand = ItemInHand.RUNE;
+            runeBombThrown = false;
 
             //Charging Variables
             isCharging = false;

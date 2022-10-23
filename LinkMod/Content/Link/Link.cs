@@ -4,6 +4,7 @@ using LinkMod.Modules;
 using LinkMod.Modules.Characters;
 using LinkMod.Modules.Survivors;
 using LinkMod.SkillStates.Link;
+using LinkMod.SkillStates.Link.GenericItemStates;
 using LinkMod.SkillStates.Link.HylianShield;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
@@ -43,41 +44,44 @@ namespace LinkMod.Content.Link
             jumpCount = 2,
         };
 
+        internal static Material defaultBodyMat = Materials.CreateHopooMaterial("Skin1Material");
+        internal static Material defaultTool = Materials.CreateHopooMaterial("SwordShieldMaterial");
+
         public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[]
         {
                 new CustomRendererInfo
                 {
                     childName = "BodyObj",
-                    material = Materials.CreateHopooMaterial("Skin1Material"),
+                    material = defaultBodyMat,
                 },
                 new CustomRendererInfo
                 {
                     childName = "SwordObj",
-                    material = Materials.CreateHopooMaterial("SwordShieldMaterial"),
+                    material = defaultTool,
                     ignoreOverlays = true
                 },
                 new CustomRendererInfo
                 {
                     childName = "ShieldObj",
-                    material = Materials.CreateHopooMaterial("SwordShieldMaterial"),
+                    material = defaultTool,
                     ignoreOverlays = true
                 },
                 new CustomRendererInfo
                 {
                     childName = "SheatheObj",
-                    material = Materials.CreateHopooMaterial("SwordShieldMaterial"),
+                    material = defaultTool,
                     ignoreOverlays = true
                 },
                 new CustomRendererInfo
                 {
                     childName = "SheathedShieldObj",
-                    material = Materials.CreateHopooMaterial("SwordShieldMaterial"),
+                    material = defaultTool,
                     ignoreOverlays = true
                 },
                 new CustomRendererInfo
                 {
                     childName = "SheathedSwordObj",
-                    material = Materials.CreateHopooMaterial("SwordShieldMaterial"),
+                    material = defaultTool,
                     ignoreOverlays = true
                 }
         };
@@ -107,8 +111,10 @@ namespace LinkMod.Content.Link
 
         //Rune Bomb
         public static SkillDef runeBombSpawn;
-        public static SkillDef runeBombHold;
         public static SkillDef runeBombDetonate;
+
+        //Generic Item skills
+        public static SkillDef ItemHold;
 
         //Extra skill swaps
         public static SkillDef swordLoadoutSkillDef;
@@ -424,13 +430,13 @@ namespace LinkMod.Content.Link
                 stockToConsume = 1,
                 keywordTokens = new string[] { "" }
             });
-            runeBombHold = Skills.CreateSkillDef(new SkillDefInfo
+            ItemHold = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_LINK_BODY_RUNE_BOMB_HOLD_NAME",
-                skillNameToken = prefix + "_LINK_BODY_RUNE_BOMB_HOLD_NAME",
-                skillDescriptionToken = prefix + "_LINK_BODY_RUNE_BOMB_HOLD_DESCRIPTION",
+                skillName = prefix + "_LINK_BODY_ITEM_THROW_NAME",
+                skillNameToken = prefix + "_LINK_BODY_ITEM_THROW_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_ITEM_THROW_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("runeBombThrow"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(RuneBombStartHold)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ItemStartHold)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 1f,

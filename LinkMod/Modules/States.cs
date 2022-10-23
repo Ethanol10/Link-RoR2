@@ -3,6 +3,7 @@ using LinkMod.SkillStates.Link;
 using LinkMod.SkillStates.Link.Boomerang;
 using LinkMod.SkillStates.Link.BowAndArrow;
 using LinkMod.SkillStates.Link.DekuNut;
+using LinkMod.SkillStates.Link.GenericItemStates;
 using LinkMod.SkillStates.Link.GoddessSpells;
 using LinkMod.SkillStates.Link.Hookshot;
 using LinkMod.SkillStates.Link.HylianShield;
@@ -58,18 +59,18 @@ namespace LinkMod.Modules
             Modules.Content.AddEntityState(typeof(HylianShieldStart));
             Modules.Content.AddEntityState(typeof(HylianShieldExit));
 
+            //Generic Item
+            Modules.Content.AddEntityState(typeof(ItemStartHold));
+            Modules.Content.AddEntityState(typeof(ItemThrow));
+
             //Rune Bomb
             Modules.Content.AddEntityState(typeof(RuneBombDetonate));
             Modules.Content.AddEntityState(typeof(RuneBombSpawn));
-            Modules.Content.AddEntityState(typeof(RuneBombStartHold));
             Modules.Content.AddEntityState(typeof(RuneBombHold));
-            Modules.Content.AddEntityState(typeof(RuneBombThrow));
             Modules.Content.AddEntityState(typeof(RuneBombDeathState));
 
             //Standard Bomb
             Modules.Content.AddEntityState(typeof(StandardBombSpawn));
-            Modules.Content.AddEntityState(typeof(StandardBombThrow));
-            Modules.Content.AddEntityState(typeof(StandardBombStartHold));
             Modules.Content.AddEntityState(typeof(StandardBombHold));
 
             //Bow And Arrow

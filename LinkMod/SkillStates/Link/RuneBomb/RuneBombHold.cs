@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using LinkMod.Content.Link;
+using LinkMod.SkillStates.Link.GenericItemStates;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
 {
     internal class RuneBombHold : BaseSkillState
     {
-        internal static float baseDuration = 0.5f;
+        internal static float baseDuration = 1.0f;
 
         internal float duration;
         internal Animator animator;
@@ -27,13 +28,13 @@ namespace LinkMod.SkillStates.Link.RuneBomb
             duration = baseDuration;
             animator.SetFloat("Swing.playbackRate", 1f);
 
-            base.PlayCrossfade("UpperBody, Override", "ItemThrowHold", "Swing.playbackRate", duration, 0.1f);
-            Debug.Log("shoott2");
+            base.PlayAnimation("UpperBody, Override", "ItemThrowHold", "Swing.playbackRate", duration);
         }
 
         public override void OnExit()
         {
             base.OnExit();
+            base.PlayAnimation("UpperBody, Override", "BufferEmpty");
             linkController.isCharged = false;
             linkController.isCharging = false;
         }
@@ -57,8 +58,10 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                 if (!inputBank.skill1.down)
                 {
                     totalDuration += duration;
+
+                    linkController.itemInHand = LinkController.ItemInHand.RUNE;
                     base.outer.SetState(
-                        new RuneBombThrow
+                        new ItemThrow
                         {
                             totalDuration = this.totalDuration
                         }
@@ -82,8 +85,10 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                     else 
                     {
                         totalDuration += duration;
+
+                        linkController.itemInHand = LinkController.ItemInHand.RUNE;
                         base.outer.SetState(
-                            new RuneBombThrow
+                            new ItemThrow
                             {
                                 totalDuration = this.totalDuration
                             }

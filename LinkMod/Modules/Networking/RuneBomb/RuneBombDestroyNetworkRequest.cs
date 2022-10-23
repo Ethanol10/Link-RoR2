@@ -1,6 +1,8 @@
-﻿using LinkMod.SkillStates.Link.HylianShield;
+﻿using LinkMod.Content.Link;
+using LinkMod.SkillStates.Link.HylianShield;
 using R2API.Networking.Interfaces;
 using RoR2;
+using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -46,7 +48,25 @@ namespace LinkMod.Modules.Networking.Miscellaneous
                 Explode();
                 DestroyOldBomb(netID);
             }
+            if (body.hasEffectiveAuthority)
+            {
+                ResetOriginalLinkRuneBombSkill();
+            }
+        }
 
+        public void ResetOriginalLinkRuneBombSkill() 
+        {
+            //Notify the Original link that his bomb is gone. Set back detonate skills to spawn.
+            LinkController linkController = body.GetComponent<LinkController>();
+
+            linkController.runeBombThrown = false;
+
+            if (linkController.selectedLoadout == LinkController.SelectedLoadout.BOMB)
+            {
+                SkillDef primarySkill = body.skillLocator.primary.skillDef;
+                body.skillLocator.primary.UnsetSkillOverride(body.skillLocator.primary, primarySkill, GenericSkill.SkillOverridePriority.Contextual);
+                body.skillLocator.primary.SetSkillOverride(body.skillLocator.primary, Link.runeBombSpawn, GenericSkill.SkillOverridePriority.Contextual);
+            }
         }
 
         public void Explode()

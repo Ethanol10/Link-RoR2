@@ -1,4 +1,5 @@
-﻿using LinkMod.SkillStates.Link.HylianShield;
+﻿using LinkMod.Content.Link;
+using LinkMod.SkillStates.Link.HylianShield;
 using R2API.Networking.Interfaces;
 using RoR2;
 using UnityEngine;
@@ -73,6 +74,7 @@ namespace LinkMod.Modules.Networking.Miscellaneous
             minionSummon.rotation = Quaternion.LookRotation(throwDirection);
 
             master = minionSummon.Perform();
+            master.GetBody().GetComponent<RuneBombController>().ownerNetID = netID;
 
             //destroy old instance under the same username.
             if (LinkPlugin.summonCharacterMaster.ContainsKey(netID.Value.ToString()))
@@ -105,7 +107,6 @@ namespace LinkMod.Modules.Networking.Miscellaneous
             };
 
             blastAttack.Fire();
-            //Play the effect
         }
 
         public void ApplyForceToBomb(CharacterMaster master) 

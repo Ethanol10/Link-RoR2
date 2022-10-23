@@ -21,7 +21,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
         internal LinkController linkController;
         internal Animator animator;
 
-        public override void OnEnter() 
+        public override void OnEnter()
         {
             base.OnEnter();
             animator = GetModelAnimator();
@@ -36,7 +36,6 @@ namespace LinkMod.SkillStates.Link.RuneBomb
 
             characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombDetonate, RoR2.GenericSkill.SkillOverridePriority.Contextual);
             characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombSpawn, RoR2.GenericSkill.SkillOverridePriority.Contextual);
-            linkController.bombState = LinkController.BombState.NOTSPAWNED;
         }
 
         public override void OnExit()

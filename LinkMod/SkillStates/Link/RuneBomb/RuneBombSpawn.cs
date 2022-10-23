@@ -30,8 +30,8 @@ namespace LinkMod.SkillStates.Link.RuneBomb
             linkController = base.gameObject.GetComponent<LinkController>();
 
             base.PlayAnimation("UpperBody, Override", "DeployBomb", "Swing.playbackRate", duration);
-            linkController.bombState = LinkController.BombState.INHAND;
-            linkController.bombTypeInHand = LinkController.BombTypeInHand.RUNE;
+            linkController.handState = LinkController.HandState.INHAND;
+            linkController.itemInHand = LinkController.ItemInHand.RUNE;
             sheathe = false;
             unsheatheSword = false;
             bombEnabled = false;
@@ -44,15 +44,15 @@ namespace LinkMod.SkillStates.Link.RuneBomb
             // Set all skills regarding spawning a bomb to throw.
 
             characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombSpawn, RoR2.GenericSkill.SkillOverridePriority.Contextual);
-            characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
+            characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.ItemHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
         }
 
         public override void OnExit()
         {
             base.PlayAnimation("UpperBody, Override", "BufferEmpty");
             base.OnExit();
-            linkController.bombState = LinkController.BombState.INHAND;
-            linkController.bombTypeInHand = LinkController.BombTypeInHand.RUNE;
+            linkController.handState = LinkController.HandState.INHAND;
+            linkController.itemInHand = LinkController.ItemInHand.RUNE;
             linkController.DisableFakeRuneBombInHand();
             linkController.EnableRuneBombInHand();
             linkController.SetSwordOnlyUnsheathed();

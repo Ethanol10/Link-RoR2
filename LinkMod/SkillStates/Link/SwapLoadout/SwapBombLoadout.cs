@@ -42,11 +42,11 @@ namespace LinkMod.SkillStates.Link.SwapLoadout
 
 
             //Check if the bomb is in hand
-            if (linkController.bombState == LinkController.BombState.INHAND) 
+            if (linkController.handState == LinkController.HandState.INHAND) 
             {
                 //set shield to throw.
                 //set all bomb types to throw.
-                characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombHold, GenericSkill.SkillOverridePriority.Contextual);
+                characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.ItemHold, GenericSkill.SkillOverridePriority.Contextual);
                 characterBody.skillLocator.secondary.SetSkillOverride(characterBody.skillLocator.secondary, LinkMod.Content.Link.Link.hylianShieldSkillDef, GenericSkill.SkillOverridePriority.Contextual);
                 characterBody.skillLocator.utility.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.spinAttackSkillDef, GenericSkill.SkillOverridePriority.Contextual);
                 characterBody.skillLocator.special.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.spinAttackSkillDef, GenericSkill.SkillOverridePriority.Contextual);
@@ -55,7 +55,7 @@ namespace LinkMod.SkillStates.Link.SwapLoadout
                 this.outer.SetNextStateToMain();
                 return;
             }
-            if (linkController.bombState == LinkController.BombState.THROWN) 
+            if (linkController.runeBombThrown) 
             {
                 //set rune bomb only to detonate.
                 characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombDetonate, GenericSkill.SkillOverridePriority.Contextual);

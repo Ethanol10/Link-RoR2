@@ -43,7 +43,7 @@ namespace LinkMod.SkillStates.Link
             parasailAnim.SetBool("isOpen", false);
             linkAnim.SetBool("isGliding", false);
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
-            if (linkCon.bombState == LinkController.BombState.INHAND) 
+            if (linkCon.handState == LinkController.HandState.INHAND) 
             {
                 linkCon.SetSwordOnlyUnsheathed();
                 return;
