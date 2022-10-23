@@ -69,7 +69,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Frozen;
+            return InterruptPriority.Skill;
         }
     }
 }

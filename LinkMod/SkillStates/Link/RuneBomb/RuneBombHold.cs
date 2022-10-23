@@ -27,7 +27,8 @@ namespace LinkMod.SkillStates.Link.RuneBomb
             duration = baseDuration;
             animator.SetFloat("Swing.playbackRate", 1f);
 
-            base.PlayAnimation("UpperBody, Override", "ItemThrowHold", "Swing.playbackRate", duration);
+            base.PlayCrossfade("UpperBody, Override", "ItemThrowHold", "Swing.playbackRate", duration, 0.1f);
+            Debug.Log("shoott2");
         }
 
         public override void OnExit()
@@ -70,7 +71,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                     if (inputBank.skill1.down) 
                     {
                         totalDuration += duration;
-                        base.outer.SetNextState(
+                        base.outer.SetState(
                             new RuneBombHold 
                             {
                                 totalDuration = this.totalDuration
@@ -81,7 +82,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                     else 
                     {
                         totalDuration += duration;
-                        base.outer.SetNextState(
+                        base.outer.SetState(
                             new RuneBombThrow
                             {
                                 totalDuration = this.totalDuration

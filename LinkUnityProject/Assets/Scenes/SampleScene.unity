@@ -2996,6 +2996,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RuneBombExplosion
       objectReference: {fileID: 0}
+    - target: {fileID: 2395590291727956705, guid: 925e6cebb7c942f499931fef98c56cbe,
+        type: 3}
+      propertyPath: LightsModule.rangeCurve.scalar
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4706935735857004538, guid: 925e6cebb7c942f499931fef98c56cbe,
         type: 3}
       propertyPath: m_RootOrder

@@ -76,7 +76,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
                 linkController.SetSwordOnlyUnsheathed();
                 unsheatheSword = true;
             }
-            if (base.fixedAge >= duration) 
+            if (base.fixedAge >= duration && base.isAuthority) 
             {
                 linkController.DisableFakeRuneBombInHand();
                 linkController.EnableRuneBombInHand();

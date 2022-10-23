@@ -98,7 +98,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Frozen;
+            return InterruptPriority.PrioritySkill;
         }
 
         public override void OnSerialize(NetworkWriter writer)

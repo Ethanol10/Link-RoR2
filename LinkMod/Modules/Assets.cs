@@ -21,6 +21,7 @@ namespace LinkMod.Modules
 
         //Rune bomb
         internal static GameObject runeBomb;
+        internal static GameObject runeBombExplosion;
 
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
@@ -127,6 +128,9 @@ namespace LinkMod.Modules
             //Material for overlay
             chargingOverlay = mainAssetBundle.LoadAsset<Material>("ChargingOverlay");
             chargedOverlay = mainAssetBundle.LoadAsset<Material>("FullyChargedOverlay");
+
+            runeBombExplosion = mainAssetBundle.LoadAsset<GameObject>("RuneBombExplosion");
+            LoadEffect("runeBombExplosion");
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)

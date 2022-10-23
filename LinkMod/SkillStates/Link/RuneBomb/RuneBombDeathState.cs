@@ -12,6 +12,14 @@ namespace LinkMod.SkillStates.Link.RuneBomb
         {
             base.OnEnter();
             //Spawn explosion effect
+            EffectData effect = new EffectData
+            {
+                rotation = Quaternion.identity,
+                origin = this.gameObject.transform.position,
+                scale = 1f,
+                color = Color.white,
+            };
+            EffectManager.SpawnEffect(Modules.Assets.runeBombExplosion, effect, true);
         }
 
         public override void FixedUpdate()

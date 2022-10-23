@@ -24,6 +24,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
 
             animator.SetFloat("Swing.playbackRate", base.attackSpeedStat);
             base.PlayAnimation("UpperBody, Override", "ItemStartThrow", "Swing.playbackRate", duration);
+            Debug.Log("shoott");
         }
 
         public override void OnExit()
@@ -37,7 +38,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
             base.FixedUpdate();
             if (base.fixedAge >= duration && base.isAuthority) 
             {
-                base.outer.SetNextState(new RuneBombHold { });
+                base.outer.SetState(new RuneBombHold { });
                 return;
             }
         }
