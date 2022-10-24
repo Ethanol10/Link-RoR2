@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4285368983
+CRC: 895316840
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 830483a013ce2fcbdd7cf5faea4c2ded
+    Hash: 3ee44ef16127880a87575ec8906729c2
   TypeTreeHash:
     serializedVersion: 2
     Hash: 64d91baccf1afa11f48fa4efe31ed13c
@@ -68,6 +68,7 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/RollEdited.anim
+- Assets/LinkAssets/Meshes/standardBombmesh.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/Jump.anim
 - Assets/LinkAssets/Prefabs/LinkDisplay.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabOrig.anim
@@ -78,12 +79,14 @@ Assets:
 - Assets/LinkAssets/Textures/MoteTrail.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabBegin.anim
 - Assets/LinkAssets/Textures/Mask1.png
+- Assets/LinkAssets/Textures/def_younglinkbomb_001_nor.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/Fall.anim
 - Assets/LinkAssets/Textures/StandardSwordandShield.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailPermanentClose.anim
 - Assets/LinkAssets/Materials/indicatorThrow.mat
 - Assets/LinkAssets/Lights/PointLight.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunStrafeBackwards.anim
+- Assets/LinkAssets/Textures/def_younglinkbomb_001_col.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim2.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedItemThrow.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockStart.anim
@@ -128,6 +131,7 @@ Assets:
 - Assets/LinkAssets/Animations/ParasailAnimCon.controller
 - Assets/LinkAssets/Materials/SwordShieldMaterial.mat
 - Assets/LinkAssets/Prefabs/SwordBeam.prefab
+- Assets/LinkAssets/Materials/LinkStandardBomb.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/A05LandingLight.nuanmx.anim
 - Assets/LinkAssets/Textures/metal_link_001_nor.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailAnimation.anim
@@ -169,6 +173,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockHold.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunStrafeL.anim
 - Assets/LinkAssets/Prefabs/particle/Light.prefab
+- Assets/LinkAssets/Prefabs/LinkNormalBomb.prefab
 - Assets/LinkAssets/Textures/noise3blur.png
 - Assets/LinkAssets/Animations/animLink.controller
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttack.anim
