@@ -34,19 +34,21 @@ namespace LinkMod.SkillStates
 
             if (base.characterMotor && base.characterDirection)
             {
+                float previousY = base.characterMotor.velocity.y;
                 base.characterMotor.velocity = this.forwardDirection * this.rollSpeed;
-                base.characterMotor.velocity.y = -1f;
+                base.characterMotor.velocity.y = previousY;
             }
 
             Vector3 b = base.characterMotor ? base.characterMotor.velocity : Vector3.zero;
             this.previousPosition = base.transform.position - b;
 
+            animator.SetFloat("Roll.playbackRate", 1.5f);
             base.PlayAnimation("FullBody, Override", "Roll", "Roll.playbackRate", Roll.duration);
             Util.PlaySound(Roll.dodgeSoundString, base.gameObject);
 
             if (NetworkServer.active)
             {
-                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 0.8f * Roll.duration);
+                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 0.9f * Roll.duration);
             }
         }
 
@@ -69,8 +71,9 @@ namespace LinkMod.SkillStates
                 Vector3 vector = normalized * this.rollSpeed;
                 float d = Mathf.Max(Vector3.Dot(vector, this.forwardDirection), 0f);
                 vector = this.forwardDirection * d;
-
+                float vectory = base.characterMotor.velocity.y;
                 base.characterMotor.velocity = vector;
+                base.characterMotor.velocity.y = vectory/2;
             }
             this.previousPosition = base.transform.position;
 

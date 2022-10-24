@@ -74,6 +74,7 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
         public override void OnExit()
         {
             base.OnExit();
+            linkController.SetUnsheathed();
             switch (linkController.itemInHand)
             {
                 case LinkController.ItemInHand.RUNE:
@@ -129,7 +130,7 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Pain;
         }
 
         public override void OnSerialize(NetworkWriter writer)

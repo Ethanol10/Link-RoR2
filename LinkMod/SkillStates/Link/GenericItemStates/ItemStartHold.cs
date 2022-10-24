@@ -36,6 +36,22 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (!base.inputBank.skill1.down || !base.inputBank.skill2.down) 
+            {
+                switch (linkController.itemInHand)
+                {
+                    case LinkController.ItemInHand.RUNE:
+                        outer.SetState(new RuneBombHold { });
+                        break;
+                    case LinkController.ItemInHand.NORMAL:
+                        break;
+                    case LinkController.ItemInHand.SUPER:
+                        break;
+                    case LinkController.ItemInHand.BOMBCHU:
+                        break;
+                }
+                return;
+            }
             if (fixedAge >= duration && isAuthority)
             {
                 switch (linkController.itemInHand)
