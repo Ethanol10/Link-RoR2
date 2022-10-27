@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using LinkMod.Content.Link;
 using LinkMod.SkillStates.Link.RuneBomb;
+using LinkMod.SkillStates.Link.StandardBomb;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -36,7 +37,7 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (!base.inputBank.skill1.down || !base.inputBank.skill2.down) 
+            if (!base.inputBank.skill1.down || !base.inputBank.skill2.down || !base.inputBank.skill3.down || !base.inputBank.skill4.down) 
             {
                 switch (linkController.itemInHand)
                 {
@@ -44,6 +45,7 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
                         outer.SetState(new RuneBombHold { });
                         break;
                     case LinkController.ItemInHand.NORMAL:
+                        outer.SetState(new StandardBombHold { });
                         break;
                     case LinkController.ItemInHand.SUPER:
                         break;
@@ -60,6 +62,7 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
                         outer.SetState(new RuneBombHold { });
                         break;
                     case LinkController.ItemInHand.NORMAL:
+                        outer.SetState(new StandardBombHold { });
                         break;
                     case LinkController.ItemInHand.SUPER:
                         break;

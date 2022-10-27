@@ -59,10 +59,9 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
                 case LinkController.ItemInHand.RUNE:
                     linkController.runeBombThrown = true;
                     linkController.handState = LinkController.HandState.NOTSPAWNED;
-
-                    characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, Content.Link.Link.ItemHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
-                    characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, Content.Link.Link.runeBombDetonate, RoR2.GenericSkill.SkillOverridePriority.Contextual);
-
+                    break;
+                case LinkController.ItemInHand.NORMAL:
+                    linkController.handState = LinkController.HandState.NOTSPAWNED;
                     break;
             }
 
@@ -79,6 +78,9 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
             {
                 case LinkController.ItemInHand.RUNE:
                     linkController.runeBombThrown = true;
+                    linkController.handState = LinkController.HandState.NOTSPAWNED;
+                    break;
+                case LinkController.ItemInHand.NORMAL:
                     linkController.handState = LinkController.HandState.NOTSPAWNED;
                     break;
             }
@@ -102,6 +104,9 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
                     case LinkController.ItemInHand.RUNE:
                         RuneBombSpecificFunction();
                         break;
+                    case LinkController.ItemInHand.NORMAL:
+                        NormalBombSpecificFunction();
+                        break;
                     default:
                         break;
                 }
@@ -115,6 +120,15 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
             {
                 outer.SetNextStateToMain();
             }
+        }
+
+        public void NormalBombSpecificFunction() 
+        {
+            itemThrown = true;
+            linkController.DisableStandardBombInHand();
+
+            //Throw the projectile.
+
         }
 
         public void RuneBombSpecificFunction() 

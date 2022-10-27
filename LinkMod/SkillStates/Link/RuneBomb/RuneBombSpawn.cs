@@ -43,10 +43,14 @@ namespace LinkMod.SkillStates.Link.RuneBomb
             // Set all skills regarding hylian shield to throw.
             // Set all skills regarding spawning a bomb to throw.
 
-            characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombSpawn, RoR2.GenericSkill.SkillOverridePriority.Contextual);
+            characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, characterBody.skillLocator.primary.skillDef, RoR2.GenericSkill.SkillOverridePriority.Contextual);
             characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.ItemHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
 
+            characterBody.skillLocator.secondary.UnsetSkillOverride(characterBody.skillLocator.secondary, characterBody.skillLocator.secondary.skillDef, RoR2.GenericSkill.SkillOverridePriority.Contextual);
             characterBody.skillLocator.secondary.SetSkillOverride(characterBody.skillLocator.secondary, LinkMod.Content.Link.Link.ItemHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
+
+            characterBody.skillLocator.utility.UnsetSkillOverride(characterBody.skillLocator.utility, characterBody.skillLocator.utility.skillDef, RoR2.GenericSkill.SkillOverridePriority.Contextual);
+            characterBody.skillLocator.utility.SetSkillOverride(characterBody.skillLocator.utility, LinkMod.Content.Link.Link.ItemHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
         }
 
         public override void OnExit()

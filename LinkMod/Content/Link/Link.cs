@@ -9,6 +9,7 @@ using LinkMod.SkillStates.Link.HylianShield;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
 using LinkMod.SkillStates.Link.RuneBomb;
+using LinkMod.SkillStates.Link.StandardBomb;
 using LinkMod.SkillStates.Link.SwapLoadout;
 using RoR2;
 using RoR2.Skills;
@@ -112,6 +113,9 @@ namespace LinkMod.Content.Link
         //Rune Bomb
         public static SkillDef runeBombSpawn;
         public static SkillDef runeBombDetonate;
+
+        //Standard Bomb 
+        public static SkillDef standardBombSpawn;
 
         //Generic Item skills
         public static SkillDef ItemHold;
@@ -478,6 +482,35 @@ namespace LinkMod.Content.Link
                 stockToConsume = 1,
                 keywordTokens = new string[] { "" }
             });
+            #endregion
+
+            #region Standard Bomb
+
+            standardBombSpawn = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_STANDARD_BOMB_SPAWN_NAME",
+                skillNameToken = prefix + "_LINK_BODY_STANDARD_BOMB_SPAWN_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_STANDARD_BOMB_SPAWN_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("standardBombSpawn"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(StandardBombSpawn)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 0,
+                keywordTokens = new string[] { "" }
+            });
+
             #endregion
         }
 

@@ -8,7 +8,7 @@ namespace LinkMod.SkillStates
     public class Roll : BaseSkillState
     {
         public static float duration = 0.3f;
-        public static float initialSpeedCoefficient = 4f;
+        public static float initialSpeedCoefficient = 4.5f;
         public static float finalSpeedCoefficient = 1.5f;
 
         public static string dodgeSoundString = "LinkRoll";

@@ -10,17 +10,39 @@ namespace LinkMod.Modules
     internal static class Projectiles
     {
         internal static GameObject swordBeamPrefab;
+        internal static GameObject standardBombPrefab;
 
         internal static void RegisterProjectiles()
         {
             CreateSwordBeam();
+            CreateStandardBomb();
 
             AddProjectile(swordBeamPrefab);
+            AddProjectile(standardBombPrefab);
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
         {
             Modules.Content.AddProjectilePrefab(projectileToAdd);
+        }
+
+        private static void CreateStandardBomb() 
+        {
+            standardBombPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("LinkNormalBomb");
+            standardBombPrefab.AddComponent<NetworkIdentity>();
+
+            ProjectileController projectileController = standardBombPrefab.AddComponent<ProjectileController>();
+            projectileController.procCoefficient = 1f;
+
+            ProjectileDamage projectileDamage = standardBombPrefab.AddComponent<ProjectileDamage>();
+            projectileDamage.damage = 10f;
+            projectileDamage.crit = false;
+            projectileDamage.force = 1000f;
+            projectileDamage.damageType = DamageType.Generic;
+
+            ProjectileExplosion projectileExplosion = standardBombPrefab.AddComponent<ProjectileExplosion>();
+
+            standardBombPrefab.AddComponent<StandardBombOnHit>();
         }
 
         private static void CreateSwordBeam()
@@ -87,6 +109,16 @@ namespace LinkMod.Modules
         }
 
         internal class SwordbeamOnHit : MonoBehaviour, IProjectileImpactBehavior
+        {
+            public NetworkInstanceId netID;
+
+            public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
+            {
+                //Maybe something can be done for link
+            }
+        }
+
+        internal class StandardBombOnHit : MonoBehaviour, IProjectileImpactBehavior
         {
             public NetworkInstanceId netID;
 

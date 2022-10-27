@@ -27,6 +27,9 @@ namespace LinkMod.Content.Link
         internal Transform runeBombLocation;
         internal Transform runeBombFakeLocation;
         internal Transform bombThrowPosition;
+        internal Transform standardBombLocation;
+        internal Transform standardBombFakeLocation;
+
 
         //Loadout stuff
         internal enum SelectedLoadout : uint
@@ -99,6 +102,8 @@ namespace LinkMod.Content.Link
             runeBombLocation = childLocator.FindChild("runeBombHand");
             runeBombFakeLocation = childLocator.FindChild("runeBombTempHand");
             bombThrowPosition = childLocator.FindChild("ThrowPosition");
+            standardBombLocation = childLocator.FindChild("standardBomb");
+            standardBombFakeLocation = childLocator.FindChild("standardBombTemp");
 
             if (LinkPlugin.emotesAvailable) 
             {
@@ -232,6 +237,26 @@ namespace LinkMod.Content.Link
         public void DisableFakeRuneBombInHand()
         {
             runeBombFakeLocation.gameObject.SetActive(false);
+        }
+
+        public void EnableStandardBombInHand()
+        {
+            standardBombLocation.gameObject.SetActive(true);
+        }
+
+        public void DisableStandardBombInHand()
+        {
+            standardBombLocation.gameObject.SetActive(false);
+        }
+
+        public void EnableFakeStandardBombInHand()
+        {
+            standardBombFakeLocation.gameObject.SetActive(true);
+        }
+
+        public void DisableFakeStandardBombInHand()
+        {
+            standardBombFakeLocation.gameObject.SetActive(false);
         }
 
         public void HandleCustomEmotesAPIAnimationEnd(string newAnim, BoneMapper mapper) 
