@@ -138,7 +138,7 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
                     base.RollCrit(),
                     DamageColorIndex.Default,
                     null,
-                    force * Modules.Config.bombMaxThrowPower.Value);
+                    force * Modules.Config.standardBombMaxThrowPower.Value);
             }
         }
 

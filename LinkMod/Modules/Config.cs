@@ -19,6 +19,7 @@ namespace LinkMod.Modules
         public static ConfigEntry<float> runeBombSelfDestructTimer;
         public static ConfigEntry<float> bombMaxThrowPower;
         public static ConfigEntry<float> bombTimerToMaxCharge;
+        public static ConfigEntry<float> standardBombMaxThrowPower;
 
         public static void ReadConfig()
         {
@@ -98,8 +99,15 @@ namespace LinkMod.Modules
 
             bombTimerToMaxCharge = LinkPlugin.instance.Config.Bind<float>
             (
-                new ConfigDefinition("02 - Bomb", "Timer to fully charge a throw"),
+                new ConfigDefinition("02 - Bomb", "Timer to fully charge a throw for Rune Bomb"),
                 2f,
+                new ConfigDescription("Determines how long it takes for Link to charge up a full powered throw", null, Array.Empty<object>())
+            );
+
+            standardBombMaxThrowPower = LinkPlugin.instance.Config.Bind<float>
+            (
+                new ConfigDefinition("02 - Bomb", "Timer to fully charge a throw for Standard Bomb"),
+                45f,
                 new ConfigDescription("Determines how long it takes for Link to charge up a full powered throw", null, Array.Empty<object>())
             );
         }
@@ -197,6 +205,17 @@ namespace LinkMod.Modules
                         increment = 0.5f
                     }
                 ));
+            ModSettingsManager.AddOption(
+                new StepSliderOption(
+                    standardBombMaxThrowPower,
+                    new StepSliderConfig
+                    {
+                        min = 1f,
+                        max = 100f,
+                        increment = 1f
+                    }
+                ));
+
         }
 
         // this helper automatically makes config entries for disabling survivors
