@@ -79,6 +79,7 @@ namespace LinkMod.Modules.Networking.Miscellaneous
             //destroy old instance under the same username.
             if (LinkPlugin.summonCharacterMaster.ContainsKey(netID.Value.ToString()))
             {
+                Explode();
                 DestroyOldBomb(netID);
             }
             LinkPlugin.summonCharacterMaster.Add(netID.Value.ToString(), master);
@@ -133,26 +134,21 @@ namespace LinkMod.Modules.Networking.Miscellaneous
         //Destroy the clone, using the username as the key.
         public void DestroyOldBomb(NetworkInstanceId instance)
         {
-            //Check if the key exists to remove.
-            if (LinkPlugin.summonCharacterMaster.ContainsKey(instance.Value.ToString()))
+            //Check if the master still exists.
+            if (LinkPlugin.summonCharacterMaster[instance.Value.ToString()])
             {
-                //Check if the master still exists.
-                if (LinkPlugin.summonCharacterMaster[instance.Value.ToString()])
+                //Kill Clone, Destroy it on the server, then remove the key from the server Dictionary.
+                if (LinkPlugin.summonCharacterMaster[instance.Value.ToString()].GetBodyObject())
                 {
-                    //Kill Clone, Destroy it on the server, then remove the key from the server Dictionary.
-                    if (LinkPlugin.summonCharacterMaster[instance.Value.ToString()].GetBodyObject())
-                    {
-                        LinkPlugin.summonCharacterMaster[instance.Value.ToString()].TrueKill();
-                        Explode();
-                    }
-                    if (LinkPlugin.summonCharacterMaster[instance.Value.ToString()].gameObject)
-                    {
-                        NetworkServer.Destroy(LinkPlugin.summonCharacterMaster[instance.Value.ToString()].gameObject);
-                    }
+                    LinkPlugin.summonCharacterMaster[instance.Value.ToString()].TrueKill();
                 }
-
-                LinkPlugin.summonCharacterMaster.Remove(instance.Value.ToString());
+                if (LinkPlugin.summonCharacterMaster[instance.Value.ToString()].gameObject)
+                {
+                    NetworkServer.Destroy(LinkPlugin.summonCharacterMaster[instance.Value.ToString()].gameObject);
+                }
             }
+
+            LinkPlugin.summonCharacterMaster.Remove(instance.Value.ToString());
         }
     }
 }

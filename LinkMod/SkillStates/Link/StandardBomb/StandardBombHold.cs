@@ -56,11 +56,11 @@ namespace LinkMod.SkillStates.Link.StandardBomb
             }
             if (base.isAuthority)
             {
-                if (!inputBank.skill1.down && !inputBank.skill2.down)
+                if (!inputBank.skill3.down)
                 {
                     totalDuration += duration;
 
-                    linkController.itemInHand = LinkController.ItemInHand.RUNE;
+                    linkController.itemInHand = LinkController.ItemInHand.NORMAL;
                     base.outer.SetState(
                         new ItemThrow
                         {
@@ -72,7 +72,7 @@ namespace LinkMod.SkillStates.Link.StandardBomb
                 if (base.fixedAge >= duration)
                 {
                     //check if still holding skill down.
-                    if (inputBank.skill1.down || inputBank.skill2.down)
+                    if (inputBank.skill3.down)
                     {
                         totalDuration += duration;
                         base.outer.SetState(
@@ -87,7 +87,7 @@ namespace LinkMod.SkillStates.Link.StandardBomb
                     {
                         totalDuration += duration;
 
-                        linkController.itemInHand = LinkController.ItemInHand.RUNE;
+                        linkController.itemInHand = LinkController.ItemInHand.NORMAL;
                         base.outer.SetState(
                             new ItemThrow
                             {

@@ -117,9 +117,6 @@ namespace LinkMod.Content.Link
         //Standard Bomb 
         public static SkillDef standardBombSpawn;
 
-        //Generic Item skills
-        public static SkillDef ItemHold;
-
         //Extra skill swaps
         public static SkillDef swordLoadoutSkillDef;
         public static SkillDef bombLoadoutSkillDef;
@@ -434,30 +431,7 @@ namespace LinkMod.Content.Link
                 stockToConsume = 1,
                 keywordTokens = new string[] { "" }
             });
-            ItemHold = Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = prefix + "_LINK_BODY_ITEM_THROW_NAME",
-                skillNameToken = prefix + "_LINK_BODY_ITEM_THROW_NAME",
-                skillDescriptionToken = prefix + "_LINK_BODY_ITEM_THROW_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("runeBombThrow"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(ItemStartHold)),
-                activationStateMachineName = "Weapon",
-                baseMaxStock = 1,
-                baseRechargeInterval = 1f,
-                beginSkillCooldownOnSkillEnd = false,
-                canceledFromSprinting = false,
-                forceSprintDuringState = false,
-                fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
-                resetCooldownTimerOnUse = false,
-                isCombatSkill = true,
-                mustKeyPress = true,
-                cancelSprintingOnActivation = true,
-                rechargeStock = 1,
-                requiredStock = 1,
-                stockToConsume = 1,
-                keywordTokens = new string[] { "" }
-            });
+
             runeBombDetonate = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_LINK_BODY_RUNE_BOMB_DETONATE_NAME",

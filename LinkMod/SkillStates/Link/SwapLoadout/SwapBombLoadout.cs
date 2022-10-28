@@ -40,21 +40,6 @@ namespace LinkMod.SkillStates.Link.SwapLoadout
                 characterBody.skillLocator.special.UnsetSkillOverride(characterBody.skillLocator.special, special, GenericSkill.SkillOverridePriority.Contextual);
             }
 
-
-            //Check if the bomb is in hand
-            if (linkController.handState == LinkController.HandState.INHAND) 
-            {
-                //set shield to throw.
-                //set all bomb types to throw.
-                characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.ItemHold, GenericSkill.SkillOverridePriority.Contextual);
-                characterBody.skillLocator.secondary.SetSkillOverride(characterBody.skillLocator.secondary, LinkMod.Content.Link.Link.ItemHold, GenericSkill.SkillOverridePriority.Contextual);
-                characterBody.skillLocator.utility.SetSkillOverride(characterBody.skillLocator.utility, LinkMod.Content.Link.Link.ItemHold, GenericSkill.SkillOverridePriority.Contextual);
-                characterBody.skillLocator.special.SetSkillOverride(characterBody.skillLocator.special, LinkMod.Content.Link.Link.spinAttackSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-
-                linkController.selectedLoadout = LinkController.SelectedLoadout.BOMB;
-                this.outer.SetNextStateToMain();
-                return;
-            }
             if (linkController.runeBombThrown) 
             {
                 //set rune bomb only to detonate.

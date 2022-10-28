@@ -23,7 +23,7 @@ namespace LinkMod.SkillStates.Link
             base.ProcessJump();
             if(linkController)
             {
-                if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority && !linkController.isShielding && linkController.handState != LinkController.HandState.INHAND)
+                if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority && !linkController.isShielding)
                 {
                     bool CheckJumpingHold = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
                     bool flag = this.weaponStateMachine.state.GetType() == typeof(ParasailOn);

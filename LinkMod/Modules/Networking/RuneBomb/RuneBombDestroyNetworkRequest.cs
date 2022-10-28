@@ -111,7 +111,6 @@ namespace LinkMod.Modules.Networking.Miscellaneous
                     if (LinkPlugin.summonCharacterMaster[instance.Value.ToString()].GetBodyObject())
                     {
                         LinkPlugin.summonCharacterMaster[instance.Value.ToString()].TrueKill();
-                        Explode();
                     }
                     if (LinkPlugin.summonCharacterMaster[instance.Value.ToString()].gameObject)
                     {

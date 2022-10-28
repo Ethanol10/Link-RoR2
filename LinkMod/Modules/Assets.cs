@@ -98,23 +98,23 @@ namespace LinkMod.Modules
 
             //swordHitSoundEvent = CreateNetworkSoundEventDef("LinkSwordHit");
 
-            //bombExplosionEffect = LoadEffect("BombExplosionEffect", "LinkBombExplosion");
+            bombExplosionEffect = LoadEffect("BombExplosionEffect", "LinkBombExplosion");
 
-            //if (bombExplosionEffect)
-            //{
-            //    ShakeEmitter shakeEmitter = bombExplosionEffect.AddComponent<ShakeEmitter>();
-            //    shakeEmitter.amplitudeTimeDecay = true;
-            //    shakeEmitter.duration = 0.5f;
-            //    shakeEmitter.radius = 200f;
-            //    shakeEmitter.scaleShakeRadiusWithLocalScale = false;
+            if (bombExplosionEffect)
+            {
+                ShakeEmitter shakeEmitter = bombExplosionEffect.AddComponent<ShakeEmitter>();
+                shakeEmitter.amplitudeTimeDecay = true;
+                shakeEmitter.duration = 0.5f;
+                shakeEmitter.radius = 200f;
+                shakeEmitter.scaleShakeRadiusWithLocalScale = false;
 
-            //    shakeEmitter.wave = new Wave
-            //    {
-            //        amplitude = 1f,
-            //        frequency = 40f,
-            //        cycleOffset = 0f
-            //    };
-            //}
+                shakeEmitter.wave = new Wave
+                {
+                    amplitude = 1f,
+                    frequency = 40f,
+                    cycleOffset = 0f
+                };
+            }
 
             //swordSwingEffect = Assets.LoadEffect("LinkSwordSwingEffect", true);
             //swordHitImpactEffect = Assets.LoadEffect("ImpactLinkSlash");
@@ -129,8 +129,22 @@ namespace LinkMod.Modules
             chargingOverlay = mainAssetBundle.LoadAsset<Material>("ChargingOverlay");
             chargedOverlay = mainAssetBundle.LoadAsset<Material>("FullyChargedOverlay");
 
-            runeBombExplosion = mainAssetBundle.LoadAsset<GameObject>("RuneBombExplosion");
-            LoadEffect("runeBombExplosion");
+            runeBombExplosion = LoadEffect("RuneBombExplosion");
+            if (runeBombExplosion)
+            {
+                ShakeEmitter shakeEmitter = runeBombExplosion.AddComponent<ShakeEmitter>();
+                shakeEmitter.amplitudeTimeDecay = true;
+                shakeEmitter.duration = 0.3f;
+                shakeEmitter.radius = 30f;
+                shakeEmitter.scaleShakeRadiusWithLocalScale = false;
+
+                shakeEmitter.wave = new Wave
+                {
+                    amplitude = 1f,
+                    frequency = 50f,
+                    cycleOffset = 0f
+                };
+            }
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)

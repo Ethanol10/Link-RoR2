@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 895316840
+CRC: 3020157865
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3ee44ef16127880a87575ec8906729c2
+    Hash: acebabff36a42f6946b1c719c9470879
   TypeTreeHash:
     serializedVersion: 2
     Hash: 64d91baccf1afa11f48fa4efe31ed13c
@@ -110,6 +110,7 @@ Assets:
 - Assets/LinkAssets/Animations/ParasailSpawn.controller
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialAttack.anim
 - Assets/LinkAssets/Materials/Skin1Material.mat
+- Assets/LinkAssets/Prefabs/particle/BombExplosionEffect.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/Roll.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Gliding.anim
 - Assets/LinkAssets/Animations/LinkDisplayController.controller
@@ -130,7 +131,7 @@ Assets:
 - Assets/LinkAssets/Textures/metal_linkbomb_001_nor.png
 - Assets/LinkAssets/Animations/ParasailAnimCon.controller
 - Assets/LinkAssets/Materials/SwordShieldMaterial.mat
-- Assets/LinkAssets/Prefabs/SwordBeam.prefab
+- Assets/LinkAssets/Prefabs/particle/SwordBeam.prefab
 - Assets/LinkAssets/Materials/LinkStandardBomb.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/A05LandingLight.nuanmx.anim
 - Assets/LinkAssets/Textures/metal_link_001_nor.png

@@ -40,7 +40,20 @@ namespace LinkMod.Modules
             projectileDamage.force = 1000f;
             projectileDamage.damageType = DamageType.Generic;
 
-            ProjectileExplosion projectileExplosion = standardBombPrefab.AddComponent<ProjectileExplosion>();
+            ProjectileImpactExplosion projectileExplosion = standardBombPrefab.AddComponent<ProjectileImpactExplosion>();
+            projectileExplosion.explosionEffect = Modules.Assets.bombExplosionEffect;
+            projectileExplosion.blastRadius = Modules.StaticValues.standardBombRadius;
+            projectileExplosion.blastDamageCoefficient = Modules.StaticValues.standardBombBlastDamageCoefficient;
+            projectileExplosion.falloffModel = BlastAttack.FalloffModel.None;
+            projectileExplosion.destroyOnEnemy = true;
+            projectileExplosion.destroyOnWorld = true;
+            projectileExplosion.lifetimeAfterImpact = 2f;
+            projectileExplosion.lifetime = 3f;
+
+            ProjectileSimple projectileSimple = standardBombPrefab.AddComponent<ProjectileSimple>();
+            projectileSimple.lifetime = 3f;
+            projectileSimple.desiredForwardSpeed = 100f;
+
 
             standardBombPrefab.AddComponent<StandardBombOnHit>();
         }

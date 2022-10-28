@@ -11,7 +11,7 @@ namespace LinkMod.SkillStates.Link.RuneBomb
 {
     internal class RuneBombDetonate : BaseSkillState
     {
-        internal static float baseDuration = 1.5f;
+        internal static float baseDuration = 1.0f;
         internal float duration;
         internal float detonateFraction = 0.13f;
         internal float takeShieldFraction = 0.58f;
@@ -68,7 +68,12 @@ namespace LinkMod.SkillStates.Link.RuneBomb
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            if(base.fixedAge > duration * detonateFraction && detonated)
+            {
+                return InterruptPriority.Skill;
+            }
+
+            return InterruptPriority.Frozen;
         }
     }
 }

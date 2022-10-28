@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using LinkMod.Content.Link;
+using LinkMod.SkillStates.Link.GenericItemStates;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ namespace LinkMod.SkillStates.Link.StandardBomb
 {
     internal class StandardBombSpawn : BaseSkillState
     {
-        internal static float baseDuration = 1.5f;
+        internal static float baseDuration = 0.6f;
         internal static float sheatheFraction = 0.1f;
         internal static float unsheatheSwordFraction = 0.68f;
         internal static float bombSpawnFraction = 0.21f;
@@ -30,11 +31,11 @@ namespace LinkMod.SkillStates.Link.StandardBomb
             linkController = base.gameObject.GetComponent<LinkController>();
 
             base.PlayAnimation("UpperBody, Override", "DeployBomb", "Swing.playbackRate", duration);
-            linkController.handState = LinkController.HandState.INHAND;
             linkController.itemInHand = LinkController.ItemInHand.NORMAL;
             sheathe = false;
             unsheatheSword = false;
             bombEnabled = false;
+            linkController.isHolding = true;
 
             linkController.DisableFakeStandardBombInHand();
             linkController.DisableStandardBombInHand();
@@ -42,24 +43,14 @@ namespace LinkMod.SkillStates.Link.StandardBomb
             //assume we're in bomb loadout.
             // Set all skills regarding hylian shield to throw.
             // Set all skills regarding spawning a bomb to throw.
-
-            characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, characterBody.skillLocator.primary.skillDef, RoR2.GenericSkill.SkillOverridePriority.Contextual);
-            characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.ItemHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
-
-            characterBody.skillLocator.secondary.UnsetSkillOverride(characterBody.skillLocator.secondary, characterBody.skillLocator.secondary.skillDef, RoR2.GenericSkill.SkillOverridePriority.Contextual);
-            characterBody.skillLocator.secondary.SetSkillOverride(characterBody.skillLocator.secondary, LinkMod.Content.Link.Link.ItemHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
-
-            characterBody.skillLocator.utility.UnsetSkillOverride(characterBody.skillLocator.utility, characterBody.skillLocator.utility.skillDef, RoR2.GenericSkill.SkillOverridePriority.Contextual);
-            characterBody.skillLocator.utility.SetSkillOverride(characterBody.skillLocator.utility, LinkMod.Content.Link.Link.ItemHold, RoR2.GenericSkill.SkillOverridePriority.Contextual);
         }
 
         public override void OnExit()
         {
             base.PlayAnimation("UpperBody, Override", "BufferEmpty");
             base.OnExit();
-            linkController.handState = LinkController.HandState.INHAND;
             linkController.itemInHand = LinkController.ItemInHand.NORMAL;
-
+            linkController.isHolding = true;
             linkController.DisableFakeStandardBombInHand();
             linkController.EnableStandardBombInHand();
             linkController.SetSwordOnlyUnsheathed();
@@ -82,12 +73,17 @@ namespace LinkMod.SkillStates.Link.StandardBomb
             {
                 linkController.SetSwordOnlyUnsheathed();
                 unsheatheSword = true;
+                if (!inputBank.skill3.down)
+                {
+                    this.outer.SetNextState(new ItemThrow { totalDuration = 0f });
+                    return;
+                }
             }
             if (base.fixedAge >= duration && base.isAuthority)
             {
                 linkController.DisableFakeStandardBombInHand();
                 linkController.EnableStandardBombInHand();
-                this.outer.SetNextStateToMain();
+                this.outer.SetNextState(new ItemStartHold { });
             }
         }
 

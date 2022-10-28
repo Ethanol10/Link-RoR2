@@ -16,6 +16,7 @@ namespace LinkMod.Content.Link
         internal ChildLocator childLocator;
         internal Animator parasailAnimator;
         internal bool isShielding;
+        internal bool isHolding;
         internal bool isCharging;
         internal bool isCharged;
 
@@ -46,12 +47,7 @@ namespace LinkMod.Content.Link
 
         //Bomb Types
         internal bool runeBombThrown;
-        internal enum HandState
-        {
-            NOTSPAWNED,
-            INHAND
-        }
-        internal HandState handState;
+
         internal enum ItemInHand : uint 
         {
             RUNE, 
@@ -111,7 +107,6 @@ namespace LinkMod.Content.Link
             }
 
             //Setup initial state for skills when they use it.
-            handState = HandState.NOTSPAWNED;
             arrowFireType = ArrowFireType.SINGLE;
             arrowTypeEquipped = ArrowTypeEquipped.NORMAL;
             goddessSpellSelected = GoddessSpellSelected.DIN;
@@ -122,6 +117,7 @@ namespace LinkMod.Content.Link
             //Charging Variables
             isCharging = false;
             isCharged = false;
+            isHolding = false;
 
             //List of Lists
             cooldown = new List<List<float>>();

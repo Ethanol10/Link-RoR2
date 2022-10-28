@@ -37,22 +37,32 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (!base.inputBank.skill1.down || !base.inputBank.skill2.down || !base.inputBank.skill3.down || !base.inputBank.skill4.down) 
+            switch (linkController.itemInHand) 
             {
-                switch (linkController.itemInHand)
-                {
-                    case LinkController.ItemInHand.RUNE:
-                        outer.SetState(new RuneBombHold { });
-                        break;
-                    case LinkController.ItemInHand.NORMAL:
-                        outer.SetState(new StandardBombHold { });
-                        break;
-                    case LinkController.ItemInHand.SUPER:
-                        break;
-                    case LinkController.ItemInHand.BOMBCHU:
-                        break;
-                }
-                return;
+                case LinkController.ItemInHand.RUNE:
+                    if (!base.inputBank.skill1.down) 
+                    {
+                        outer.SetState(new ItemThrow { totalDuration = 0f });
+                    }
+                    break;
+                case LinkController.ItemInHand.NORMAL:
+                    if (!base.inputBank.skill3.down)
+                    {
+                        outer.SetState(new ItemThrow { totalDuration = 0f });
+                    }
+                    break;
+                case LinkController.ItemInHand.SUPER:
+                    if (!base.inputBank.skill3.down)
+                    {
+                        outer.SetState(new ItemThrow { totalDuration = 0f });
+                    }
+                    break;
+                case LinkController.ItemInHand.BOMBCHU:
+                    if (!base.inputBank.skill4.down)
+                    {
+                        outer.SetState(new ItemThrow { totalDuration = 0f });
+                    }
+                    break;
             }
             if (fixedAge >= duration && isAuthority)
             {

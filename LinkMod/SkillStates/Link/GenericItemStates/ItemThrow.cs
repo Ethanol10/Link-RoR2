@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Rendering;
+using RoR2;
+using RoR2.Projectile;
 
 namespace LinkMod.SkillStates.Link.GenericItemStates
 {
@@ -40,6 +43,7 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
 
             itemThrown = false;
             shieldTaken = false;
+            linkController.isHolding = false;
 
             if (isGrounded)
             {
@@ -58,30 +62,25 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
             {
                 case LinkController.ItemInHand.RUNE:
                     linkController.runeBombThrown = true;
-                    linkController.handState = LinkController.HandState.NOTSPAWNED;
+                    characterBody.skillLocator.primary.UnsetSkillOverride(characterBody.skillLocator.primary, characterBody.skillLocator.primary.skillDef, RoR2.GenericSkill.SkillOverridePriority.Contextual);
+                    characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, Content.Link.Link.runeBombDetonate, RoR2.GenericSkill.SkillOverridePriority.Contextual);
                     break;
                 case LinkController.ItemInHand.NORMAL:
-                    linkController.handState = LinkController.HandState.NOTSPAWNED;
                     break;
             }
-
-            //Unset whatever back to shield.
-            SkillDef secondary = characterBody.skillLocator.secondary.skillDef;
-            characterBody.skillLocator.secondary.UnsetSkillOverride(characterBody.skillLocator.secondary, secondary, RoR2.GenericSkill.SkillOverridePriority.Contextual);
         }
 
         public override void OnExit()
         {
             base.OnExit();
             linkController.SetUnsheathed();
+            linkController.isHolding = false;
             switch (linkController.itemInHand)
             {
                 case LinkController.ItemInHand.RUNE:
                     linkController.runeBombThrown = true;
-                    linkController.handState = LinkController.HandState.NOTSPAWNED;
                     break;
                 case LinkController.ItemInHand.NORMAL:
-                    linkController.handState = LinkController.HandState.NOTSPAWNED;
                     break;
             }
             if (wasGrounded)
@@ -127,8 +126,20 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
             itemThrown = true;
             linkController.DisableStandardBombInHand();
 
-            //Throw the projectile.
-
+            if (base.isAuthority) 
+            {
+                //Throw the projectile.
+                ProjectileManager.instance.FireProjectile(Modules.Projectiles.standardBombPrefab,
+                    GetAimRay().origin,
+                    Util.QuaternionSafeLookRotation(GetAimRay().direction),
+                    base.gameObject,
+                    Modules.StaticValues.standardBombBlastDamageCoefficient * this.damageStat,
+                    4000f,
+                    base.RollCrit(),
+                    DamageColorIndex.Default,
+                    null,
+                    force * Modules.Config.bombMaxThrowPower.Value);
+            }
         }
 
         public void RuneBombSpecificFunction() 
@@ -144,7 +155,11 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Pain;
+            if (fixedAge >= duration * throwItemFraction && itemThrown)
+            {
+                return InterruptPriority.Skill;
+            }
+            return InterruptPriority.Frozen;
         }
 
         public override void OnSerialize(NetworkWriter writer)
