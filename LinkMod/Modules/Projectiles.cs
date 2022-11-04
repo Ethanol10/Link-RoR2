@@ -11,19 +11,89 @@ namespace LinkMod.Modules
     {
         internal static GameObject swordBeamPrefab;
         internal static GameObject standardBombPrefab;
+        internal static GameObject superBombPrefab;
+        internal static GameObject superBombChildrenPrefab;
 
         internal static void RegisterProjectiles()
         {
             CreateSwordBeam();
             CreateStandardBomb();
+            CreateSuperBomb();
+            CreateSuperBombChildren();
 
             AddProjectile(swordBeamPrefab);
             AddProjectile(standardBombPrefab);
+            AddProjectile(superBombPrefab);
+            AddProjectile(superBombChildrenPrefab);
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
         {
             Modules.Content.AddProjectilePrefab(projectileToAdd);
+        }
+
+        private static void CreateSuperBombChildren() 
+        {
+            superBombChildrenPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("LinkNormalBomb");
+            superBombChildrenPrefab.AddComponent<NetworkIdentity>();
+
+            ProjectileController projectileController = superBombChildrenPrefab.AddComponent<ProjectileController>();
+            projectileController.procCoefficient = 1f;
+
+            ProjectileDamage projectileDamage = superBombChildrenPrefab.AddComponent<ProjectileDamage>();
+            projectileDamage.damage = 10f;
+            projectileDamage.crit = false;
+            projectileDamage.force = 1000f;
+            projectileDamage.damageType = DamageType.Generic;
+
+            ProjectileImpactExplosion projectileExplosion = superBombChildrenPrefab.AddComponent<ProjectileImpactExplosion>();
+            projectileExplosion.explosionEffect = Modules.Assets.bombExplosionEffect;
+            projectileExplosion.blastRadius = Modules.StaticValues.superBombChildrenRadius;
+            projectileExplosion.blastDamageCoefficient = 1f;
+            projectileExplosion.falloffModel = BlastAttack.FalloffModel.None;
+            projectileExplosion.destroyOnEnemy = true;
+            projectileExplosion.destroyOnWorld = true;
+            projectileExplosion.lifetimeAfterImpact = 2f;
+            projectileExplosion.lifetime = 3f;
+
+            ProjectileSimple projectileSimple = superBombChildrenPrefab.AddComponent<ProjectileSimple>();
+            projectileSimple.lifetime = 5f;
+            projectileSimple.desiredForwardSpeed = 50f;
+
+
+            superBombChildrenPrefab.AddComponent<StandardBombOnHit>();
+        }
+
+        private static void CreateSuperBomb() 
+        {
+            superBombPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("LinkSuperBomb");
+            superBombPrefab.AddComponent<NetworkIdentity>();
+
+            ProjectileController projectileController = superBombPrefab.AddComponent<ProjectileController>();
+            projectileController.procCoefficient = 1f;
+
+            ProjectileDamage projectileDamage = superBombPrefab.AddComponent<ProjectileDamage>();
+            projectileDamage.damage = 10f;
+            projectileDamage.crit = false;
+            projectileDamage.force = 1000f;
+            projectileDamage.damageType = DamageType.Generic;
+
+            ProjectileImpactExplosion projectileExplosion = superBombPrefab.AddComponent<ProjectileImpactExplosion>();
+            projectileExplosion.explosionEffect = Modules.Assets.bombExplosionEffect;
+            projectileExplosion.blastRadius = Modules.StaticValues.superBombRadius;
+            projectileExplosion.blastDamageCoefficient = 1f;
+            projectileExplosion.falloffModel = BlastAttack.FalloffModel.None;
+            projectileExplosion.destroyOnEnemy = true;
+            projectileExplosion.destroyOnWorld = true;
+            projectileExplosion.lifetimeAfterImpact = 2f;
+            projectileExplosion.lifetime = 3f;
+
+            ProjectileSimple projectileSimple = superBombPrefab.AddComponent<ProjectileSimple>();
+            projectileSimple.lifetime = 3f;
+            projectileSimple.desiredForwardSpeed = 100f;
+
+
+            superBombPrefab.AddComponent<SuperBombOnHit>();
         }
 
         private static void CreateStandardBomb() 
@@ -43,7 +113,7 @@ namespace LinkMod.Modules
             ProjectileImpactExplosion projectileExplosion = standardBombPrefab.AddComponent<ProjectileImpactExplosion>();
             projectileExplosion.explosionEffect = Modules.Assets.bombExplosionEffect;
             projectileExplosion.blastRadius = Modules.StaticValues.standardBombRadius;
-            projectileExplosion.blastDamageCoefficient = Modules.StaticValues.standardBombBlastDamageCoefficient;
+            projectileExplosion.blastDamageCoefficient = 1f;
             projectileExplosion.falloffModel = BlastAttack.FalloffModel.None;
             projectileExplosion.destroyOnEnemy = true;
             projectileExplosion.destroyOnWorld = true;
@@ -132,6 +202,16 @@ namespace LinkMod.Modules
         }
 
         internal class StandardBombOnHit : MonoBehaviour, IProjectileImpactBehavior
+        {
+            public NetworkInstanceId netID;
+
+            public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
+            {
+                //Maybe something can be done for link
+            }
+        }
+
+        internal class SuperBombOnHit : MonoBehaviour, IProjectileImpactBehavior
         {
             public NetworkInstanceId netID;
 

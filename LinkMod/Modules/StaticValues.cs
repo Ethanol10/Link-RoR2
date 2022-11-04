@@ -48,6 +48,14 @@
         //Standard Bomb
         internal const float standardBombBlastDamageCoefficient = 10f;
         internal const float standardBombBlastForce = 4000f;
-        internal const float standardBombRadius = 15f;
+        internal const float standardBombRadius = 12f;
+
+        //Super Bomb
+        internal const float superBombBlastDamageCoefficient = 20f;
+        internal const float superBombBlastForce = 4000f;
+        internal const float superBombRadius = 15f;
+        internal const float superBombChildrenBlastDamageCoefficient = 4f;
+        internal const float superBombChildrenRadius = 5f;
+        internal const float superBombChildrenBlastForce = 1000f;
     }
 }

@@ -148,12 +148,6 @@ namespace LinkMod.SkillStates.Link.MasterSwordSpinAttack
                     base.characterMotor.velocity = vector;
                 }
                 this.previousPosition = base.transform.position;
-
-                if (base.isAuthority && base.fixedAge >= duration)
-                {
-                    this.outer.SetNextStateToMain();
-                    return;
-                }
             }
             
             // Attack code.

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4232802504
+CRC: 1746074394
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5ef76f8bbb8d6a13f1d498a061513f7b
+    Hash: 8219aac37096cdc66e642abfa8962cbf
   TypeTreeHash:
     serializedVersion: 2
     Hash: 64d91baccf1afa11f48fa4efe31ed13c
@@ -113,6 +113,7 @@ Assets:
 - Assets/LinkAssets/Prefabs/particle/BombExplosionEffect.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/Roll.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Gliding.anim
+- Assets/LinkAssets/Textures/def_superbomb_col.png
 - Assets/LinkAssets/Animations/LinkDisplayController.controller
 - Assets/LinkAssets/Meshes/runeBombMeshPin.mesh
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailClose.anim
@@ -128,6 +129,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/AirThrow.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabLanding.anim
 - Assets/LinkAssets/Prefabs/particle/outerParticles.prefab
+- Assets/LinkAssets/Materials/LinkSuperBomb.mat
 - Assets/LinkAssets/Textures/metal_linkbomb_001_nor.png
 - Assets/LinkAssets/Animations/ParasailAnimCon.controller
 - Assets/LinkAssets/Materials/SwordShieldMaterial.mat
@@ -156,6 +158,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle2.anim
 - Assets/LinkAssets/Textures/def_parasail_001_col.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabHold.anim
+- Assets/LinkAssets/Prefabs/LinkSuperBomb.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/DoubleJump.anim
 - Assets/LinkAssets/Shaders/FrenselLit.shader
 - Assets/LinkAssets/Textures/Trail.mat
