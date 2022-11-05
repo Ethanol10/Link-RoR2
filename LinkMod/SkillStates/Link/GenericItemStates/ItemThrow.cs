@@ -11,6 +11,8 @@ using UnityEngine.Networking;
 using UnityEngine.Rendering;
 using RoR2;
 using RoR2.Projectile;
+using static LinkMod.Modules.Projectiles;
+using LinkMod.Modules.Networking.OnHitProjectile;
 
 namespace LinkMod.SkillStates.Link.GenericItemStates
 {
@@ -45,6 +47,10 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
             shieldTaken = false;
             linkController.isHolding = false;
 
+            Chat.AddMessage($"body: {characterBody.netId}");
+            Modules.Projectiles.superBombPrefab.GetComponent<SuperBombOnHit>().netID = characterBody.netId;
+            Chat.AddMessage($"did it set: {Modules.Projectiles.superBombPrefab.GetComponent<SuperBombOnHit>().netID}");
+
             if (isGrounded)
             {
                 PlayCrossfade("UpperBody, Override", "GroundedItemThrow", "Swing.playbackRate", duration, 0.02f);
@@ -67,6 +73,8 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
                     break;
                 case LinkController.ItemInHand.NORMAL:
                     break;
+                case LinkController.ItemInHand.SUPER:
+                    break;
             }
         }
 
@@ -81,6 +89,8 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
                     linkController.runeBombThrown = true;
                     break;
                 case LinkController.ItemInHand.NORMAL:
+                    break;
+                case LinkController.ItemInHand.SUPER:
                     break;
             }
             if (wasGrounded)
@@ -106,6 +116,9 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
                     case LinkController.ItemInHand.NORMAL:
                         NormalBombSpecificFunction();
                         break;
+                    case LinkController.ItemInHand.SUPER:
+                        SuperBombSpecificFunction();
+                        break;
                     default:
                         break;
                 }
@@ -118,6 +131,27 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
             if (fixedAge >= duration)
             {
                 outer.SetNextStateToMain();
+            }
+        }
+
+        public void SuperBombSpecificFunction() 
+        {
+            itemThrown = true;
+            linkController.DisableSuperBombInHand();
+
+            if (base.isAuthority)
+            {
+                //Throw the projectile.
+                ProjectileManager.instance.FireProjectile(Modules.Projectiles.superBombPrefab,
+                    GetAimRay().origin,
+                    Util.QuaternionSafeLookRotation(GetAimRay().direction),
+                    base.gameObject,
+                    Modules.StaticValues.superBombBlastDamageCoefficient * this.damageStat,
+                    4000f,
+                    base.RollCrit(),
+                    DamageColorIndex.Default,
+                    null,
+                    force * Modules.Config.standardBombMaxThrowPower.Value);
             }
         }
 

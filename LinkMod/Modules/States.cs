@@ -11,6 +11,7 @@ using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
 using LinkMod.SkillStates.Link.RuneBomb;
 using LinkMod.SkillStates.Link.StandardBomb;
+using LinkMod.SkillStates.Link.SuperBomb;
 using LinkMod.SkillStates.Link.SwapLoadout;
 
 namespace LinkMod.Modules
@@ -72,6 +73,10 @@ namespace LinkMod.Modules
             //Standard Bomb
             Modules.Content.AddEntityState(typeof(StandardBombSpawn));
             Modules.Content.AddEntityState(typeof(StandardBombHold));
+
+            //Super Bomb
+            Modules.Content.AddEntityState(typeof(SuperBombSpawn));
+            Modules.Content.AddEntityState(typeof(SuperBombHold));
 
             //Bow And Arrow
             Modules.Content.AddEntityState(typeof(DrawBow));

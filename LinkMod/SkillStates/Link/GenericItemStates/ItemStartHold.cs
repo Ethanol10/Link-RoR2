@@ -2,6 +2,7 @@
 using LinkMod.Content.Link;
 using LinkMod.SkillStates.Link.RuneBomb;
 using LinkMod.SkillStates.Link.StandardBomb;
+using LinkMod.SkillStates.Link.SuperBomb;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -37,32 +38,35 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            switch (linkController.itemInHand) 
+            if (isAuthority)
             {
-                case LinkController.ItemInHand.RUNE:
-                    if (!base.inputBank.skill1.down) 
-                    {
-                        outer.SetState(new ItemThrow { totalDuration = 0f });
-                    }
-                    break;
-                case LinkController.ItemInHand.NORMAL:
-                    if (!base.inputBank.skill3.down)
-                    {
-                        outer.SetState(new ItemThrow { totalDuration = 0f });
-                    }
-                    break;
-                case LinkController.ItemInHand.SUPER:
-                    if (!base.inputBank.skill3.down)
-                    {
-                        outer.SetState(new ItemThrow { totalDuration = 0f });
-                    }
-                    break;
-                case LinkController.ItemInHand.BOMBCHU:
-                    if (!base.inputBank.skill4.down)
-                    {
-                        outer.SetState(new ItemThrow { totalDuration = 0f });
-                    }
-                    break;
+                switch (linkController.itemInHand)
+                {
+                    case LinkController.ItemInHand.RUNE:
+                        if (!base.inputBank.skill1.down)
+                        {
+                            outer.SetState(new ItemThrow { totalDuration = 0f });
+                        }
+                        break;
+                    case LinkController.ItemInHand.NORMAL:
+                        if (!base.inputBank.skill3.down)
+                        {
+                            outer.SetState(new ItemThrow { totalDuration = 0f });
+                        }
+                        break;
+                    case LinkController.ItemInHand.SUPER:
+                        if (!base.inputBank.skill4.down)
+                        {
+                            outer.SetState(new ItemThrow { totalDuration = 0f });
+                        }
+                        break;
+                    case LinkController.ItemInHand.BOMBCHU:
+                        if (!base.inputBank.skill4.down)
+                        {
+                            outer.SetState(new ItemThrow { totalDuration = 0f });
+                        }
+                        break;
+                }
             }
             if (fixedAge >= duration && isAuthority)
             {
@@ -75,6 +79,7 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
                         outer.SetState(new StandardBombHold { });
                         break;
                     case LinkController.ItemInHand.SUPER:
+                        outer.SetState(new SuperBombHold { });
                         break;
                     case LinkController.ItemInHand.BOMBCHU:
                         break;

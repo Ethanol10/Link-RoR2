@@ -117,6 +117,9 @@ namespace LinkMod.Content.Link
         //Standard Bomb 
         public static SkillDef standardBombSpawn;
 
+        //Super Bomb 
+        public static SkillDef superBombSpawn;
+
         //Extra skill swaps
         public static SkillDef swordLoadoutSkillDef;
         public static SkillDef bombLoadoutSkillDef;
@@ -467,6 +470,35 @@ namespace LinkMod.Content.Link
                 skillDescriptionToken = prefix + "_LINK_BODY_STANDARD_BOMB_SPAWN_DESCRIPTION",
                 skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("standardBombSpawn"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(StandardBombSpawn)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 0,
+                keywordTokens = new string[] { "" }
+            });
+
+            #endregion
+
+            #region Super Bomb
+
+            superBombSpawn = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_SUPER_BOMB_SPAWN_NAME",
+                skillNameToken = prefix + "_LINK_BODY_SUPER_BOMB_SPAWN_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_SUPER_BOMB_SPAWN_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("superBombSpawn"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SuperBombSpawn)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 1f,

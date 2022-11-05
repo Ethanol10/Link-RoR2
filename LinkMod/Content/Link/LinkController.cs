@@ -30,6 +30,8 @@ namespace LinkMod.Content.Link
         internal Transform bombThrowPosition;
         internal Transform standardBombLocation;
         internal Transform standardBombFakeLocation;
+        internal Transform superBombLocation;
+        internal Transform superBombFakeLocation;
 
 
         //Loadout stuff
@@ -100,6 +102,8 @@ namespace LinkMod.Content.Link
             bombThrowPosition = childLocator.FindChild("ThrowPosition");
             standardBombLocation = childLocator.FindChild("standardBomb");
             standardBombFakeLocation = childLocator.FindChild("standardBombTemp");
+            superBombLocation = childLocator.FindChild("superBomb");
+            superBombFakeLocation = childLocator.FindChild("superBombTemp");
 
             if (LinkPlugin.emotesAvailable) 
             {
@@ -253,6 +257,26 @@ namespace LinkMod.Content.Link
         public void DisableFakeStandardBombInHand()
         {
             standardBombFakeLocation.gameObject.SetActive(false);
+        }
+
+        public void EnableSuperBombInHand()
+        {
+            superBombLocation.gameObject.SetActive(true);
+        }
+
+        public void DisableSuperBombInHand()
+        {
+            superBombLocation.gameObject.SetActive(false);
+        }
+
+        public void EnableFakeSuperBombInHand()
+        {
+            superBombFakeLocation.gameObject.SetActive(true);
+        }
+
+        public void DisableFakeSuperBombInHand()
+        {
+            superBombFakeLocation.gameObject.SetActive(false);
         }
 
         public void HandleCustomEmotesAPIAnimationEnd(string newAnim, BoneMapper mapper) 

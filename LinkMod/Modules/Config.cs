@@ -20,6 +20,7 @@ namespace LinkMod.Modules
         public static ConfigEntry<float> bombMaxThrowPower;
         public static ConfigEntry<float> bombTimerToMaxCharge;
         public static ConfigEntry<float> standardBombMaxThrowPower;
+        public static ConfigEntry<int> superBombChildrenMaxAmount;
 
         public static void ReadConfig()
         {
@@ -109,6 +110,13 @@ namespace LinkMod.Modules
                 new ConfigDefinition("02 - Bomb", "Timer to fully charge a throw for Standard Bomb"),
                 45f,
                 new ConfigDescription("Determines how long it takes for Link to charge up a full powered throw", null, Array.Empty<object>())
+            );
+
+            superBombChildrenMaxAmount = LinkPlugin.instance.Config.Bind<int>
+            (
+                new ConfigDefinition("02 - Bomb", "Max amount of children spawned from the super bomb"),
+                10,
+                new ConfigDescription("Determines how many mini bombs are ejected after the super bomb explodes.", null, Array.Empty<object>())
             );
         }
 
@@ -213,6 +221,15 @@ namespace LinkMod.Modules
                         min = 1f,
                         max = 100f,
                         increment = 1f
+                    }
+                ));
+            ModSettingsManager.AddOption(
+                new IntSliderOption(
+                    superBombChildrenMaxAmount,
+                    new IntSliderConfig
+                    {
+                        min = 0,
+                        max = 50
                     }
                 ));
 

@@ -1,9 +1,11 @@
-﻿using R2API;
+﻿using LinkMod.Modules.Networking.OnHitProjectile;
+using R2API;
 using R2API.Networking;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
+using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace LinkMod.Modules
 {
@@ -60,8 +62,7 @@ namespace LinkMod.Modules
             projectileSimple.lifetime = 5f;
             projectileSimple.desiredForwardSpeed = 50f;
 
-
-            superBombChildrenPrefab.AddComponent<StandardBombOnHit>();
+            PrefabAPI.RegisterNetworkPrefab(superBombChildrenPrefab);
         }
 
         private static void CreateSuperBomb() 
@@ -92,8 +93,10 @@ namespace LinkMod.Modules
             projectileSimple.lifetime = 3f;
             projectileSimple.desiredForwardSpeed = 100f;
 
-
             superBombPrefab.AddComponent<SuperBombOnHit>();
+
+
+            PrefabAPI.RegisterNetworkPrefab(superBombPrefab);
         }
 
         private static void CreateStandardBomb() 
@@ -126,6 +129,8 @@ namespace LinkMod.Modules
 
 
             standardBombPrefab.AddComponent<StandardBombOnHit>();
+
+            PrefabAPI.RegisterNetworkPrefab(standardBombPrefab);
         }
 
         private static void CreateSwordBeam()
@@ -202,16 +207,6 @@ namespace LinkMod.Modules
         }
 
         internal class StandardBombOnHit : MonoBehaviour, IProjectileImpactBehavior
-        {
-            public NetworkInstanceId netID;
-
-            public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
-            {
-                //Maybe something can be done for link
-            }
-        }
-
-        internal class SuperBombOnHit : MonoBehaviour, IProjectileImpactBehavior
         {
             public NetworkInstanceId netID;
 

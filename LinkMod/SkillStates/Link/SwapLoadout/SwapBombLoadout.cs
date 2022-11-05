@@ -48,7 +48,7 @@ namespace LinkMod.SkillStates.Link.SwapLoadout
 
                 //Check this separately.
                 characterBody.skillLocator.utility.SetSkillOverride(characterBody.skillLocator.utility, LinkMod.Content.Link.Link.standardBombSpawn, GenericSkill.SkillOverridePriority.Contextual);
-                characterBody.skillLocator.special.SetSkillOverride(characterBody.skillLocator.special, LinkMod.Content.Link.Link.spinAttackSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                characterBody.skillLocator.special.SetSkillOverride(characterBody.skillLocator.special, LinkMod.Content.Link.Link.superBombSpawn, GenericSkill.SkillOverridePriority.Contextual);
 
                 linkController.selectedLoadout = LinkController.SelectedLoadout.BOMB;
                 this.outer.SetNextStateToMain();
@@ -61,7 +61,7 @@ namespace LinkMod.SkillStates.Link.SwapLoadout
             characterBody.skillLocator.primary.SetSkillOverride(characterBody.skillLocator.primary, LinkMod.Content.Link.Link.runeBombSpawn, GenericSkill.SkillOverridePriority.Contextual);
             characterBody.skillLocator.secondary.SetSkillOverride(characterBody.skillLocator.secondary, LinkMod.Content.Link.Link.hylianShieldSkillDef, GenericSkill.SkillOverridePriority.Contextual);
             characterBody.skillLocator.utility.SetSkillOverride(characterBody.skillLocator.utility, LinkMod.Content.Link.Link.standardBombSpawn, GenericSkill.SkillOverridePriority.Contextual);
-            characterBody.skillLocator.special.SetSkillOverride(characterBody.skillLocator.special, LinkMod.Content.Link.Link.spinAttackSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+            characterBody.skillLocator.special.SetSkillOverride(characterBody.skillLocator.special, LinkMod.Content.Link.Link.superBombSpawn, GenericSkill.SkillOverridePriority.Contextual);
             linkController.selectedLoadout = LinkController.SelectedLoadout.BOMB;
             this.outer.SetNextStateToMain();
             return;
