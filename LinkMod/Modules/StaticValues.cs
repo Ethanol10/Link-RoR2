@@ -58,6 +58,6 @@
         internal const float superBombChildrenRadius = 5f;
         internal const float superBombChildrenBlastForce = 1000f;
         internal const int superBombMinAmountOfChildren = 3;
-        internal const float superBombSalvoRadius = 5f;
+        internal const float superBombSalvoRadius = 30f;
     }
 }

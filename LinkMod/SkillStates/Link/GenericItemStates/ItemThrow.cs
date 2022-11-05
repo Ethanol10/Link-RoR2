@@ -47,10 +47,6 @@ namespace LinkMod.SkillStates.Link.GenericItemStates
             shieldTaken = false;
             linkController.isHolding = false;
 
-            Chat.AddMessage($"body: {characterBody.netId}");
-            Modules.Projectiles.superBombPrefab.GetComponent<SuperBombOnHit>().netID = characterBody.netId;
-            Chat.AddMessage($"did it set: {Modules.Projectiles.superBombPrefab.GetComponent<SuperBombOnHit>().netID}");
-
             if (isGrounded)
             {
                 PlayCrossfade("UpperBody, Override", "GroundedItemThrow", "Swing.playbackRate", duration, 0.02f);

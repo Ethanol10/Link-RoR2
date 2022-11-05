@@ -20,13 +20,13 @@ namespace LinkMod.Modules
         {
             CreateSwordBeam();
             CreateStandardBomb();
-            CreateSuperBomb();
             CreateSuperBombChildren();
+            CreateSuperBomb();
 
             AddProjectile(swordBeamPrefab);
             AddProjectile(standardBombPrefab);
-            AddProjectile(superBombPrefab);
             AddProjectile(superBombChildrenPrefab);
+            AddProjectile(superBombPrefab);
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
@@ -48,19 +48,15 @@ namespace LinkMod.Modules
             projectileDamage.force = 1000f;
             projectileDamage.damageType = DamageType.Generic;
 
-            ProjectileImpactExplosion projectileExplosion = superBombChildrenPrefab.AddComponent<ProjectileImpactExplosion>();
+            ProjectileExplosion projectileExplosion = superBombChildrenPrefab.AddComponent<ProjectileExplosion>();
             projectileExplosion.explosionEffect = Modules.Assets.bombExplosionEffect;
             projectileExplosion.blastRadius = Modules.StaticValues.superBombChildrenRadius;
             projectileExplosion.blastDamageCoefficient = 1f;
             projectileExplosion.falloffModel = BlastAttack.FalloffModel.None;
-            projectileExplosion.destroyOnEnemy = true;
-            projectileExplosion.destroyOnWorld = true;
-            projectileExplosion.lifetimeAfterImpact = 2f;
-            projectileExplosion.lifetime = 3f;
 
             ProjectileSimple projectileSimple = superBombChildrenPrefab.AddComponent<ProjectileSimple>();
-            projectileSimple.lifetime = 5f;
-            projectileSimple.desiredForwardSpeed = 50f;
+            projectileSimple.lifetime = 10f;
+            projectileSimple.desiredForwardSpeed = 100f;
 
             PrefabAPI.RegisterNetworkPrefab(superBombChildrenPrefab);
         }
@@ -88,6 +84,9 @@ namespace LinkMod.Modules
             projectileExplosion.destroyOnWorld = true;
             projectileExplosion.lifetimeAfterImpact = 2f;
             projectileExplosion.lifetime = 3f;
+            projectileExplosion.fireChildren = true;
+            projectileExplosion.childrenCount = 4;
+            projectileExplosion.childrenProjectilePrefab = superBombChildrenPrefab;
 
             ProjectileSimple projectileSimple = superBombPrefab.AddComponent<ProjectileSimple>();
             projectileSimple.lifetime = 3f;

@@ -107,9 +107,9 @@ namespace LinkMod.Modules
 
             standardBombMaxThrowPower = LinkPlugin.instance.Config.Bind<float>
             (
-                new ConfigDefinition("02 - Bomb", "Timer to fully charge a throw for Standard Bomb"),
+                new ConfigDefinition("02 - Bomb", "Power to throw a Standard Bomb"),
                 45f,
-                new ConfigDescription("Determines how long it takes for Link to charge up a full powered throw", null, Array.Empty<object>())
+                new ConfigDescription("Determines how hard Link throws a standard and super bomb", null, Array.Empty<object>())
             );
 
             superBombChildrenMaxAmount = LinkPlugin.instance.Config.Bind<int>
