@@ -1051,6 +1051,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LinkNormalBomb
       objectReference: {fileID: 0}
+    - target: {fileID: 6914124395299799333, guid: a73c5feeeb5190f4b8429e52cd2623db,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a73c5feeeb5190f4b8429e52cd2623db, type: 3}
 --- !u!1001 &4047974067196169114

@@ -36,7 +36,7 @@ namespace LinkMod.Modules
 
         private static void CreateSuperBombChildren() 
         {
-            superBombChildrenPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("LinkNormalBomb");
+            superBombChildrenPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("LinkChildBomb");
             superBombChildrenPrefab.AddComponent<NetworkIdentity>();
 
             ProjectileController projectileController = superBombChildrenPrefab.AddComponent<ProjectileController>();
@@ -48,15 +48,19 @@ namespace LinkMod.Modules
             projectileDamage.force = 1000f;
             projectileDamage.damageType = DamageType.Generic;
 
-            ProjectileExplosion projectileExplosion = superBombChildrenPrefab.AddComponent<ProjectileExplosion>();
+            ProjectileImpactExplosion projectileExplosion = superBombChildrenPrefab.AddComponent<ProjectileImpactExplosion>();
             projectileExplosion.explosionEffect = Modules.Assets.bombExplosionEffect;
             projectileExplosion.blastRadius = Modules.StaticValues.superBombChildrenRadius;
             projectileExplosion.blastDamageCoefficient = 1f;
             projectileExplosion.falloffModel = BlastAttack.FalloffModel.None;
+            projectileExplosion.destroyOnEnemy = false;
+            projectileExplosion.destroyOnWorld = true;
+            projectileExplosion.lifetimeAfterImpact = 2f;
+            projectileExplosion.lifetime = 5f;
 
             ProjectileSimple projectileSimple = superBombChildrenPrefab.AddComponent<ProjectileSimple>();
             projectileSimple.lifetime = 10f;
-            projectileSimple.desiredForwardSpeed = 100f;
+            projectileSimple.desiredForwardSpeed = 30f;
 
             PrefabAPI.RegisterNetworkPrefab(superBombChildrenPrefab);
         }
@@ -84,13 +88,10 @@ namespace LinkMod.Modules
             projectileExplosion.destroyOnWorld = true;
             projectileExplosion.lifetimeAfterImpact = 2f;
             projectileExplosion.lifetime = 3f;
-            projectileExplosion.fireChildren = true;
-            projectileExplosion.childrenCount = 4;
-            projectileExplosion.childrenProjectilePrefab = superBombChildrenPrefab;
 
             ProjectileSimple projectileSimple = superBombPrefab.AddComponent<ProjectileSimple>();
             projectileSimple.lifetime = 3f;
-            projectileSimple.desiredForwardSpeed = 100f;
+            projectileSimple.desiredForwardSpeed = 30f;
 
             superBombPrefab.AddComponent<SuperBombOnHit>();
 
@@ -124,7 +125,7 @@ namespace LinkMod.Modules
 
             ProjectileSimple projectileSimple = standardBombPrefab.AddComponent<ProjectileSimple>();
             projectileSimple.lifetime = 3f;
-            projectileSimple.desiredForwardSpeed = 100f;
+            projectileSimple.desiredForwardSpeed = 30f;
 
 
             standardBombPrefab.AddComponent<StandardBombOnHit>();

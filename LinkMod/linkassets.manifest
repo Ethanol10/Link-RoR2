@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1651885566
+CRC: 1705734193
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1fe28f8c5e5e4f32017ddf3d5b015f31
+    Hash: 9744a86f7a8e6ca2203209ed12930a32
   TypeTreeHash:
     serializedVersion: 2
     Hash: 64d91baccf1afa11f48fa4efe31ed13c
@@ -146,6 +146,7 @@ Assets:
 - Assets/LinkAssets/Animations/BombStuff/bombExpansion.anim
 - Assets/LinkAssets/Textures/Link1BodyTex.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing3.anim
+- Assets/LinkAssets/Prefabs/LinkChildBomb.prefab
 - Assets/LinkAssets/Materials/FullyChargedMat.mat
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailHold.anim
 - Assets/LinkAssets/Textures/def_parasail_001_nor.png
