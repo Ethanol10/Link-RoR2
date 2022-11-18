@@ -138,6 +138,15 @@ ModelImporter:
   - first:
       74: -2250280659970665825
     second: ItemHold
+  - first:
+      74: -577894356349636361
+    second: BowDraw
+  - first:
+      74: -227234884172021937
+    second: BowHold
+  - first:
+      74: -5368591999005154823
+    second: BowFire
   externalObjects: {}
   materials:
     materialImportMode: 1
