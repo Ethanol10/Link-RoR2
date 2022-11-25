@@ -59,25 +59,6 @@ namespace LinkMod.Content.Link
         }
         internal ItemInHand itemInHand;
 
-        //Arrow Types
-        internal enum ArrowTypeEquipped : uint
-        {
-            NORMAL = 1,
-            FIRE = 2,
-            ICE = 3,
-            LIGHT = 4,
-            ANCIENT = 5,
-            BOMB = 6
-        };
-        internal enum ArrowFireType : uint 
-        {
-            SINGLE = 1,
-            TRIPLE = 2,
-            QUINT = 3
-        }
-        internal ArrowFireType arrowFireType;
-        internal ArrowTypeEquipped arrowTypeEquipped;
-
         internal enum GoddessSpellSelected : uint 
         {
             DIN = 1,
@@ -111,8 +92,6 @@ namespace LinkMod.Content.Link
             }
 
             //Setup initial state for skills when they use it.
-            arrowFireType = ArrowFireType.SINGLE;
-            arrowTypeEquipped = ArrowTypeEquipped.NORMAL;
             goddessSpellSelected = GoddessSpellSelected.DIN;
             selectedLoadout = SelectedLoadout.SWORD;
             itemInHand = ItemInHand.RUNE;
