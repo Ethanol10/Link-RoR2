@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
 using UnityEngine;
 
 namespace LinkMod.Content.Link
@@ -50,6 +51,49 @@ namespace LinkMod.Content.Link
             On.RoR2.UI.SkillIcon.Update += SkillIcon_Update;
         }
 
+        private void Unhook() 
+        {
+            On.RoR2.UI.SkillIcon.Update -= SkillIcon_Update;
+        }
+
+        public void SetupArrowLabels(RoR2.UI.SkillIcon icon) 
+        {
+            if (icon.targetSkill?.characterBody.baseNameToken == LinkPlugin.DEVELOPER_PREFIX + "_LINK_BODY_NAME") 
+            {
+                switch (icon.targetSkillSlot) 
+                {
+                    case RoR2.SkillSlot.Secondary:
+                        //Arrow Type
+                        break;
+                    case RoR2.SkillSlot.Utility:
+                        //Arrow Firing Type
+                        break;
+                }
+            }
+        }
+
+        //Creates the label.
+        private HGTextMeshProUGUI CreateLabel(Transform parent, string name, string text, Vector2 position, float textScale)
+        {
+            GameObject gameObject = new GameObject(name);
+            gameObject.transform.parent = parent;
+            gameObject.AddComponent<CanvasRenderer>();
+            RectTransform rectTransform = gameObject.AddComponent<RectTransform>();
+            HGTextMeshProUGUI hgtextMeshProUGUI = gameObject.AddComponent<HGTextMeshProUGUI>();
+            hgtextMeshProUGUI.text = text;
+            hgtextMeshProUGUI.fontSize = textScale;
+            hgtextMeshProUGUI.color = Color.white;
+            hgtextMeshProUGUI.alignment = TextAlignmentOptions.Center;
+            hgtextMeshProUGUI.enableWordWrapping = false;
+            rectTransform.localPosition = Vector2.zero;
+            rectTransform.anchorMin = Vector2.zero;
+            rectTransform.anchorMax = Vector2.one;
+            rectTransform.localScale = Vector3.one;
+            rectTransform.sizeDelta = Vector2.zero;
+            rectTransform.anchoredPosition = position;
+            return hgtextMeshProUGUI;
+        }
+
         public void SkillIcon_Update(On.RoR2.UI.SkillIcon.orig_Update orig, RoR2.UI.SkillIcon self)
         {
             orig.Invoke(self);
@@ -60,7 +104,7 @@ namespace LinkMod.Content.Link
                 if (!labelsCreated) 
                 {
                     //Create labels
-
+                    SetupArrowLabels(self);
                     labelsCreated = true;
                 }
 
@@ -89,6 +133,7 @@ namespace LinkMod.Content.Link
         {
             Destroy(ArrowFireTypeLabel);
             Destroy(ArrowTypeLabel);
+            Unhook();
         }
     }
 }

@@ -10,6 +10,7 @@ namespace LinkMod.Content.Link
 {
     internal class LinkController : MonoBehaviour
     {
+        internal LinkArrowController linkArrowController;
         internal SkinnedMeshRenderer[] smrs;
         internal CharacterBody body;
         internal Animator anim;
@@ -73,6 +74,7 @@ namespace LinkMod.Content.Link
             //Get The modelloc for the hookEmoteEvent
             body = gameObject.GetComponent<CharacterBody>();
             childLocator = GetComponentInChildren<ChildLocator>();
+            linkArrowController = gameObject.AddComponent<LinkArrowController>();
 
             shieldSheathed = childLocator.FindChild("SheathedShieldObj");
             swordSheathed = childLocator.FindChild("SheathedSwordObj");

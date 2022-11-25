@@ -44,6 +44,9 @@
     <Reference Include="RiskOfOptions">
       <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\testing\BepInEx\plugins\Rune580-Risk_Of_Options\RiskOfOptions.dll</HintPath>
     </Reference>
+    <Reference Include="RiskUI">
+      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\testing\BepInEx\plugins\Bubbet-RiskUI\RiskUI.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

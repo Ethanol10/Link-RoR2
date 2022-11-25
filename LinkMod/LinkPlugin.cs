@@ -20,6 +20,7 @@ namespace LinkMod
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.weliveinasociety.CustomEmotesAPI", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("bubbet.riskui", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     [R2APISubmoduleDependency(new string[]
@@ -45,12 +46,18 @@ namespace LinkMod
 
         public static LinkPlugin instance;
         public static bool emotesAvailable = false;
+        public static bool riskUIEnabled = false;
 
         public static Dictionary<string, CharacterMaster> summonCharacterMaster = new Dictionary<string, CharacterMaster>();
 
         private void Awake()
         {
             instance = this;
+
+            if (Chainloader.PluginInfos.ContainsKey("bubbet.riskui"))
+            {
+                riskUIEnabled = true;
+            }
 
             Log.Init(Logger);
             Modules.Assets.Initialize(); // load assets and read config
