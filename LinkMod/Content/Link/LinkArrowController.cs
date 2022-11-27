@@ -60,13 +60,36 @@ namespace LinkMod.Content.Link
         {
             if (icon.targetSkill?.characterBody.baseNameToken == LinkPlugin.DEVELOPER_PREFIX + "_LINK_BODY_NAME") 
             {
+                Vector3 position;
+                position = LinkPlugin.riskUIEnabled ? icon.stockText.transform.position : icon.stockText.transform.parent.parent.position;
+                //Alignment only for riskUI
+                if (LinkPlugin.riskUIEnabled) 
+                {
+                    HGTextMeshProUGUI KeyUI = icon.stockText.transform.parent.parent.GetChild(1).GetComponentInChildren<HGTextMeshProUGUI>();
+                    KeyUI.alignment = TextAlignmentOptions.Center;
+                }
+
                 switch (icon.targetSkillSlot) 
                 {
                     case RoR2.SkillSlot.Secondary:
-                        //Arrow Type
+                        if (!ArrowFireTypeLabel) 
+                        {
+                            //Arrow Firing Type 
+                            this.ArrowFireTypeLabel = this.CreateLabel(icon.stockText.transform.parent.parent.GetChild(1), "ArrowFireTypeLabel", "Single", new Vector2(position.x - 7.5f, position.y + 20f), 15f);
+                            this.ArrowFireTypeLabel.transform.SetSiblingIndex(0);
+                            this.ArrowFireTypeLabel.transform.rotation = icon.stockText.transform.rotation;
+                            this.ArrowFireTypeLabel.color = icon.stockText.color;
+                        }
                         break;
                     case RoR2.SkillSlot.Utility:
-                        //Arrow Firing Type
+                        if (!ArrowTypeLabel)
+                        {
+                            //Arrow Type 
+                            this.ArrowTypeLabel = this.CreateLabel(icon.stockText.transform.parent.parent.GetChild(1), "ArrowTypeLabel", "Normal", new Vector2(position.x - 7.5f, position.y + 20f), 15f);
+                            this.ArrowTypeLabel.transform.SetSiblingIndex(0);
+                            this.ArrowTypeLabel.transform.rotation = icon.stockText.transform.rotation;
+                            this.ArrowTypeLabel.color = icon.stockText.color;
+                        }
                         break;
                 }
             }
@@ -112,9 +135,53 @@ namespace LinkMod.Content.Link
                 ArrowFireTypeLabel.enabled = true;
                 ArrowTypeLabel.enabled = true;
 
+                string textToSet = "";
                 //Check the type and update accordingly.
+                switch (self.targetSkillSlot) 
+                {
+                    case RoR2.SkillSlot.Secondary:
+                        //Arrow Firing Type
+                        switch (arrowFireType) 
+                        {
+                            case ArrowFireType.SINGLE:
+                                textToSet = "Single";
+                                break;
+                            case ArrowFireType.TRIPLE:
+                                textToSet = "Triple";
+                                break;
+                            case ArrowFireType.QUINT:
+                                textToSet = "Quintuple";
+                                break;
+                        }
+                        ArrowFireTypeLabel.SetText(textToSet);
+                        break;
+                    case RoR2.SkillSlot.Utility:
+                        //Arrow Type
 
-                
+                        switch (arrowTypeEquipped)
+                        {
+                            case ArrowTypeEquipped.NORMAL:
+                                textToSet = "Normal";
+                                break;
+                            case ArrowTypeEquipped.FIRE:
+                                textToSet = "Fire";
+                                break;
+                            case ArrowTypeEquipped.ICE:
+                                textToSet = "Ice";
+                                break;
+                            case ArrowTypeEquipped.LIGHT:
+                                textToSet = "Light";
+                                break;
+                            case ArrowTypeEquipped.ANCIENT:
+                                textToSet = "Ancient";
+                                break;
+                            case ArrowTypeEquipped.BOMB:
+                                textToSet = "Bomb";
+                                break;
+                        }
+                        ArrowTypeLabel.SetText(textToSet);
+                        break;
+                }
             }
             //Disable the labels.
             else 

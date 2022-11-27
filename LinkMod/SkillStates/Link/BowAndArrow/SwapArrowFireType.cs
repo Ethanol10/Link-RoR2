@@ -9,11 +9,13 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
     internal class SwapArrowFireType : BaseSkillState
     {
         internal LinkController linkController;
-
+        internal LinkArrowController arrowController;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            linkController = gameObject.GetComponent<LinkController>();
+            arrowController = gameObject.GetComponent<LinkArrowController>();
         }
 
         public override void OnExit()
