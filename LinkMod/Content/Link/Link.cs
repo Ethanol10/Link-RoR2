@@ -4,6 +4,7 @@ using LinkMod.Modules;
 using LinkMod.Modules.Characters;
 using LinkMod.Modules.Survivors;
 using LinkMod.SkillStates.Link;
+using LinkMod.SkillStates.Link.BowAndArrow;
 using LinkMod.SkillStates.Link.GenericItemStates;
 using LinkMod.SkillStates.Link.HylianShield;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
@@ -119,6 +120,12 @@ namespace LinkMod.Content.Link
 
         //Super Bomb 
         public static SkillDef superBombSpawn;
+
+        //Bow and Arrow Skills
+        public static SkillDef arrowEntryPoint;
+        public static SkillDef swapArrowEquipped;
+        public static SkillDef swapArrowFiringType;
+        public static SkillDef activateComboShot;
 
         //Extra skill swaps
         public static SkillDef swordLoadoutSkillDef;
@@ -517,6 +524,109 @@ namespace LinkMod.Content.Link
                 keywordTokens = new string[] { "" }
             });
 
+            #endregion
+
+            #region Bow and Arrow
+
+            arrowEntryPoint = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_ARROW_FIRE_NAME",
+                skillNameToken = prefix + "_LINK_BODY_ARROW_FIRE_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_ARROW_FIRE_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("arrowFireIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(DrawBow)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 0,
+                keywordTokens = new string[] { "" }
+            });
+
+            swapArrowEquipped = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_SWAP_ARROW_TYPE_NAME",
+                skillNameToken = prefix + "_LINK_BODY_SWAP_ARROW_TYPE_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_SWAP_ARROW_TYPE_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("arrowFireIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SwapArrowType)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 0,
+                keywordTokens = new string[] { "" }
+            });
+
+            swapArrowFiringType = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_SWAP_ARROW_FIRE_TYPE_NAME",
+                skillNameToken = prefix + "_LINK_BODY_SWAP_ARROW_FIRE_TYPE_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_SWAP_ARROW_FIRE_TYPE_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("arrowFireIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SwapArrowFireType)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 0,
+                keywordTokens = new string[] { "" }
+            });
+
+            activateComboShot = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_LINK_BODY_COMBO_ARROW_TOGGLE_NAME",
+                skillNameToken = prefix + "_LINK_BODY_COMBO_ARROW_TOGGLE_NAME",
+                skillDescriptionToken = prefix + "_LINK_BODY_COMBO_ARROW_TOGGLE_DESCRIPTION",
+                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("arrowFireIcon"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ComboShotToggle)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 1f,
+                beginSkillCooldownOnSkillEnd = false,
+                canceledFromSprinting = false,
+                forceSprintDuringState = false,
+                fullRestockOnAssign = true,
+                interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = true,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 0,
+                keywordTokens = new string[] { "" }
+            });
             #endregion
         }
 

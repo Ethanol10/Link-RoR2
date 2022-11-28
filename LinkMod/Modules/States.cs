@@ -84,8 +84,7 @@ namespace LinkMod.Modules
             Modules.Content.AddEntityState(typeof(HoldBow));
             Modules.Content.AddEntityState(typeof(SwapArrowFireType));
             Modules.Content.AddEntityState(typeof(SwapArrowType));
-            Modules.Content.AddEntityState(typeof(ComboShotFire));
-            Modules.Content.AddEntityState(typeof(ComboShotStart));
+            Modules.Content.AddEntityState(typeof(ComboShotToggle));
 
             //Goddess Spells
             Modules.Content.AddEntityState(typeof(DinsFire));

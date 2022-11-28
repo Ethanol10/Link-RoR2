@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LinkMod.SkillStates.Link.BowAndArrow
 {
-    internal class ComboShotStart : BaseSkillState
+    internal class ComboShotToggle : BaseSkillState
     {
         public override void OnEnter()
         {

@@ -95,6 +95,54 @@ namespace LinkMod.Content.Link
             }
         }
 
+        public void SetArrowFireType(int arrowTypeIndex) 
+        {
+            switch (arrowTypeIndex) 
+            {
+                case 1:
+                    arrowFireType = ArrowFireType.SINGLE;
+                    break;
+                case 2:
+                    arrowFireType = ArrowFireType.TRIPLE;
+                    break;
+                case 3:
+                    arrowFireType = ArrowFireType.QUINT;
+                    break;
+                default:
+                    arrowFireType = ArrowFireType.SINGLE;
+                    break;
+            }
+        }
+
+
+        public void SetArrowEquippedType(int arrowTypeIndex)
+        {
+            switch (arrowTypeIndex)
+            {
+                case 1:
+                    arrowTypeEquipped = ArrowTypeEquipped.NORMAL;
+                    break;
+                case 2:
+                    arrowTypeEquipped = ArrowTypeEquipped.FIRE;
+                    break;
+                case 3:
+                    arrowTypeEquipped = ArrowTypeEquipped.ICE;
+                    break;
+                case 4:
+                    arrowTypeEquipped = ArrowTypeEquipped.LIGHT;
+                    break;
+                case 5:
+                    arrowTypeEquipped = ArrowTypeEquipped.ANCIENT;
+                    break;
+                case 6:
+                    arrowTypeEquipped = ArrowTypeEquipped.BOMB;
+                    break;
+                default:
+                    arrowTypeEquipped = ArrowTypeEquipped.NORMAL;
+                    break;
+            }
+        }
+
         //Creates the label.
         private HGTextMeshProUGUI CreateLabel(Transform parent, string name, string text, Vector2 position, float textScale)
         {
