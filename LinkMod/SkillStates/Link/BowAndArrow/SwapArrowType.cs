@@ -18,7 +18,7 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
             arrowController = gameObject.GetComponent<LinkArrowController>();
 
             //switch arrow type.
-            int arrowFireType = (int)arrowController.arrowFireType;
+            int arrowFireType = (int)arrowController.arrowTypeEquipped;
             arrowFireType += 1;
             if (arrowFireType > 6)
             {
@@ -26,6 +26,7 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
             }
             arrowController.SetArrowEquippedType(arrowFireType);
 
+            this.outer.SetNextStateToMain();
         }
 
         public override void OnExit()

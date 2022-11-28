@@ -3,6 +3,7 @@ using LinkMod.Content.Link;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace LinkMod.SkillStates.Link.BowAndArrow
 {
@@ -25,6 +26,8 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
                 arrowFireType = 1;
             }
             arrowController.SetArrowFireType(arrowFireType);
+
+            this.outer.SetNextStateToMain();
             
         }
 

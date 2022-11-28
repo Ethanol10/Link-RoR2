@@ -243,8 +243,11 @@ namespace LinkMod.Content.Link
                 //Disable the labels.
                 else
                 {
-                    ArrowFireTypeLabel.enabled = false;
-                    ArrowTypeLabel.enabled = false;
+                    if (ArrowFireTypeLabel && ArrowTypeLabel) 
+                    {
+                        ArrowFireTypeLabel.enabled = false;
+                        ArrowTypeLabel.enabled = false;
+                    }
                 }
             }
     
