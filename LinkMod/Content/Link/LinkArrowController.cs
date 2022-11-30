@@ -59,8 +59,8 @@ namespace LinkMod.Content.Link
         public void SetupArrowLabels(RoR2.UI.SkillIcon icon) 
         {
             Vector3 position;
-            position = LinkPlugin.riskUIEnabled ? icon.stockText.transform.position : icon.stockText.transform.parent.parent.position;
-            Transform childTransform = LinkPlugin.riskUIEnabled ? icon.stockText.transform.parent : icon.stockText.transform.parent.parent.GetChild(1);
+            position = LinkPlugin.riskUIEnabled ? icon.stockText.transform.parent.parent.position : icon.stockText.transform.position;
+            Transform childTransform = LinkPlugin.riskUIEnabled ? icon.stockText.transform.parent.parent.GetChild(1) : icon.stockText.transform.parent;
             //Alignment only for riskUI
             if (LinkPlugin.riskUIEnabled)
             {
@@ -74,7 +74,7 @@ namespace LinkMod.Content.Link
                     if (!ArrowFireTypeLabel)
                     {
                         //Arrow Firing Type 
-                        this.ArrowFireTypeLabel = this.CreateLabel(childTransform, "ArrowFireTypeLabel", "Single", new Vector2(position.x - 7.5f, position.y + 20f), 15f);
+                        this.ArrowFireTypeLabel = this.CreateLabel(childTransform, "ArrowFireTypeLabel", "Single", new Vector2(position.x - 7.5f, position.y + 15f), 13f);
                         this.ArrowFireTypeLabel.transform.SetSiblingIndex(0);
                         this.ArrowFireTypeLabel.transform.rotation = icon.stockText.transform.rotation;
                         this.ArrowFireTypeLabel.color = icon.stockText.color;
@@ -84,7 +84,7 @@ namespace LinkMod.Content.Link
                     if (!ArrowTypeLabel)
                     {
                         //Arrow Type 
-                        this.ArrowTypeLabel = this.CreateLabel(childTransform, "ArrowTypeLabel", "Normal", new Vector2(position.x - 7.5f, position.y + 20f), 15f);
+                        this.ArrowTypeLabel = this.CreateLabel(childTransform, "ArrowTypeLabel", "Normal", new Vector2(position.x - 7.5f, position.y + 15f), 13f);
                         this.ArrowTypeLabel.transform.SetSiblingIndex(0);
                         this.ArrowTypeLabel.transform.rotation = icon.stockText.transform.rotation;
                         this.ArrowTypeLabel.color = icon.stockText.color;
@@ -206,7 +206,7 @@ namespace LinkMod.Content.Link
                                         textToSet = "Triple";
                                         break;
                                     case ArrowFireType.QUINT:
-                                        textToSet = "Quintuple";
+                                        textToSet = "Quint";
                                         break;
                                 }
                                 ArrowFireTypeLabel.SetText(textToSet);
