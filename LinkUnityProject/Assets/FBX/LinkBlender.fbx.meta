@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 39ce1f05fa403d74db0278467be04f8b
+guid: f3ee89dd3cb2a8343ae1de2861170fbb
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
@@ -147,6 +147,12 @@ ModelImporter:
   - first:
       74: -5368591999005154823
     second: BowFire
+  - first:
+      74: -3614617550308123497
+    second: AimYaw
+  - first:
+      74: -3325324294335794311
+    second: AimPitch
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -167,7 +173,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -226,9 +232,9 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 5
-    rootMotionBoneName: Trans
+    rootMotionBoneName: Armature
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
