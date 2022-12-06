@@ -11,6 +11,7 @@ namespace LinkMod.SkillStates.Link
         private Animator parasailAnim;
         private Animator linkAnim;
         private LinkController linkCon;
+        private static float slowestDescent = -3f;
 
         public override void OnEnter()
         {
@@ -31,7 +32,11 @@ namespace LinkMod.SkillStates.Link
             base.FixedUpdate();
             if (base.isAuthority)
             {
-                float newFallingVelocity = base.characterMotor.velocity.y;
+                float newFallingVelocity = base.characterMotor.velocity.y / 1.5f;
+                if (newFallingVelocity > slowestDescent) 
+                {
+                    newFallingVelocity = slowestDescent;
+                }
                 newFallingVelocity = Mathf.MoveTowards(newFallingVelocity, Modules.Config.glideSpeed.Value, Modules.Config.glideAcceleration.Value * Time.fixedDeltaTime);
                 base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, newFallingVelocity, base.characterMotor.velocity.z);
             }

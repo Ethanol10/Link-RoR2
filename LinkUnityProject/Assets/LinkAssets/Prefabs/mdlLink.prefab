@@ -7951,6 +7951,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LinkArrow
       objectReference: {fileID: 0}
+    - target: {fileID: 353866681470548316, guid: 98bc79ca19a406847b97d5f0ab12c5ab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3294777170696531239, guid: 98bc79ca19a406847b97d5f0ab12c5ab,
         type: 3}
       propertyPath: m_RootOrder
@@ -8235,6 +8240,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LinkBow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482136102711226460, guid: 3d28ceeeb01bc1b4eacca1480e216c18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7826749862321990374, guid: 3d28ceeeb01bc1b4eacca1480e216c18,
         type: 3}

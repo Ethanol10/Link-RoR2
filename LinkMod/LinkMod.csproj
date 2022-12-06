@@ -30,22 +30,22 @@
 
   <ItemGroup>
     <Reference Include="CustomEmotesAPI">
-      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\testing\BepInEx\plugins\MetrosexualFruitcake-CustomEmotesAPI\CustomEmotesAPI.dll</HintPath>
+      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\MetrosexualFruitcake-CustomEmotesAPI\CustomEmotesAPI.dll</HintPath>
     </Reference>
     <Reference Include="ExtraSkillSlots">
-      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\testing\BepInEx\plugins\KingEnderBrine-ExtraSkillSlots\ExtraSkillSlots\ExtraSkillSlots.dll</HintPath>
+      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\KingEnderBrine-ExtraSkillSlots\ExtraSkillSlots\ExtraSkillSlots.dll</HintPath>
     </Reference>
-    <Reference Include="R2API">
-      <HintPath>..\libs\R2API.dll</HintPath>
-    </Reference>
-    <Reference Include="MMHOOK_RoR2">
-      <HintPath>..\libs\MMHOOK_RoR2.dll</HintPath>
-    </Reference>
+	<Reference Include="R2API">
+		<HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\tristanmcpherson-R2API\R2API\R2API.dll</HintPath>
+	</Reference>
+	<Reference Include="MMHOOK_RoR2">
+		<HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\MMHOOK\MMHOOK_RoR2.dll</HintPath>
+	</Reference>
     <Reference Include="RiskOfOptions">
-      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\testing\BepInEx\plugins\Rune580-Risk_Of_Options\RiskOfOptions.dll</HintPath>
+      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\Rune580-Risk_Of_Options\RiskOfOptions.dll</HintPath>
     </Reference>
     <Reference Include="RiskUI">
-      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\testing\BepInEx\plugins\Bubbet-RiskUI\RiskUI.dll</HintPath>
+      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\Bubbet-RiskUI\RiskUI.dll</HintPath>
     </Reference>
   </ItemGroup>
 
