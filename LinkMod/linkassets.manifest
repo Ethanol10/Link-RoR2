@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1705734193
+CRC: 491220293
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9744a86f7a8e6ca2203209ed12930a32
+    Hash: b7332e6ff580d4fdbe5d4d4eddcfe12e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 64d91baccf1afa11f48fa4efe31ed13c
@@ -67,11 +67,14 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/LinkAssets/Animations/AvatarMasks/PitchMask.mask
 - Assets/LinkAssets/Animations/LinkBodyAnims/RollEdited.anim
 - Assets/LinkAssets/Meshes/standardBombmesh.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/Jump.anim
+- Assets/LinkAssets/Animations/BowAnims/BowHold.anim
 - Assets/LinkAssets/Prefabs/LinkDisplay.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabOrig.anim
+- Assets/LinkAssets/Animations/BowAnims/BowFire.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockSuccess.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttackStart.anim
 - Assets/LinkAssets/Meshes/runebombMesh.mesh
@@ -79,8 +82,12 @@ Assets:
 - Assets/LinkAssets/Textures/MoteTrail.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabBegin.anim
 - Assets/LinkAssets/Textures/Mask1.png
+- Assets/LinkAssets/Textures/def_ancientbow_001_nor.png
 - Assets/LinkAssets/Textures/def_younglinkbomb_001_nor.png
+- Assets/LinkAssets/Animations/LinkBodyAnims/BowHold.anim
+- Assets/LinkAssets/Textures/alp_bow_001_col.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/Fall.anim
+- Assets/LinkAssets/Meshes/AncientBowString.mesh
 - Assets/LinkAssets/Textures/StandardSwordandShield.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailPermanentClose.anim
 - Assets/LinkAssets/Materials/indicatorThrow.mat
@@ -96,27 +103,35 @@ Assets:
 - Assets/LinkAssets/Prefabs/ThrowTrajectory.prefab
 - Assets/LinkAssets/Animations/BombStuff/bombHide.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/SpinAttackAir.anim
+- Assets/LinkAssets/Materials/AncientBow.mat
 - Assets/LinkAssets/Animations/LinkHumanoid.asset
 - Assets/LinkAssets/Animations/LinkBodyAnims/ItemStart.anim
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailOpen.anim
 - Assets/LinkAssets/Prefabs/mdlRuneBomb.prefab
 - Assets/LinkAssets/Prefabs/runeBombHand.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunR.anim
+- Assets/LinkAssets/Textures/def_ancientbow_001_col.png
+- Assets/LinkAssets/Animations/LinkBodyAnims/AimPitch.anim
 - Assets/LinkAssets/Prefabs/particle/SwordBeamEffect.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/SpawnAnim.anim
 - Assets/LinkAssets/Prefabs/mdlLink.prefab
 - Assets/LinkAssets/Textures/Link1BodyNorm.png
 - Assets/LinkAssets/Meshes/sheatheMesh.mesh
 - Assets/LinkAssets/Animations/ParasailSpawn.controller
+- Assets/LinkAssets/Meshes/wingAShape.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialAttack.anim
 - Assets/LinkAssets/Materials/Skin1Material.mat
 - Assets/LinkAssets/Prefabs/particle/BombExplosionEffect.prefab
+- Assets/LinkAssets/Textures/def_ancientbow_001_emi.png
+- Assets/LinkAssets/Textures/alp_bow_001_nor.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/Roll.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Gliding.anim
 - Assets/LinkAssets/Textures/def_superbomb_col.png
 - Assets/LinkAssets/Animations/LinkDisplayController.controller
 - Assets/LinkAssets/Meshes/runeBombMeshPin.mesh
+- Assets/LinkAssets/Materials/ArrowMaterial.mat
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailClose.anim
+- Assets/LinkAssets/Animations/LinkBodyAnims/AimYaw.anim
 - Assets/LinkAssets/Meshes/shieldMesh.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/DeployBomb.anim
 - Assets/LinkAssets/Textures/metal_linkbomb_001_col.png
@@ -134,8 +149,10 @@ Assets:
 - Assets/LinkAssets/Animations/ParasailAnimCon.controller
 - Assets/LinkAssets/Materials/SwordShieldMaterial.mat
 - Assets/LinkAssets/Prefabs/particle/SwordBeam.prefab
+- Assets/LinkAssets/Meshes/AncientBow.mesh
 - Assets/LinkAssets/Materials/LinkStandardBomb.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/A05LandingLight.nuanmx.anim
+- Assets/LinkAssets/Meshes/wingBShape.mesh
 - Assets/LinkAssets/Textures/metal_link_001_nor.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailAnimation.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/RotateDisplayModel.anim
@@ -147,10 +164,13 @@ Assets:
 - Assets/LinkAssets/Textures/Link1BodyTex.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing3.anim
 - Assets/LinkAssets/Prefabs/LinkChildBomb.prefab
+- Assets/LinkAssets/Meshes/NormalArrow.mesh
 - Assets/LinkAssets/Materials/FullyChargedMat.mat
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailHold.anim
+- Assets/LinkAssets/Animations/LinkBodyAnims/BowFire.anim
 - Assets/LinkAssets/Textures/def_parasail_001_nor.png
 - Assets/LinkAssets/Prefabs/LinkHumanoid.prefab
+- Assets/LinkAssets/Prefabs/LinkArrow.prefab
 - Assets/LinkAssets/Animations/AvatarMasks/UpperBodyMask.mask
 - Assets/LinkAssets/Animations/LinkBodyAnims/Dash.anim
 - Assets/LinkAssets/Shaders/Panner.shader
@@ -159,6 +179,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle2.anim
 - Assets/LinkAssets/Textures/def_parasail_001_col.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabHold.anim
+- Assets/LinkAssets/Prefabs/BaseLinkArrow.prefab
 - Assets/LinkAssets/Prefabs/LinkSuperBomb.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/DoubleJump.anim
 - Assets/LinkAssets/Shaders/FrenselLit.shader
@@ -174,10 +195,13 @@ Assets:
 - Assets/LinkAssets/Materials/FullyChargedOverlay.mat
 - Assets/LinkAssets/Materials/ChargingOverlay.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim.anim
+- Assets/LinkAssets/Animations/AvatarMasks/YawMask.mask
 - Assets/LinkAssets/Meshes/defaultBodyMesh.mesh
+- Assets/LinkAssets/Animations/BowAnims/BowDraw.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockHold.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/RunStrafeL.anim
 - Assets/LinkAssets/Prefabs/particle/Light.prefab
+- Assets/LinkAssets/Prefabs/LinkBow.prefab
 - Assets/LinkAssets/Prefabs/LinkNormalBomb.prefab
 - Assets/LinkAssets/Textures/noise3blur.png
 - Assets/LinkAssets/Animations/animLink.controller
@@ -187,4 +211,6 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/JumpSquat.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle3.anim
 - Assets/LinkAssets/Materials/BombShader.mat
+- Assets/LinkAssets/Animations/BowAnimator.controller
+- Assets/LinkAssets/Animations/LinkBodyAnims/BowDraw.anim
 Dependencies: []
