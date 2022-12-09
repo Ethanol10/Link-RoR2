@@ -13,6 +13,7 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
         internal Animator anim;
         internal LinkArrowController arrowController;
         internal bool hasFired;
+        internal GameObject selectedArrowPrefab;
 
         internal static float baseDuration = 0.8f;
         internal static float disableArrowFrac = 0f;
@@ -39,6 +40,7 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
             
             //Choose arrow type, arrow firing type
             //FUCK We'll need a prefab for each type of arrow
+            selectedArrowPrefab = GetSelectedArrowType();
         }
 
         public override void OnExit()
@@ -47,6 +49,28 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
             linkController.SetUnsheathed();
             linkController.DisableArrowInHand();
             linkController.DisableBowInHand();
+        }
+
+        //Return the right prefab for the given situation.
+        public GameObject GetSelectedArrowType() 
+        {
+            switch (arrowController.arrowTypeEquipped) 
+            {
+                case LinkArrowController.ArrowTypeEquipped.NORMAL:
+                    return Modules.Assets.arrowPrefab;
+                case LinkArrowController.ArrowTypeEquipped.FIRE:
+                    return Modules.Assets.arrowPrefab;
+                case LinkArrowController.ArrowTypeEquipped.ICE:
+                    return Modules.Assets.arrowPrefab;
+                case LinkArrowController.ArrowTypeEquipped.LIGHT:
+                    return Modules.Assets.arrowPrefab;
+                case LinkArrowController.ArrowTypeEquipped.ANCIENT:
+                    return Modules.Assets.arrowPrefab;
+                case LinkArrowController.ArrowTypeEquipped.BOMB:
+                    return Modules.Assets.arrowPrefab;
+                default:
+                    return Modules.Assets.arrowPrefab;
+            }
         }
 
         public override void Update()

@@ -23,6 +23,9 @@ namespace LinkMod.Modules
         internal static GameObject runeBomb;
         internal static GameObject runeBombExplosion;
 
+        //Arrow
+        internal static GameObject arrowPrefab;
+
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
 
@@ -145,6 +148,9 @@ namespace LinkMod.Modules
                     cycleOffset = 0f
                 };
             }
+
+            arrowPrefab = mainAssetBundle.LoadAsset<GameObject>("LinkArrow");
+
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
