@@ -37,7 +37,8 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
             base.PlayAnimation("UpperBody, Override", "BowFire", "Swing.playbackRate", duration);
             hasFired = false;
             
-            //Fire the projectile, determine the the type of arrow from the arrow controller, and what firetype needs to be performed.
+            //Choose arrow type, arrow firing type
+            //FUCK We'll need a prefab for each type of arrow
         }
 
         public override void OnExit()
