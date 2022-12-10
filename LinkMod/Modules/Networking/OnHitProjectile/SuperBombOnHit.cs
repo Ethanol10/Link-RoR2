@@ -46,7 +46,7 @@ namespace LinkMod.Modules.Networking.OnHitProjectile
                     float y = Modules.StaticValues.superBombSalvoRadius;
 
                     Vector3 dir = new Vector3(x, y, z).normalized;
-                    FireProjectile(dir, new Vector3(pointOfImpact.x + x/8.0f, pointOfImpact.y, pointOfImpact.z + z/8.0f));
+                    FireProjectile(dir, new Vector3(pointOfImpact.x + x/9.0f, pointOfImpact.y, pointOfImpact.z + z/9.0f));
                     currentInc += increment;
                 }
             }
