@@ -12,7 +12,7 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
         //Client has held down the button and is still holding it down.
         //We will have a critical charge, given the player has held the button down for longer than the initial animation.
 
-        public static float baseCriticalCharge = 0.4f;
+        public static float baseCriticalCharge = 0.2f;
         public static float baseDuration = 0.65f;
         internal Animator anim;
         internal LinkController linkController;
@@ -86,7 +86,11 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
                         criticallyCharged = true;
                     }
                     //Let go, fire.
-                    base.outer.SetState(new FireBow { isCriticallyCharged = criticallyCharged });
+                    base.outer.SetState(new FireBow 
+                    {
+                        isCriticallyCharged = criticallyCharged, 
+                        totalDurationHeld = totalDuration 
+                    });
                 }
             }
         }

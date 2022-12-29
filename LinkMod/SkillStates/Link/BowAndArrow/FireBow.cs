@@ -17,6 +17,7 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
         internal LinkArrowController arrowController;
         internal bool hasFired;
         internal GameObject selectedArrowPrefab;
+        internal float totalDurationHeld;
 
         internal static float baseDuration = 0.8f;
         internal static float disableArrowFrac = 0f;
@@ -84,6 +85,7 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
             {
                 if (!hasFired) 
                 {
+                    float speed = Modules.Config.arrowMaxSpeed.Value * Mathf.Clamp(totalDurationHeld / HoldBow.baseCriticalCharge, 0.6f, 1f);
                     if (stopwatch >= duration * fireArrow) 
                     {
                         hasFired = true;
@@ -97,7 +99,7 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
                             base.RollCrit(),
                             DamageColorIndex.Default,
                             null,
-                            Modules.Config.arrowMaxSpeed.Value);
+                            speed);
                     }
                 }
 

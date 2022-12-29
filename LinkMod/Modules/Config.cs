@@ -124,7 +124,7 @@ namespace LinkMod.Modules
             arrowMaxSpeed = LinkPlugin.instance.Config.Bind<float>
                 (
                     new ConfigDefinition("03 - Bow and Arrow", "Arrow Speed"),
-                    100f,
+                    75f,
                     new ConfigDescription("Determines the max speed of the arrow when fired.", null, Array.Empty<object>())
                 );
         }
@@ -248,7 +248,7 @@ namespace LinkMod.Modules
                     new StepSliderConfig
                     {
                         min = 1f,
-                        max = 100f,
+                        max = 300f,
                         increment = 0.5f
                     }
                 ));
