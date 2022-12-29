@@ -16,22 +16,52 @@ namespace LinkMod.Modules
         internal static GameObject superBombPrefab;
         internal static GameObject superBombChildrenPrefab;
 
+        internal static GameObject basicArrowPrefab;
+
         internal static void RegisterProjectiles()
         {
             CreateSwordBeam();
             CreateStandardBomb();
             CreateSuperBombChildren();
             CreateSuperBomb();
+            CreateBasicArrow();
 
             AddProjectile(swordBeamPrefab);
             AddProjectile(standardBombPrefab);
             AddProjectile(superBombChildrenPrefab);
             AddProjectile(superBombPrefab);
+            AddProjectile(basicArrowPrefab);
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
         {
             Modules.Content.AddProjectilePrefab(projectileToAdd);
+        }
+
+        private static void CreateBasicArrow() 
+        {
+            basicArrowPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("LinkArrow");
+            basicArrowPrefab.AddComponent<NetworkIdentity>();
+
+            ProjectileController projectileCon = basicArrowPrefab.AddComponent<ProjectileController>();
+            projectileCon.procCoefficient = 1f;
+
+            ProjectileDamage projectileDamage = basicArrowPrefab.AddComponent<ProjectileDamage>();
+            projectileDamage.damage = 10f;
+            projectileDamage.crit = false;
+            projectileDamage.force = 1000f;
+            projectileDamage.damageType = DamageType.Generic;
+
+            ProjectileSimple projectileSimple = basicArrowPrefab.AddComponent<ProjectileSimple>();
+            projectileSimple.lifetime = 5f;
+            projectileSimple.desiredForwardSpeed = 30f;
+
+            basicArrowPrefab.AddComponent<ArrowOnHit>();
+            ProjectileImpaleOnEnemy impaleCon = basicArrowPrefab.AddComponent<ProjectileImpaleOnEnemy>();
+            impaleCon.impalePrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("LinkArrow");
+
+            PrefabAPI.RegisterNetworkPrefab(basicArrowPrefab);
+
         }
 
         private static void CreateSuperBombChildren() 

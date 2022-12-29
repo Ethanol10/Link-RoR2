@@ -1,9 +1,12 @@
 ﻿using EntityStates;
 using LinkMod.Content.Link;
+using RoR2;
+using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using static UnityEngine.ParticleSystem.PlaybackState;
 
 namespace LinkMod.SkillStates.Link.BowAndArrow
 {
@@ -57,19 +60,19 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
             switch (arrowController.arrowTypeEquipped) 
             {
                 case LinkArrowController.ArrowTypeEquipped.NORMAL:
-                    return Modules.Assets.arrowPrefab;
+                    return Modules.Projectiles.basicArrowPrefab;
                 case LinkArrowController.ArrowTypeEquipped.FIRE:
-                    return Modules.Assets.arrowPrefab;
+                    return Modules.Projectiles.basicArrowPrefab;
                 case LinkArrowController.ArrowTypeEquipped.ICE:
-                    return Modules.Assets.arrowPrefab;
+                    return Modules.Projectiles.basicArrowPrefab;
                 case LinkArrowController.ArrowTypeEquipped.LIGHT:
-                    return Modules.Assets.arrowPrefab;
+                    return Modules.Projectiles.basicArrowPrefab;
                 case LinkArrowController.ArrowTypeEquipped.ANCIENT:
-                    return Modules.Assets.arrowPrefab;
+                    return Modules.Projectiles.basicArrowPrefab;
                 case LinkArrowController.ArrowTypeEquipped.BOMB:
-                    return Modules.Assets.arrowPrefab;
+                    return Modules.Projectiles.basicArrowPrefab;
                 default:
-                    return Modules.Assets.arrowPrefab;
+                    return Modules.Projectiles.basicArrowPrefab;
             }
         }
 
@@ -85,6 +88,16 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
                     {
                         hasFired = true;
                         //Fire the arrow.
+                        ProjectileManager.instance.FireProjectile(selectedArrowPrefab,
+                            GetAimRay().origin,
+                            Util.QuaternionSafeLookRotation(GetAimRay().direction),
+                            base.gameObject,
+                            Modules.StaticValues.arrowDamageCoefficient * this.damageStat,
+                            300f,
+                            base.RollCrit(),
+                            DamageColorIndex.Default,
+                            null,
+                            Modules.Config.arrowMaxSpeed.Value);
                     }
                 }
 

@@ -59,5 +59,8 @@
         internal const float superBombChildrenBlastForce = 1000f;
         internal const int superBombMinAmountOfChildren = 3;
         internal const float superBombSalvoRadius = 30f;
+
+        //Arrow 
+        internal const float arrowDamageCoefficient = 1.5f;
     }
 }

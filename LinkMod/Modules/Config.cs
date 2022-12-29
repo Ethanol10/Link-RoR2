@@ -22,6 +22,8 @@ namespace LinkMod.Modules
         public static ConfigEntry<float> standardBombMaxThrowPower;
         public static ConfigEntry<int> superBombChildrenMaxAmount;
 
+        public static ConfigEntry<float> arrowMaxSpeed;
+
         public static void ReadConfig()
         {
             multiplierSpinAttack = LinkPlugin.instance.Config.Bind<float>
@@ -118,6 +120,13 @@ namespace LinkMod.Modules
                 10,
                 new ConfigDescription("Determines how many mini bombs are ejected after the super bomb explodes.", null, Array.Empty<object>())
             );
+
+            arrowMaxSpeed = LinkPlugin.instance.Config.Bind<float>
+                (
+                    new ConfigDefinition("03 - Bow and Arrow", "Arrow Speed"),
+                    100f,
+                    new ConfigDescription("Determines the max speed of the arrow when fired.", null, Array.Empty<object>())
+                );
         }
 
         public static void SetupRiskOfOptions()
@@ -230,6 +239,17 @@ namespace LinkMod.Modules
                     {
                         min = 0,
                         max = 50
+                    }
+                ));
+
+            ModSettingsManager.AddOption(
+                new StepSliderOption(
+                    arrowMaxSpeed,
+                    new StepSliderConfig
+                    {
+                        min = 1f,
+                        max = 100f,
+                        increment = 0.5f
                     }
                 ));
 

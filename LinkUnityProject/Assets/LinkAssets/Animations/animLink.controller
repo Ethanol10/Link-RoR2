@@ -1315,16 +1315,16 @@ AnimatorStateMachine:
     m_Position: {x: 260, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 285975861135706013}
-    m_Position: {x: 230, y: 330, z: 0}
+    m_Position: {x: 150, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 989785023000559579}
-    m_Position: {x: 230, y: 290, z: 0}
+    m_Position: {x: 90, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3530265643386730682}
-    m_Position: {x: 230, y: 370, z: 0}
+    m_Position: {x: 230, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5132640185976329770}
-    m_Position: {x: 230, y: 410, z: 0}
+    m_Position: {x: 320, y: 400, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -691566480155481427}
     m_Position: {x: 610, y: -60, z: 0}
