@@ -58,7 +58,7 @@ namespace LinkMod.Modules
 
             basicArrowPrefab.AddComponent<ArrowOnHit>();
             ProjectileImpaleOnEnemy impaleCon = basicArrowPrefab.AddComponent<ProjectileImpaleOnEnemy>();
-            impaleCon.impalePrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("LinkArrow");
+            impaleCon.impalePrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("LinkArrowNoCollision");
 
             PrefabAPI.RegisterNetworkPrefab(basicArrowPrefab);
 

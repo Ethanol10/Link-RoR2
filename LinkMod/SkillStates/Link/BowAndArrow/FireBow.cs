@@ -18,6 +18,7 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
         internal bool hasFired;
         internal GameObject selectedArrowPrefab;
         internal float totalDurationHeld;
+        internal Transform firePosition;
 
         internal static float baseDuration = 0.8f;
         internal static float disableArrowFrac = 0f;
@@ -45,6 +46,7 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
             //Choose arrow type, arrow firing type
             //FUCK We'll need a prefab for each type of arrow
             selectedArrowPrefab = GetSelectedArrowType();
+            firePosition = base.GetModelChildLocator().FindChild("ArrowFirePos");
         }
 
         public override void OnExit()
@@ -91,7 +93,7 @@ namespace LinkMod.SkillStates.Link.BowAndArrow
                         hasFired = true;
                         //Fire the arrow.
                         ProjectileManager.instance.FireProjectile(selectedArrowPrefab,
-                            GetAimRay().origin,
+                            firePosition.position,
                             Util.QuaternionSafeLookRotation(GetAimRay().direction),
                             base.gameObject,
                             Modules.StaticValues.arrowDamageCoefficient * this.damageStat,

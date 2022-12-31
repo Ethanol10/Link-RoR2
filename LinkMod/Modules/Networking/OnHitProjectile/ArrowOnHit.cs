@@ -10,6 +10,8 @@ namespace LinkMod.Modules.Networking.OnHitProjectile
     public class ArrowOnHit : MonoBehaviour, IProjectileImpactBehavior
     {
         public bool didHit = false;
+        public float arrowLifetime = 10f;
+        public float stopwatch;
         
         void IProjectileImpactBehavior.OnProjectileImpact(ProjectileImpactInfo impactInfo)
         {
@@ -26,7 +28,7 @@ namespace LinkMod.Modules.Networking.OnHitProjectile
                 {
                     bool teamValid = enemyObj.GetComponent<TeamComponent>().teamIndex != projCon.owner.GetComponent<TeamComponent>().teamIndex;
 
-                    if (NetworkServer.active && teamValid) 
+                    if (NetworkServer.active && teamValid)
                     {
                         ProjectileDamage projDmg = gameObject.GetComponent<ProjectileDamage>();
 
@@ -45,10 +47,20 @@ namespace LinkMod.Modules.Networking.OnHitProjectile
 
                         enemyBody.healthComponent.TakeDamage(info);
                         didHit = true;
-                    
+
                     }
                 }
+                else 
+                {
+                    //When something doesn't have a body, it's probably a wall or something else.
+                    //Handle Impale 
+                }
             }
+        }
+
+        public void Start() 
+        {
+            stopwatch = 0f;
         }
 
         // Update is called once per frame
@@ -56,7 +68,9 @@ namespace LinkMod.Modules.Networking.OnHitProjectile
         {
             if (didHit)
             {
-                Destroy(this.gameObject);
+                //Mark for Destruction
+
+                stopwatch += Time.deltaTime;
             }
         }
 
