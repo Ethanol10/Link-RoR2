@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 79290240
+CRC: 2297825155
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7a00818fa010e398441721ae5f82aeed
+    Hash: 61f412f6f865e124c99f669a8e1a6307
   TypeTreeHash:
     serializedVersion: 2
     Hash: 64d91baccf1afa11f48fa4efe31ed13c
@@ -96,7 +96,6 @@ Assets:
 - Assets/LinkAssets/Textures/def_younglinkbomb_001_col.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim2.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedItemThrow.anim
-- Assets/LinkAssets/Animations/LinkBodyAnims/AimYaw.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockStart.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing1.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabEndAerial.anim
@@ -127,11 +126,12 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/Roll.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Gliding.anim
 - Assets/LinkAssets/Textures/def_superbomb_col.png
-- Assets/LinkAssets/Animations/LinkBodyAnims/AimPitch.anim
 - Assets/LinkAssets/Animations/LinkDisplayController.controller
 - Assets/LinkAssets/Meshes/runeBombMeshPin.mesh
+- Assets/LinkAssets/Prefabs/LinkArrowNoCollision.prefab
 - Assets/LinkAssets/Materials/ArrowMaterial.mat
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailClose.anim
+- Assets/LinkAssets/Animations/LinkBodyAnims/AimYaw.anim
 - Assets/LinkAssets/Meshes/shieldMesh.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/DeployBomb.anim
 - Assets/LinkAssets/Textures/metal_linkbomb_001_col.png
@@ -214,4 +214,5 @@ Assets:
 - Assets/LinkAssets/Materials/BombShader.mat
 - Assets/LinkAssets/Animations/BowAnimator.controller
 - Assets/LinkAssets/Animations/LinkBodyAnims/BowDraw.anim
+- Assets/LinkAssets/Animations/LinkBodyAnims/AimPitch.anim
 Dependencies: []
