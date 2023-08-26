@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2297825155
+CRC: 4041045256
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 61f412f6f865e124c99f669a8e1a6307
+    Hash: ee3d49b9b64c5b0c4987ccca6efcb693
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 64d91baccf1afa11f48fa4efe31ed13c
+    Hash: 69d779de2a4c5e53bcc4c8092f37615e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -63,11 +63,14 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 199
   Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
 - Class: 319
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/LinkAssets/Animations/AvatarMasks/PitchMask.mask
+- Assets/LinkAssets/Icons/spinAttackIcon.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/RollEdited.anim
 - Assets/LinkAssets/Meshes/standardBombmesh.mesh
 - Assets/LinkAssets/Animations/LinkBodyAnims/Jump.anim
@@ -97,6 +100,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim2.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedItemThrow.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockStart.anim
+- Assets/LinkAssets/Icons/superBombIcon.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing1.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialDownstabEndAerial.anim
 - Assets/LinkAssets/Textures/metal_linkbomb_001_emi.png
@@ -105,6 +109,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/SpinAttackAir.anim
 - Assets/LinkAssets/Materials/AncientBow.mat
 - Assets/LinkAssets/Animations/LinkHumanoid.asset
+- Assets/LinkAssets/Icons/noWorkIcon.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/ItemStart.anim
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailOpen.anim
 - Assets/LinkAssets/Prefabs/mdlRuneBomb.prefab
@@ -118,7 +123,9 @@ Assets:
 - Assets/LinkAssets/Meshes/sheatheMesh.mesh
 - Assets/LinkAssets/Animations/ParasailSpawn.controller
 - Assets/LinkAssets/Meshes/wingAShape.mesh
+- Assets/LinkAssets/Icons/runeBombIcon.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/AerialAttack.anim
+- Assets/LinkAssets/Icons/rollIcon.png
 - Assets/LinkAssets/Materials/Skin1Material.mat
 - Assets/LinkAssets/Prefabs/particle/BombExplosionEffect.prefab
 - Assets/LinkAssets/Textures/def_ancientbow_001_emi.png
@@ -139,6 +146,7 @@ Assets:
 - Assets/LinkAssets/Materials/RuneBombMaterial.mat
 - Assets/LinkAssets/Animations/AvatarMasks/slightTransformAvatar.mask
 - Assets/LinkAssets/Animations/LinkBodyAnims/Run.anim
+- Assets/LinkAssets/Icons/hylianShieldIcon.png
 - Assets/LinkAssets/Prefabs/bombPhysics.physicMaterial
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim3.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/AirThrow.anim
@@ -156,6 +164,7 @@ Assets:
 - Assets/LinkAssets/Textures/metal_link_001_nor.png
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailAnimation.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/RotateDisplayModel.anim
+- Assets/LinkAssets/Icons/bombIcon.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/ItemHold.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/TriggerRuneBomb.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/ShieldBlockEnd.anim
@@ -165,6 +174,7 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/SwordSwing3.anim
 - Assets/LinkAssets/Prefabs/LinkChildBomb.prefab
 - Assets/LinkAssets/Meshes/NormalArrow.mesh
+- Assets/LinkAssets/Icons/lonkIcon.jpg
 - Assets/LinkAssets/Materials/FullyChargedMat.mat
 - Assets/LinkAssets/Animations/ParasailAnim/ParasailHold.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/BowFire.anim
@@ -174,6 +184,7 @@ Assets:
 - Assets/LinkAssets/Animations/AvatarMasks/UpperBodyMask.mask
 - Assets/LinkAssets/Animations/LinkBodyAnims/Dash.anim
 - Assets/LinkAssets/Shaders/Panner.shader
+- Assets/LinkAssets/Icons/arrowLoadoutIcon.png
 - Assets/LinkAssets/Materials/SwordBeam.mat
 - Assets/LinkAssets/Prefabs/particle/RuneBombExplosion.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle2.anim
@@ -182,6 +193,7 @@ Assets:
 - Assets/LinkAssets/Prefabs/BaseLinkArrow.prefab
 - Assets/LinkAssets/Prefabs/LinkSuperBomb.prefab
 - Assets/LinkAssets/Animations/LinkBodyAnims/DoubleJump.anim
+- Assets/LinkAssets/Icons/arrowIcon.png
 - Assets/LinkAssets/Shaders/FrenselLit.shader
 - Assets/LinkAssets/Textures/Trail.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/Sprint.anim
@@ -196,6 +208,7 @@ Assets:
 - Assets/LinkAssets/Materials/FullyChargedOverlay.mat
 - Assets/LinkAssets/Materials/ChargingOverlay.mat
 - Assets/LinkAssets/Animations/LinkBodyAnims/MenuAnim.anim
+- Assets/LinkAssets/Icons/bombLoadoutIcon.png
 - Assets/LinkAssets/Animations/AvatarMasks/YawMask.mask
 - Assets/LinkAssets/Meshes/defaultBodyMesh.mesh
 - Assets/LinkAssets/Animations/BowAnims/BowDraw.anim
@@ -209,9 +222,11 @@ Assets:
 - Assets/LinkAssets/Animations/LinkBodyAnims/GroundedSpinAttack.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle.anim
 - Assets/LinkAssets/Meshes/Parasail.mesh
+- Assets/LinkAssets/Icons/masterSwordIcon.png
 - Assets/LinkAssets/Animations/LinkBodyAnims/JumpSquat.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/Idle3.anim
 - Assets/LinkAssets/Materials/BombShader.mat
+- Assets/LinkAssets/Icons/swordLoadoutIcon.png
 - Assets/LinkAssets/Animations/BowAnimator.controller
 - Assets/LinkAssets/Animations/LinkBodyAnims/BowDraw.anim
 - Assets/LinkAssets/Animations/LinkBodyAnims/AimPitch.anim
