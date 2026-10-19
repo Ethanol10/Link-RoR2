@@ -26,10 +26,10 @@ namespace LinkMod.Content.Link
             bodyNameToken = LinkPlugin.DEVELOPER_PREFIX + "_RUNE_BOMB_BODY_NAME",
             subtitleNameToken = LinkPlugin.DEVELOPER_PREFIX + "_RUNE_BOMB_BODY_SUBTITLE",
 
-            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("bruh"),
+            characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture>("bruh"),
             bodyColor = new Color(176f / 255f, 1.0f, 62f / 255f),
 
-            crosshair = Assets.LoadCrosshair("Standard"),
+            crosshair = Modules.Assets.LoadCrosshair("Standard"),
 
             maxHealth = 999999f,
             healthRegen = 999999f,
@@ -171,7 +171,7 @@ namespace LinkMod.Content.Link
 
             this.characterBodyModel.autoPopulateLightInfos = true;
             this.characterBodyModel.invisibilityCount = 0;
-            this.characterBodyModel.temporaryOverlays = new List<TemporaryOverlay>();
+            this.characterBodyModel.temporaryOverlays = new List<TemporaryOverlayInstance>();
 
             Modules.Prefabs.SetupCustomRendererInfos(this.characterBodyModel, customRendererInfos);
             runeBomb.AddComponent<RuneBombController>();

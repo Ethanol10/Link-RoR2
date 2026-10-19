@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Configurations>Release;Debug</Configurations>
   </PropertyGroup>
 
@@ -18,9 +18,16 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="BepInEx.Core" Version="5.4.19" />
-		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.1-r.1" />
-		<PackageReference Include="UnityEngine.Modules" Version="2019.4.26" />
+		<PackageReference Include="R2API.Core" Version="5.*" />
+		<PackageReference Include="R2API.Networking" Version="1.0.3" />
+		<PackageReference Include="R2API.Language" Version="1.0.1" />
+		<PackageReference Include="R2API.Prefab" Version="1.*" />
+		<PackageReference Include="R2API.Unlockable" Version="1.*" />
+		<PackageReference Include="R2API.Sound" Version="1.*" />
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.5.0-r.1" />
+		<PackageReference Include="UnityEngine.Modules" Version="2021.3.45" />
+		<PackageReference Include="MMHOOK.RoR2" Version="2026.10.8" NoWarn="NU1701" />
+		<PackageReference Include="RoR2BepInExPack" Version="1.*" />
 	</ItemGroup>
 	
   <ItemGroup>
@@ -29,39 +36,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="CustomEmotesAPI">
-      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\MetrosexualFruitcake-CustomEmotesAPI\CustomEmotesAPI.dll</HintPath>
-    </Reference>
-    <Reference Include="ExtraSkillSlots">
-      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\KingEnderBrine-ExtraSkillSlots\ExtraSkillSlots\ExtraSkillSlots.dll</HintPath>
-    </Reference>
-	<Reference Include="MMHOOK_RoR2">
-		<HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\MMHOOK\MMHOOK_RoR2.dll</HintPath>
-	</Reference>
-	<Reference Include="R2API.Core">
-	  <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\RiskofThunder-R2API_Core\R2API.Core\R2API.Core.dll</HintPath>
-	</Reference>
-	<Reference Include="R2API.Language">
-	  <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\RiskofThunder-R2API_Language\R2API.Language\R2API.Language.dll</HintPath>
-	</Reference>
-	<Reference Include="R2API.Networking">
-	  <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\RiskofThunder-R2API_Networking\R2API.Networking\R2API.Networking.dll</HintPath>
-	</Reference>
-	<Reference Include="R2API.Prefab">
-	  <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\RiskofThunder-R2API_Prefab\R2API.Prefab\R2API.Prefab.dll</HintPath>
-	</Reference>
-	<Reference Include="R2API.Sound">
-	  <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\RiskofThunder-R2API_Sound\R2API.Sound\R2API.Sound.dll</HintPath>
-	</Reference>
-	<Reference Include="R2API.Unlockable">
-	  <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\RiskofThunder-R2API_Unlockable\R2API.Unlockable\R2API.Unlockable.dll</HintPath>
-	</Reference>
-    <Reference Include="RiskOfOptions">
-      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\Rune580-Risk_Of_Options\RiskOfOptions.dll</HintPath>
-    </Reference>
-    <Reference Include="RiskUI">
-      <HintPath>..\..\..\Users\ethan\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\dependency-profile\BepInEx\plugins\Bubbet-RiskUI\RiskUI.dll</HintPath>
-    </Reference>
+	  <Reference Include="CustomEmotesAPI">
+		  <HintPath>..\libs\CustomEmotesAPI.dll</HintPath>
+	  </Reference>
+	  <Reference Include="ExtraSkillSlots">
+		  <HintPath>..\libs\ExtraSkillSlots.dll</HintPath>
+	  </Reference>
+	  <Reference Include="RiskOfOptions">
+		  <HintPath>..\libs\RiskOfOptions.dll</HintPath>
+	  </Reference>
   </ItemGroup>
 
 </Project>

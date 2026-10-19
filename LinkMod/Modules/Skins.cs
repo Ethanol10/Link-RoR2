@@ -1,5 +1,4 @@
-﻿using R2API;
-using RoR2;
+﻿using RoR2;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,24 +7,15 @@ namespace LinkMod.Modules
 {
     internal static class Skins
     {
-        internal static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, SkinnedMeshRenderer mainRenderer, GameObject root)
-        {
-            return CreateSkinDef(skinName, skinIcon, rendererInfos, mainRenderer, root, null);
-        }
-
-        internal static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, SkinnedMeshRenderer mainRenderer, GameObject root, UnlockableDef unlockableDef)
+        internal static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] defaultRendererInfos, GameObject root, UnlockableDef unlockableDef = null)
         {
             SkinDefInfo skinDefInfo = new SkinDefInfo
             {
                 BaseSkins = Array.Empty<SkinDef>(),
-                GameObjectActivations = new SkinDef.GameObjectActivation[0],
                 Icon = skinIcon,
-                MeshReplacements = new SkinDef.MeshReplacement[0],
-                MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0],
                 Name = skinName,
                 NameToken = skinName,
-                ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0],
-                RendererInfos = rendererInfos,
+                RendererInfos = new CharacterModel.RendererInfo[defaultRendererInfos.Length],
                 RootObject = root,
                 UnlockableDef = unlockableDef
             };
@@ -37,13 +27,18 @@ namespace LinkMod.Modules
             skinDef.icon = skinDefInfo.Icon;
             skinDef.unlockableDef = skinDefInfo.UnlockableDef;
             skinDef.rootObject = skinDefInfo.RootObject;
-            skinDef.rendererInfos = skinDefInfo.RendererInfos;
-            skinDef.gameObjectActivations = skinDefInfo.GameObjectActivations;
-            skinDef.meshReplacements = skinDefInfo.MeshReplacements;
-            skinDef.projectileGhostReplacements = skinDefInfo.ProjectileGhostReplacements;
-            skinDef.minionSkinReplacements = skinDefInfo.MinionSkinReplacements;
             skinDef.nameToken = skinDefInfo.NameToken;
             skinDef.name = skinDefInfo.Name;
+
+            SkinDefParams skinDefParams = ScriptableObject.CreateInstance<RoR2.SkinDefParams>();
+            skinDefParams.projectileGhostReplacements = new SkinDefParams.ProjectileGhostReplacement[0];
+            skinDefParams.minionSkinReplacements = new SkinDefParams.MinionSkinReplacement[0];
+            skinDefParams.meshReplacements = new SkinDefParams.MeshReplacement[0];
+            skinDefParams.gameObjectActivations = new SkinDefParams.GameObjectActivation[0];
+            defaultRendererInfos.CopyTo(skinDefInfo.RendererInfos, 0);
+            skinDefParams.rendererInfos = skinDefInfo.RendererInfos;
+
+            skinDef.skinDefParams = skinDefParams;
 
             On.RoR2.SkinDef.Awake -= DoNothing;
 
@@ -62,12 +57,9 @@ namespace LinkMod.Modules
             internal UnlockableDef UnlockableDef;
             internal GameObject RootObject;
             internal CharacterModel.RendererInfo[] RendererInfos;
-            internal SkinDef.MeshReplacement[] MeshReplacements;
-            internal SkinDef.GameObjectActivation[] GameObjectActivations;
-            internal SkinDef.ProjectileGhostReplacement[] ProjectileGhostReplacements;
-            internal SkinDef.MinionSkinReplacement[] MinionSkinReplacements;
             internal string Name;
         }
+
 
         private static CharacterModel.RendererInfo[] getRendererMaterials(CharacterModel.RendererInfo[] defaultRenderers, params Material[] materials)
         {
@@ -100,20 +92,20 @@ namespace LinkMod.Modules
         /// <param name="rendererinfos">your skindef's rendererinfos to access the renderers</param>
         /// <param name="meshes">name of the mesh assets in your project</param>
         /// <returns></returns>
-        internal static SkinDef.MeshReplacement[] getMeshReplacements(CharacterModel.RendererInfo[] rendererinfos, params string[] meshes)
+        internal static SkinDefParams.MeshReplacement[] getMeshReplacements(CharacterModel.RendererInfo[] defaultRendererInfos, params string[] meshes)
         {
 
-            List<SkinDef.MeshReplacement> meshReplacements = new List<SkinDef.MeshReplacement>();
+            List<SkinDefParams.MeshReplacement> meshReplacements = new List<SkinDefParams.MeshReplacement>();
 
-            for (int i = 0; i < rendererinfos.Length; i++)
+            for (int i = 0; i < defaultRendererInfos.Length; i++)
             {
                 if (string.IsNullOrEmpty(meshes[i]))
                     continue;
 
                 meshReplacements.Add(
-                new SkinDef.MeshReplacement
+                new SkinDefParams.MeshReplacement
                 {
-                    renderer = rendererinfos[i].renderer,
+                    renderer = defaultRendererInfos[i].renderer,
                     mesh = Assets.mainAssetBundle.LoadAsset<Mesh>(meshes[i])
                 });
             }

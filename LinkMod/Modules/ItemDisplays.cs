@@ -32,10 +32,18 @@ namespace LinkMod.Modules
                 for (int j = 0; j < rules.Length; j++)
                 {
                     GameObject followerPrefab = rules[j].followerPrefab;
+                    if (!followerPrefab && rules[j].followerPrefabAddress != null && rules[j].followerPrefabAddress.RuntimeKeyIsValid())
+                    {
+                        var displayAddress = rules[j].followerPrefabAddress;
+                        followerPrefab = displayAddress.OperationHandle.IsValid()
+                            ? displayAddress.OperationHandle.WaitForCompletion() as GameObject
+                            : displayAddress.LoadAssetAsync().WaitForCompletion() as GameObject;
+                    }
+
                     if (followerPrefab)
                     {
                         string key = followerPrefab.name?.ToLowerInvariant();
-                        if (!itemDisplayPrefabs.ContainsKey(key))
+                        if (!string.IsNullOrEmpty(key) && !itemDisplayPrefabs.ContainsKey(key))
                         {
                             itemDisplayPrefabs[key] = followerPrefab;
                         }
@@ -53,13 +61,21 @@ namespace LinkMod.Modules
             //capacitor is hardcoded to track your "UpperArmR", "LowerArmR", and "HandR" bones.
             //this is for having the lightning on custom bones in your childlocator
 
-            GameObject display = R2API.PrefabAPI.InstantiateClone(itemDisplayPrefabs["displaylightningarmright"], "DisplayLightningCustom", false);
+            if (!itemDisplayPrefabs.TryGetValue("displaylightningarmright", out GameObject lightningArmPrefab) || !lightningArmPrefab)
+            {
+                Log.Error("Could not find displaylightningarmright, skipping custom lightning arm.");
+                return;
+            }
+
+            GameObject display = R2API.PrefabAPI.InstantiateClone(lightningArmPrefab, "DisplayLightningCustom", false);
 
             LimbMatcher limbMatcher = display.GetComponent<LimbMatcher>();
-
-            limbMatcher.limbPairs[0].targetChildLimb = "LightningArm1";
-            limbMatcher.limbPairs[1].targetChildLimb = "LightningArm2";
-            limbMatcher.limbPairs[2].targetChildLimb = "LightningArmEnd";
+            if (limbMatcher && limbMatcher.limbPairs != null && limbMatcher.limbPairs.Length >= 3)
+            {
+                limbMatcher.limbPairs[0].targetChildLimb = "LightningArm1";
+                limbMatcher.limbPairs[1].targetChildLimb = "LightningArm2";
+                limbMatcher.limbPairs[2].targetChildLimb = "LightningArmEnd";
+            }
 
             itemDisplayPrefabs["displaylightningarmcustom"] = display;
             #endregion

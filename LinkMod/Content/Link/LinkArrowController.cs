@@ -48,12 +48,12 @@ namespace LinkMod.Content.Link
 
         private void Hook() 
         {
-            On.RoR2.UI.SkillIcon.Update += SkillIcon_Update;
+            On.RoR2.UI.SkillIcon.LateUpdate += SkillIcon_Update;
         }
 
         private void Unhook() 
         {
-            On.RoR2.UI.SkillIcon.Update -= SkillIcon_Update;
+            On.RoR2.UI.SkillIcon.LateUpdate -= SkillIcon_Update;
         }
 
         public void SetupArrowLabels(RoR2.UI.SkillIcon icon) 
@@ -164,7 +164,7 @@ namespace LinkMod.Content.Link
             return hgtextMeshProUGUI;
         }
 
-        public void SkillIcon_Update(On.RoR2.UI.SkillIcon.orig_Update orig, RoR2.UI.SkillIcon self)
+        public void SkillIcon_Update(On.RoR2.UI.SkillIcon.orig_LateUpdate orig, RoR2.UI.SkillIcon self)
         {
             orig.Invoke(self);
 

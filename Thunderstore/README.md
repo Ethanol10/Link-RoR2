@@ -15,8 +15,9 @@ Even if you pay me to finish this there's a chance I may not even finish it. So 
 </a>  
   
 # Major release details:
-- v0.0.0.0.0.0.0.0.0.0.0.0.1
-    - Release
+- v0.0.2
+    - Someone wanted this, so I've updated this to work with Hallowed Concepts
+        - Once again: there's no guarantee I'll continue updating this.
 
 ## Skills
 From what I remember programming:
@@ -26,13 +27,6 @@ From what I remember programming:
 - Bomb can be thrown and kicked around, but I don't really see much use with it.
 - Master sword moveset is bound to extra skills 1? man I don't remember anything.
 - You can spam me with fix requests but I may not fix them. Maybe.
-
-# Old Changelog
-<details>
-<summary>Click to expand previous patch notes:</summary>
-    - v0.0.0.0.0.0.0.0.0.0.0.0.1
-        - Release
-</details>
 
 ## Future Plans
 

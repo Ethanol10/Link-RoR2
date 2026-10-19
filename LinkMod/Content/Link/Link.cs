@@ -5,7 +5,6 @@ using LinkMod.Modules.Characters;
 using LinkMod.Modules.Survivors;
 using LinkMod.SkillStates.Link;
 using LinkMod.SkillStates.Link.BowAndArrow;
-using LinkMod.SkillStates.Link.GenericItemStates;
 using LinkMod.SkillStates.Link.HylianShield;
 using LinkMod.SkillStates.Link.MasterSwordPrimary;
 using LinkMod.SkillStates.Link.MasterSwordSpinAttack;
@@ -34,10 +33,10 @@ namespace LinkMod.Content.Link
             bodyNameToken = LinkPlugin.DEVELOPER_PREFIX + "_LINK_BODY_NAME",
             subtitleNameToken = LinkPlugin.DEVELOPER_PREFIX + "_LINK_BODY_SUBTITLE",
 
-            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("lonkIcon"),
+            characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture>("lonkIcon"),
             bodyColor = new Color(176f/255f, 1.0f, 62f/255f),
 
-            crosshair = Assets.LoadCrosshair("Standard"),
+            crosshair = Modules.Assets.LoadCrosshair("Standard"),
 
             maxHealth = 100f,
             healthRegen = 2f,
@@ -207,7 +206,7 @@ namespace LinkMod.Content.Link
             //Creates a skilldef for a typical primary 
             masterSwordSkillDef = Skills.CreateSkillDef(new SkillDefInfo(prefix + "_LINK_BODY_PRIMARY_MASTER_SWORD_NAME",
                                                                                       prefix + "_LINK_BODY_PRIMARY_MASTER_SWORD_DESCRIPTION",
-                                                                                      Assets.mainAssetBundle.LoadAsset<Sprite>("masterSwordIcon"),
+                                                                                      Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("masterSwordIcon"),
                                                                                       new EntityStates.SerializableEntityStateType(typeof(MasterSword)),
                                                                                       "Weapon",
                                                                                       true));
@@ -229,7 +228,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_SECONDARY_HYLIAN_SHIELD_NAME",
                 skillNameToken = prefix + "_LINK_BODY_SECONDARY_HYLIAN_SHIELD_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SECONDARY_HYLIAN_SHIELD_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("hylianShieldIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("hylianShieldIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(HylianShieldStart)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
@@ -258,7 +257,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_UTILITY_ROLL_NAME",
                 skillNameToken = prefix + "_LINK_BODY_UTILITY_ROLL_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_UTILITY_ROLL_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("rollIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("rollIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 2,
@@ -286,7 +285,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_SPECIAL_SPIN_ATTACK_NAME",
                 skillNameToken = prefix + "_LINK_BODY_SPECIAL_SPIN_ATTACK_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SPECIAL_SPIN_ATTACK_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("spinAttackIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("spinAttackIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SpinAttack)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
@@ -316,7 +315,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_SWORD_LOADOUT_NAME",
                 skillNameToken = prefix + "_LINK_BODY_SWORD_LOADOUT_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SWORD_LOADOUT_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("swordLoadoutIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("swordLoadoutIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SwapSwordLoadout)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -342,7 +341,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_ARROW_LOADOUT_NAME",
                 skillNameToken = prefix + "_LINK_BODY_ARROW_LOADOUT_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_ARROW_LOADOUT_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("arrowLoadoutIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("arrowLoadoutIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SwapArrowLoadout)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -368,7 +367,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_BOMB_LOADOUT_NAME",
                 skillNameToken = prefix + "_LINK_BODY_BOMB_LOADOUT_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_BOMB_LOADOUT_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("bombLoadoutIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("bombLoadoutIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SwapBombLoadout)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -394,7 +393,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_MISCELLANEOUS_LOADOUT_NAME",
                 skillNameToken = prefix + "_LINK_BODY_MISCELLANEOUS_LOADOUT_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_MISCELLANEOUS_LOADOUT_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("noWorkIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("noWorkIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SwapMiscellaneousLoadout)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -422,7 +421,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_RUNE_BOMB_SPAWN_NAME",
                 skillNameToken = prefix + "_LINK_BODY_RUNE_BOMB_SPAWN_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_RUNE_BOMB_SPAWN_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("runeBombIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("runeBombIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(RuneBombSpawn)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
@@ -447,7 +446,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_RUNE_BOMB_DETONATE_NAME",
                 skillNameToken = prefix + "_LINK_BODY_RUNE_BOMB_DETONATE_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_RUNE_BOMB_DETONATE_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("runeBombIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("runeBombIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(RuneBombDetonate)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
@@ -475,7 +474,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_STANDARD_BOMB_SPAWN_NAME",
                 skillNameToken = prefix + "_LINK_BODY_STANDARD_BOMB_SPAWN_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_STANDARD_BOMB_SPAWN_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("bombIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("bombIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(StandardBombSpawn)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
@@ -504,7 +503,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_SUPER_BOMB_SPAWN_NAME",
                 skillNameToken = prefix + "_LINK_BODY_SUPER_BOMB_SPAWN_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SUPER_BOMB_SPAWN_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("superBombIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("superBombIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SuperBombSpawn)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
@@ -533,7 +532,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_ARROW_FIRE_NAME",
                 skillNameToken = prefix + "_LINK_BODY_ARROW_FIRE_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_ARROW_FIRE_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("arrowIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("arrowIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(DrawBow)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
@@ -558,7 +557,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_SWAP_ARROW_TYPE_NAME",
                 skillNameToken = prefix + "_LINK_BODY_SWAP_ARROW_TYPE_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SWAP_ARROW_TYPE_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("noWorkIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("noWorkIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SwapArrowType)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -583,7 +582,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_SWAP_ARROW_FIRE_TYPE_NAME",
                 skillNameToken = prefix + "_LINK_BODY_SWAP_ARROW_FIRE_TYPE_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_SWAP_ARROW_FIRE_TYPE_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("noWorkIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("noWorkIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SwapArrowFireType)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -608,7 +607,7 @@ namespace LinkMod.Content.Link
                 skillName = prefix + "_LINK_BODY_COMBO_ARROW_TOGGLE_NAME",
                 skillNameToken = prefix + "_LINK_BODY_COMBO_ARROW_TOGGLE_NAME",
                 skillDescriptionToken = prefix + "_LINK_BODY_COMBO_ARROW_TOGGLE_DESCRIPTION",
-                skillIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("noWorkIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("noWorkIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(ComboShotToggle)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -646,46 +645,17 @@ namespace LinkMod.Content.Link
 
             #region DefaultSkin
             SkinDef defaultSkin = Skins.CreateSkinDef(LinkPlugin.DEVELOPER_PREFIX + "_LINK_BODY_DEFAULT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
+                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
                 defaultRenderers,
-                mainRenderer,
                 model);
 
-            defaultSkin.meshReplacements = new SkinDef.MeshReplacement[]
-            {
-                //place your mesh replacements here
-                //unnecessary if you don't have multiple skins
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("defaultBodyMesh"),
-                    renderer = defaultRenderers[0].renderer
-                },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("swordMesh"),
-                    renderer = defaultRenderers[1].renderer
-                },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("shieldMesh"),
-                    renderer = defaultRenderers[2].renderer
-                },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("sheatheMesh"),
-                    renderer = defaultRenderers[3].renderer
-                },
-                new SkinDef.MeshReplacement // Sheathed objects
-                {
-                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("shieldMesh"),
-                    renderer = defaultRenderers[4].renderer
-                },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>("swordMesh"),
-                    renderer = defaultRenderers[5].renderer
-                },
-            };
+            defaultSkin.skinDefParams.meshReplacements = Skins.getMeshReplacements(defaultRenderers,
+                "defaultBodyMesh",
+                "swordMesh",
+                "shieldMesh",
+                "sheatheMesh",
+                "shieldMesh",
+                "swordMesh"); 
 
             skins.Add(defaultSkin);
             #endregion
